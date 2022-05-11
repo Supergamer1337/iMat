@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.imat.IMatController">
+   <children>
+      <Label fx:id="pathLabel" layoutX="404.0" layoutY="503.0" prefHeight="19.0" prefWidth="633.0" text="Current home directory:" AnchorPane.bottomAnchor="502.0" AnchorPane.leftAnchor="404.0" AnchorPane.rightAnchor="403.0" AnchorPane.topAnchor="503.0" />
+   </children>
+</AnchorPane>
