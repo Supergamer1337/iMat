@@ -26,12 +26,16 @@
                         <Image url="@icons/search-glass.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="74.0" fitWidth="78.0" layoutX="1350.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" styleClass="clickable" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="14.670661926269531" AnchorPane.topAnchor="34.0">
+                  <ImageView fx:id="profileImage" fitHeight="74.0" fitWidth="78.0" layoutX="1350.0" layoutY="34.0" onMouseEntered="#toggleProfileHover" onMouseExited="#toggleProfileHover" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="14.670661926269531" AnchorPane.topAnchor="34.0">
                      <image>
                         <Image url="@icons/profile.png" />
                      </image>
+                     <styleClass>
+                        <String fx:value="clickable" />
+                        <String fx:value="profile-button" />
+                     </styleClass>
                   </ImageView>
-                  <ImageView fitHeight="67.0" fitWidth="68.0" layoutX="1266.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true" styleClass="clickable" AnchorPane.bottomAnchor="36.224998474121094" AnchorPane.rightAnchor="106.0" AnchorPane.topAnchor="41.0">
+                  <ImageView fx:id="shoppingCartImage" fitHeight="67.0" fitWidth="68.0" layoutX="1266.0" layoutY="41.0" onMouseEntered="#toggleShoppingCartHover" onMouseExited="#toggleShoppingCartHover" pickOnBounds="true" preserveRatio="true" styleClass="clickable" AnchorPane.bottomAnchor="36.224998474121094" AnchorPane.rightAnchor="106.0" AnchorPane.topAnchor="41.0">
                      <image>
                         <Image url="@icons/shopping-cart.png" />
                      </image>
