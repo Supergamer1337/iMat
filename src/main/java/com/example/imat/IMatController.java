@@ -34,9 +34,18 @@ public class IMatController {
 
         ProductCategory[] categories = ProductCategory.values();
         for (ProductCategory category : categories) {
-            categoryFlowPane.getChildren().add(new CategoryCard(category));
+            for (Product product : dataHandler.getProducts()) {
+                if (product.getCategory() == category){
+                    categoryFlowPane.getChildren().add(new CategoryCard(category, System.getProperty("user.home") + "\\.dat215\\imat\\images\\" + product.getImageName()));
+                    System.out.println(product.getCategory().toString());
+                    System.out.println(product.getImageName());
+                    break;
+                }
+            }
         }
     }
+
+
 
     @FXML
     public void toggleShoppingCartHover() {
