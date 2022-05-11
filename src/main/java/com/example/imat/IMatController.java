@@ -34,7 +34,7 @@ public class IMatController {
 
         ProductCategory[] categories = ProductCategory.values();
         for (ProductCategory category : categories) {
-            categoryFlowPane.getChildren().add(new CategoryCard(category.toString()));
+            categoryFlowPane.getChildren().add(new CategoryCard(category));
         }
     }
 
