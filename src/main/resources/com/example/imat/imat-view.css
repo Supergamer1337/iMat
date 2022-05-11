@@ -20,7 +20,7 @@
 }
 
 .header-logo {
-    -fx-font-size: 90pt;
+    -fx-font-size: 64pt;
     -fx-font-family: 'Britannic Bold';
     -fx-text-fill: -fx-secondary-text-color;
 }

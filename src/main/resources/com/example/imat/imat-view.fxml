@@ -10,69 +10,69 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1440.0" stylesheets="@imat-view.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.imat.IMatController">
    <children>
-      <AnchorPane prefHeight="245.0" prefWidth="1440.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane prefHeight="165.0" prefWidth="1440.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane prefHeight="138.0" prefWidth="1440.0" styleClass="top-header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label layoutX="14.0" layoutY="10.0" text="iMat" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="10.0">
+                  <Label layoutX="14.0" layoutY="9.0" text="iMat" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="9.0">
                      <styleClass>
                         <String fx:value="header-logo" />
                         <String fx:value="clickable" />
                      </styleClass>
                   </Label>
-                  <TextField layoutX="471.0" layoutY="30.0" prefHeight="79.0" prefWidth="498.0" promptText="Sök..." styleClass="search-bar" AnchorPane.bottomAnchor="29.0" AnchorPane.leftAnchor="471.0" AnchorPane.rightAnchor="471.0" AnchorPane.topAnchor="30.0" />
+                  <TextField layoutX="471.0" layoutY="41.0" prefHeight="59.0" prefWidth="498.0" promptText="Sök..." styleClass="search-bar" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="471.0" AnchorPane.rightAnchor="471.0" AnchorPane.topAnchor="41.0" />
                   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="891.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="44.88679122924805" AnchorPane.rightAnchor="499.0" AnchorPane.topAnchor="45.0">
                      <image>
                         <Image url="@icons/search-glass.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="86.0" fitWidth="119.0" layoutX="1338.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" styleClass="clickable" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="14.455093383789062" AnchorPane.topAnchor="27.0">
+                  <ImageView fitHeight="74.0" fitWidth="78.0" layoutX="1350.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" styleClass="clickable" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="14.670661926269531" AnchorPane.topAnchor="34.0">
                      <image>
                         <Image url="@icons/profile.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="73.0" fitWidth="96.0" layoutX="1245.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true" styleClass="clickable" AnchorPane.bottomAnchor="32.0" AnchorPane.rightAnchor="113.3216781616211" AnchorPane.topAnchor="33.0">
+                  <ImageView fitHeight="67.0" fitWidth="68.0" layoutX="1266.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true" styleClass="clickable" AnchorPane.bottomAnchor="36.224998474121094" AnchorPane.rightAnchor="106.0" AnchorPane.topAnchor="41.0">
                      <image>
                         <Image url="@icons/shopping-cart.png" />
                      </image>
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane layoutY="138.0" prefHeight="107.0" prefWidth="1440.0">
+            <AnchorPane layoutY="138.0" prefHeight="74.0" prefWidth="1440.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="107.0" prefWidth="360.0" text="Kategorier" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1080.0" AnchorPane.topAnchor="0.0">
+                  <Button mnemonicParsing="false" prefHeight="76.0" prefWidth="360.0" text="Kategorier" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1080.0" AnchorPane.topAnchor="0.0">
                      <styleClass>
                         <String fx:value="main-nav-button" />
                         <String fx:value="clickable" />
                         <String fx:value="main-nav-button-active" />
                      </styleClass>
                   </Button>
-                  <Button layoutX="360.0" mnemonicParsing="false" prefHeight="107.0" prefWidth="360.0" text="Erbjudanden" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="720.0" AnchorPane.topAnchor="0.0">
+                  <Button mnemonicParsing="false" prefHeight="76.0" prefWidth="360.0" text="Erbjudanden" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="720.0" AnchorPane.topAnchor="0.0">
                      <styleClass>
                         <String fx:value="main-nav-button" />
                         <String fx:value="clickable" />
                      </styleClass>
                   </Button>
-                  <Button layoutX="720.0" mnemonicParsing="false" prefHeight="107.0" prefWidth="360.0" text="Favoriter" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="720.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="0.0">
+                  <Button mnemonicParsing="false" prefHeight="71.0" prefWidth="360.0" text="Favoriter" AnchorPane.leftAnchor="720.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="0.0">
                      <styleClass>
                         <String fx:value="main-nav-button" />
                         <String fx:value="clickable" />
                      </styleClass>
                      <graphic>
-                        <ImageView fitHeight="73.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true" translateX="-50.0">
+                        <ImageView fitHeight="52.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true" translateX="-60.0">
                            <image>
                               <Image url="@icons/star.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="1080.0" mnemonicParsing="false" prefHeight="107.0" prefWidth="360.0" text="Hjälp" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1080.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Button mnemonicParsing="false" prefHeight="76.0" prefWidth="360.0" text="Hjälp" AnchorPane.leftAnchor="1080.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <styleClass>
                         <String fx:value="main-nav-button" />
                         <String fx:value="clickable" />
                      </styleClass>
                      <graphic>
-                        <ImageView fitHeight="73.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true" translateX="-80.0">
+                        <ImageView fitHeight="49.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" translateX="-80.0">
                            <image>
                               <Image url="@icons/question-mark.png" />
                            </image>
