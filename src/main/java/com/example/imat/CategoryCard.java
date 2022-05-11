@@ -5,9 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.*;
 import se.chalmers.cse.dat216.project.ProductCategory;
 
 import java.io.IOException;
@@ -35,11 +33,11 @@ public class CategoryCard extends AnchorPane {
         this.category = category;
         categoryLabel.setText(setCategoryName(category));
         //categoryImage.setImage(new Image(imagePath));
-        Image image = new Image(imagePath);
-        BackgroundImage bgImg = new BackgroundImage(image, null, null,null,null);
+        /*Image image = new Image(imagePath);
+        BackgroundImage bgImg = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         Background bkgrd = new Background(bgImg);
         cardAnchorPane.setBackground(bkgrd);
-        System.out.println(cardAnchorPane.getBackground().getImages().get(0).getImage().getUrl());
+        System.out.println(cardAnchorPane.getBackground().getImages().get(0).getImage().getUrl());*/
     }
 
     public String setCategoryName(ProductCategory category ) {
