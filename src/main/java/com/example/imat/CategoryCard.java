@@ -6,6 +6,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
 import se.chalmers.cse.dat216.project.ProductCategory;
 
 import java.io.IOException;
@@ -14,7 +16,7 @@ public class CategoryCard extends AnchorPane {
 
     @FXML private AnchorPane cardAnchorPane;
     @FXML private Label categoryLabel;
-    @FXML private ImageView categoryImage;
+    //@FXML private ImageView categoryImage;
 
     private ProductCategory category;
 
@@ -32,7 +34,12 @@ public class CategoryCard extends AnchorPane {
         }
         this.category = category;
         categoryLabel.setText(setCategoryName(category));
-        categoryImage.setImage(new Image(imagePath));
+        //categoryImage.setImage(new Image(imagePath));
+        Image image = new Image(imagePath);
+        BackgroundImage bgImg = new BackgroundImage(image, null, null,null,null);
+        Background bkgrd = new Background(bgImg);
+        cardAnchorPane.setBackground(bkgrd);
+        System.out.println(cardAnchorPane.getBackground().getImages().get(0).getImage().getUrl());
     }
 
     public String setCategoryName(ProductCategory category ) {
@@ -42,7 +49,7 @@ public class CategoryCard extends AnchorPane {
             case "BREAD":
                 return "Bröd";
             case "CABBAGE":
-                return "Isbergssalat";
+                return "Isbergssallad";
             case "CITRUS_FRUIT":
                 return "Citrusfrukt";
             case "COLD_DRINKS":
