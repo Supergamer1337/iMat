@@ -1,0 +1,35 @@
+/* Globally declare colors */
+* {
+    /* Background colors, accents etc. */
+    -fx-accent1: #125B50;
+
+    /* Text colors */
+    -fx-primary-text-color: #000000;
+    -fx-primary-text-color-faded: rgba(0, 0, 0, 0.8);
+
+    -fx-secondary-text-color: #FFFFFF; /* For matching the primary accent */
+}
+
+.top-header {
+    -fx-background-color: -fx-accent1;
+}
+
+.header-logo {
+    -fx-font-size: 90pt;
+    -fx-font-family: 'Britannic Bold';
+    -fx-text-fill: -fx-secondary-text-color;
+}
+
+.search-bar {
+    -fx-background-color: -fx-secondary-text-color;
+    -fx-border-radius: 25px;
+    -fx-background-radius: 9999999px;
+    -fx-font-size: 20pt;
+    -fx-font-weight: bold;
+    -fx-prompt-text-fill: -fx-primary-text-color-faded;
+    -fx-text-fill: -fx-primary-text-color;
+}
+
+.clickable {
+    -fx-cursor: hand;
+}
