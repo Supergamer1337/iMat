@@ -36,8 +36,8 @@
     -fx-background-color: -fx-accent1;
 }
 
-.title-bar:hover {
-    -fx-background-color: red;
+.card:hover .title-bar {
+    -fx-background-color: #002E27;
 }
 
 .title {
@@ -46,4 +46,8 @@
     -fx-font-family: Roboto;
     -fx-text-fill: -fx-secondary-text-color;
     -fx-text-alignment: center;
+}
+
+.clickable {
+    -fx-cursor: hand;
 }
