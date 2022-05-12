@@ -58,17 +58,20 @@ public class ProductCard {
         productAmountLabel.setText(String.valueOf(cartHandler.getAmountInCart(product)));
     }
 
-    @FXML private void favoriteButtonInteraction(){
+    @FXML
+    public void favoriteButtonInteraction(){
         changeFavoriteState();
         //TODO: change the star icon.
     }
 
-    @FXML private void addItemToCartInteraction(){
+    @FXML
+    public void addItemToCartInteraction(){
         cartHandler.addProductToCart(product);
         updateAmountLabel();
     }
 
-    @FXML private void removeItemFromCartInteraction(){
+    @FXML
+    public void removeItemFromCartInteraction(){
         cartHandler.removeProductFromCart(product);
         updateAmountLabel();
     }
