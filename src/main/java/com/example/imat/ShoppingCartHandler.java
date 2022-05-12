@@ -1,8 +1,8 @@
 package com.example.imat;
 
-import se.chalmers.cse.dat216.project.IMatDataHandler;
-import se.chalmers.cse.dat216.project.Product;
-import se.chalmers.cse.dat216.project.ShoppingItem;
+import se.chalmers.cse.dat216.project.*;
+
+import java.util.List;
 
 public class ShoppingCartHandler {
     IMatDataHandler dataHandler;
