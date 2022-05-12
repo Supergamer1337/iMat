@@ -104,13 +104,18 @@
       </AnchorPane>
       <StackPane layoutY="265.0" prefHeight="759.0" prefWidth="1440.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="265.0">
          <children>
-            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="733.0" prefWidth="1440.0">
+            <ScrollPane fx:id="categoriesPane" fitToWidth="true" hbarPolicy="NEVER" prefHeight="733.0" prefWidth="1440.0">
                <content>
-                  <FlowPane fx:id="categoryFlowPane" alignment="TOP_CENTER" hgap="20.0" prefHeight="50.0" prefWidth="1438.0" prefWrapLength="1.0E27" vgap="20.0">
+                  <FlowPane fx:id="categoryFlowPane" alignment="TOP_CENTER" hgap="20.0" prefHeight="758.0" prefWidth="1424.0" prefWrapLength="1.0E27" vgap="20.0">
                      <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </padding>
                   </FlowPane>
+               </content>
+            </ScrollPane>
+            <ScrollPane fx:id="productPage" fitToWidth="true">
+               <content>
+                  <FlowPane prefHeight="200.0" prefWidth="200.0" />
                </content>
             </ScrollPane>
          </children>
