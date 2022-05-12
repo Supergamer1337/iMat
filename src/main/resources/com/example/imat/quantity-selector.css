@@ -1,0 +1,28 @@
+/* Globally declare colors */
+* {
+    /* Background colors, accents etc. */
+    -fx-accent1: #125B50;
+    -fx-accent2: #F8B400;
+    -fx-accent2-faded: rgba(248, 180, 0, 0.25);
+
+    /* Text colors */
+    -fx-primary-text-color: #000000;
+    -fx-primary-text-color-faded: rgba(0, 0, 0, 0.8);
+
+    /* Border colors */
+    -fx-primary-border-color: #000000;
+
+    -fx-secondary-text-color: #FFFFFF; /* For matching the primary accent */
+}
+
+.background {
+    -fx-border-radius: 99999999999999px;
+    -fx-border-color: -fx-secondary-text-color;
+    -fx-border-width: 2px;
+}
+
+.amount {
+    -fx-text-fill: -fx-secondary-text-color;
+    -fx-font-size: 14pt;
+    -fx-font-family: "Roboto Medium";
+}
