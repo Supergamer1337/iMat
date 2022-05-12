@@ -106,7 +106,7 @@
          <children>
             <ScrollPane fx:id="productsPage" fitToWidth="true">
                <content>
-                  <FlowPane prefHeight="200.0" prefWidth="200.0" />
+                  <FlowPane fx:id="productsFlowPane" prefHeight="200.0" prefWidth="200.0" />
                </content>
             </ScrollPane>
             <ScrollPane fx:id="categoriesPage" fitToWidth="true" hbarPolicy="NEVER" prefHeight="733.0" prefWidth="1440.0">
