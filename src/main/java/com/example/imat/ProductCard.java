@@ -11,6 +11,12 @@ public class ProductCard {
     Product product;
     IMatDataHandler dataHandler;
     ShoppingCartHandler cartHandler;
+
+    Boolean minusButtonIsHoverd = false;
+    Boolean plusButtonIsHoverd = false;
+    Boolean favoriteButtonIsHoverd = false;
+
+
     @FXML Label productLabel;
     @FXML Label productPriceLabel;
     @FXML Label productAmountLabel;
@@ -55,23 +61,43 @@ public class ProductCard {
 
 
     private void updateAmountLabel(){
-        productAmountLabel.setText(String.valueOf(cartHandler.getAmountInCart(product)));
+        productAmountLabel.setText(String.valueOf(cartHandler.getAmountInCart(product)) + "/st");
     }
 
-    @FXML private void favoriteButtonInteraction(){
+    @FXML
+    public void favoriteButtonInteraction(){
         changeFavoriteState();
         //TODO: change the star icon.
     }
 
-    @FXML private void addItemToCartInteraction(){
+    @FXML
+    public void addItemToCartInteraction(){
         cartHandler.addProductToCart(product);
         updateAmountLabel();
     }
 
-    @FXML private void removeItemFromCartInteraction(){
+    @FXML
+    public void removeItemFromCartInteraction(){
         cartHandler.removeProductFromCart(product);
         updateAmountLabel();
     }
+
+    @FXML
+    public void togglePlusButtonHover(){
+        plusButtonIsHoverd = !plusButtonIsHoverd;
+    }
+
+    @FXML
+    public void toggleMinusButtonHover(){
+        minusButtonIsHoverd = !minusButtonIsHoverd;
+    }
+
+    @FXML
+    public void toggleFavoriteButtonHover(){
+        favoriteButtonIsHoverd = !minusButtonIsHoverd;
+    }
+
+
 
 
 }
