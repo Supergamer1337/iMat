@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -45,6 +46,12 @@
                         <Image url="@icons/shopping-cart.png" />
                      </image>
                   </ImageView>
+                  <Label fx:id="shoppingCartCounterLabel" alignment="CENTER" layoutX="1308.0" layoutY="78.0" prefHeight="25.0" prefWidth="25.0" stylesheets="@shopping-cart.css" text="0" AnchorPane.rightAnchor="107.0" AnchorPane.topAnchor="78.0">
+                     <styleClass>
+                        <String fx:value="cart-counter" />
+                        <String fx:value="third-text" />
+                     </styleClass>
+                  </Label>
                </children>
             </AnchorPane>
             <AnchorPane layoutY="138.0" prefHeight="74.0" prefWidth="1440.0">
@@ -62,7 +69,7 @@
                         <String fx:value="clickable" />
                      </styleClass>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="71.0" prefWidth="360.0" text="Favoriter" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="720.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="0.0">
+                  <Button mnemonicParsing="false" onMouseClicked="#showFavorites" prefHeight="71.0" prefWidth="360.0" text="Favoriter" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="720.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="0.0">
                      <styleClass>
                         <String fx:value="main-nav-button" />
                         <String fx:value="clickable" />
@@ -107,12 +114,24 @@
          <children>
             <ScrollPane fx:id="productsPage" fitToWidth="true">
                <content>
-                  <FlowPane fx:id="productsFlowPane" prefHeight="200.0" prefWidth="200.0" />
+                  <FlowPane fx:id="productsFlowPane" hgap="20.0" prefHeight="200.0" prefWidth="200.0" vgap="20.0">
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding></FlowPane>
                </content>
             </ScrollPane>
             <ScrollPane fx:id="categoriesPage" fitToWidth="true" hbarPolicy="NEVER" prefHeight="733.0" prefWidth="1440.0">
                <content>
                   <FlowPane fx:id="categoryFlowPane" alignment="TOP_CENTER" hgap="20.0" prefHeight="758.0" prefWidth="1424.0" prefWrapLength="1.0E27" vgap="20.0">
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </FlowPane>
+               </content>
+            </ScrollPane>
+            <ScrollPane fx:id="favoriteScrollPane" prefHeight="200.0" prefWidth="200.0">
+               <content>
+                  <FlowPane fx:id="favoriteFlowPane" hgap="20.0" prefHeight="757.0" prefWidth="1438.0" vgap="20.0">
                      <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </padding>
@@ -134,8 +153,8 @@
                      <children>
                         <AnchorPane layoutY="620.0" prefHeight="132.0" prefWidth="726.0" styleClass="back-bar" stylesheets="@shopping-cart.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <children>
-                              <Label layoutX="7.0" layoutY="6.0" prefHeight="17.0" prefWidth="223.0" styleClass="primary-text" text="Totalt (xx varor)" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="5.0" />
-                              <Label layoutX="565.0" layoutY="6.0" styleClass="primary-text" text="0 000:00 kr" AnchorPane.bottomAnchor="90.0" AnchorPane.rightAnchor="15.0" />
+                              <Label fx:id="cartTotalAmountItemsLabel" layoutX="7.0" layoutY="6.0" prefHeight="17.0" prefWidth="223.0" styleClass="primary-text" text="Totalt (xx varor)" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="5.0" />
+                              <Label fx:id="cartTotalPriceLabel" layoutX="565.0" layoutY="6.0" styleClass="primary-text" text="0 000:00 kr" AnchorPane.bottomAnchor="90.0" AnchorPane.rightAnchor="15.0" />
                               <Button layoutX="427.0" layoutY="46.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="275.0" stylesheets="@button.css" text="Gå till kassan" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
                                  <styleClass>
                                     <String fx:value="background" />
@@ -144,15 +163,15 @@
                               </Button>
                            </children>
                         </AnchorPane>
-                        <Label layoutX="144.0" layoutY="222.0" styleClass="primary-text" stylesheets="@shopping-cart.css" text="Produktnanm" />
-                        <ImageView fitHeight="168.0" fitWidth="321.0" layoutX="83.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="81.16279602050781" AnchorPane.rightAnchor="96.83720397949219" AnchorPane.topAnchor="41.0">
+                        <Label fx:id="cartProductNameLabel" layoutX="144.0" layoutY="222.0" styleClass="primary-text" stylesheets="@shopping-cart.css" text="Produktnanm" AnchorPane.bottomAnchor="503.0" AnchorPane.leftAnchor="143.0" AnchorPane.rightAnchor="143.5" AnchorPane.topAnchor="222.0" />
+                        <ImageView fx:id="cartImage" fitHeight="168.0" fitWidth="321.0" layoutX="83.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="81.16279602050781" AnchorPane.rightAnchor="96.83720397949219" AnchorPane.topAnchor="41.0">
                            <image>
                               <Image url="@images/missing.jpg" />
                            </image>
                         </ImageView>
-                        <Label alignment="TOP_LEFT" layoutX="33.0" layoutY="263.0" prefHeight="288.0" prefWidth="360.0" styleClass="secondary-text" stylesheets="@shopping-cart.css" text="&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;" wrapText="true" />
-                        <Label layoutX="20.0" layoutY="579.0" styleClass="primary-text" stylesheets="@shopping-cart.css" text="00:00/st" AnchorPane.bottomAnchor="148.0" AnchorPane.leftAnchor="15.0" />
-                        <Label layoutX="252.0" layoutY="579.0" styleClass="primary-text" stylesheets="@shopping-cart.css" text="(xxst) 000:00kr" AnchorPane.bottomAnchor="147.0" AnchorPane.rightAnchor="23.0" />
+                        <Label fx:id="cartProductPriceLabel" layoutX="20.0" layoutY="579.0" styleClass="primary-text" stylesheets="@shopping-cart.css" text="00:00/st" AnchorPane.bottomAnchor="148.0" AnchorPane.leftAnchor="15.0" />
+                        <Label fx:id="cartTotalProductPriceLabel" layoutX="252.0" layoutY="579.0" styleClass="primary-text" stylesheets="@shopping-cart.css" text="(xxst) 000:00kr" AnchorPane.bottomAnchor="147.0" AnchorPane.rightAnchor="23.0" />
+                        <TextArea fx:id="cartDescriptionTextArea" layoutX="24.0" layoutY="259.0" prefHeight="307.0" prefWidth="378.0" AnchorPane.bottomAnchor="191.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="23.5" AnchorPane.topAnchor="259.0" />
                      </children>
                   </AnchorPane>
                </items>

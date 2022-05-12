@@ -29,6 +29,17 @@
     -fx-text-fill: -fx-primary-text-color;
 }
 
+.third-text {
+    -fx-font-size: 12px;
+    -fx-font-family: Roboto;
+    -fx-text-fill: -fx-secondary-text-color;
+}
+
 .boarder-box {
     -fx-border-width: 2px 0px 0px 0px;
+}
+
+.cart-counter {
+    -fx-background-radius: 99999999999999px;
+    -fx-background-color: #EC2020;
 }

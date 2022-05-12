@@ -8,17 +8,15 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
-import se.chalmers.cse.dat216.project.IMatDataHandler;
-import se.chalmers.cse.dat216.project.Product;
-import se.chalmers.cse.dat216.project.ProductCategory;
-import se.chalmers.cse.dat216.project.ShoppingItem;
+import se.chalmers.cse.dat216.project.*;
 
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class IMatController {
+public class IMatController implements ShoppingCartListener {
 
     IMatDataHandler dataHandler = IMatDataHandler.getInstance();
 
@@ -34,10 +32,14 @@ public class IMatController {
     @FXML private FlowPane productsFlowPane;
     @FXML private SplitPane shoppingCartSplitPane;
     @FXML private FlowPane shoppingCartFlowPane;
+    @FXML private FlowPane favoriteFlowPane;
+    @FXML private ScrollPane favoriteScrollPane;
+    @FXML private Label shoppingCartCounterLabel;
 
     @FXML
     public void initialize() {
         System.out.println("Current home path: " + System.getProperty("user.home"));
+        dataHandler.getShoppingCart().addShoppingCartListener(this);
 
         ProductCategory[] categories = ProductCategory.values();
         for (ProductCategory category : categories) {
@@ -76,6 +78,15 @@ public class IMatController {
         }
     }
 
+    @FXML public void showFavorites() {
+        favoriteFlowPane.getChildren().clear();
+        favoriteScrollPane.toFront();
+        List<Product> products = dataHandler.favorites();
+        for (Product product : products) {
+            favoriteFlowPane.getChildren().add(new ProductCard(product));
+        }
+    }
+
     @FXML
     public void toggleShoppingCartHover() {
         shoppingCartIsHovered = !shoppingCartIsHovered;
@@ -86,5 +97,11 @@ public class IMatController {
     public void toggleProfileHover() {
         profileIsHovered = !profileIsHovered;
         StyleUtils.toggleHoverImage(profileIsHovered, "icons/profile-hover.png", "icons/profile.png", profileImage);
+    }
+
+    @Override
+    public void shoppingCartChanged(CartEvent cartEvent) {
+        List<ShoppingItem> shopItem = dataHandler.getShoppingCart().getItems();
+        shoppingCartCounterLabel.setText(String.valueOf(shopItem.size()));
     }
 }
