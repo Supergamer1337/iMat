@@ -42,6 +42,7 @@ public class ShoppingCartCard extends AnchorPane {
         Image image = new Image(getClass().getResourceAsStream("images/" + shoppingItem.getProduct().getImageName()));
         productImageView.setImage(image);
         updateAmountLabels();
+
     }
 
     private void updateAmountLabels(){
