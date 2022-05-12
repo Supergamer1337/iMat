@@ -36,6 +36,10 @@
     -fx-background-color: -fx-accent1;
 }
 
+.title-bar:hover {
+    -fx-background-color: red;
+}
+
 .title {
     -fx-font-size: 18pt;
     -fx-font-weight: bold;
