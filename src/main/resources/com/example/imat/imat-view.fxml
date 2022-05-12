@@ -45,6 +45,12 @@
                         <Image url="@icons/shopping-cart.png" />
                      </image>
                   </ImageView>
+                  <Label alignment="CENTER" layoutX="1308.0" layoutY="78.0" prefHeight="25.0" prefWidth="25.0" stylesheets="@shopping-cart.css" text="0">
+                     <styleClass>
+                        <String fx:value="cart-counter" />
+                        <String fx:value="third-text" />
+                     </styleClass>
+                  </Label>
                </children>
             </AnchorPane>
             <AnchorPane layoutY="138.0" prefHeight="74.0" prefWidth="1440.0">
