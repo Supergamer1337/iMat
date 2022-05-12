@@ -1,13 +1,17 @@
 package com.example.imat;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
-public class ShoppingCartCard {
+import java.io.IOException;
+
+public class ShoppingCartCard extends AnchorPane {
     @FXML Label totalPriceLabel;
     @FXML Label productNameLabel;
     @FXML Label totalAmountLabel;
@@ -22,16 +26,51 @@ public class ShoppingCartCard {
 
 
     public ShoppingCartCard(ShoppingItem shoppingItem) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("shopping-cart-card.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+
+        try {
+            fxmlLoader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         cartHandler = new ShoppingCartHandler();
         this.shoppingItem = shoppingItem;
         productNameLabel.setText(shoppingItem.getProduct().getName());
         Image image = new Image(getClass().getResourceAsStream("images/" + shoppingItem.getProduct().getImageName()));
         productImageView.setImage(image);
+        updateAmountLabels();
     }
 
     private void updateAmountLabels(){
         totalAmountLabel.setText(String.valueOf(shoppingItem.getAmount()));
         totalPriceLabel.setText(String.valueOf(shoppingItem.getTotal()));
     }
+
+
+    @FXML
+    public void addItemToCartInteraction(){
+        cartHandler.addProductToCart(shoppingItem.getProduct());
+        updateAmountLabels();
+    }
+
+    @FXML
+    public void removeItemFromCartInteraction(){
+        cartHandler.removeProductFromCart(shoppingItem.getProduct());
+        updateAmountLabels();
+    }
+
+    @FXML
+    public void togglePlusButtonHover(){
+        plusButtonIsHoverd = !plusButtonIsHoverd;
+    }
+
+    @FXML
+    public void toggleMinusButtonHover(){
+        minusButtonIsHoverd = !minusButtonIsHoverd;
+    }
+
 
 }
