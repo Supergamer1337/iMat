@@ -62,7 +62,7 @@ public class ProductCard extends AnchorPane {
     private void setBgImage(){
         String image = getClass().getResource("images/" + product.getImageName()).toExternalForm();
         productAnchorPane.setStyle("-fx-background-image: url('" + image + "'); " +
-                "-fx-background-position: center;" +
+                "-fx-background-position: default;" +
                 "-fx-background-repeat: no-repeat;");
     }
 

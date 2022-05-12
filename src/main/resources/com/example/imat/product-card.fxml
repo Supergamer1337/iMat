@@ -23,12 +23,12 @@
                </styleClass></Label>
             <AnchorPane layoutX="7.0" layoutY="153.0" prefHeight="37.0" prefWidth="226.0" styleClass="background" stylesheets="@quantity-selector.css">
                <children>
-                  <ImageView fx:id="minusButtonImage" fitHeight="34.0" fitWidth="34.0" layoutX="4.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="2.0">
+                  <ImageView fx:id="minusButtonImage" fitHeight="34.0" fitWidth="34.0" layoutX="4.0" layoutY="6.0" onMouseClicked="#removeItemFromCartInteraction" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="2.0">
                      <image>
                         <Image url="@icons/minus-button.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="plusButtonImage" fitHeight="34.0" fitWidth="34.0" layoutX="195.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+                  <ImageView fx:id="plusButtonImage" fitHeight="34.0" fitWidth="34.0" layoutX="195.0" layoutY="6.0" onMouseClicked="#addItemToCartInteraction" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
                      <image>
                         <Image url="@icons/plus-button.png" />
                      </image>
