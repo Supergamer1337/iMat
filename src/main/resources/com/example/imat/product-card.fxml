@@ -6,9 +6,17 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
+
 <fx:root fx:id="productAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="240.0" stylesheets="@product-card.css" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane fx:id="productImage" prefHeight="200.0" prefWidth="240.0" styleClass="productImage" />
+      <AnchorPane fx:id="productImage" prefHeight="200.0" prefWidth="240.0" styleClass="productImage">
+         <children>
+            <ImageView fitHeight="97.0" fitWidth="34.0" layoutX="193.0" layoutY="14.0" onMouseClicked="#favoriteButtonInteraction" onMouseEntered="#toggleFavoriteButtonHover" onMouseExited="#toggleFavoriteButtonHover" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+               <image>
+                  <Image url="@icons/star.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
       <AnchorPane layoutY="200.0" prefHeight="200.0" prefWidth="240.0" styleClass="bottom-container">
          <children>
             <Label fx:id="productPriceLabel" layoutX="14.0" layoutY="122.0" prefHeight="31.0" prefWidth="206.0" text="Pris">

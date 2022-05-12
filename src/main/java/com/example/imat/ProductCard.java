@@ -14,6 +14,12 @@ public class ProductCard extends AnchorPane {
     Product product;
     IMatDataHandler dataHandler;
     ShoppingCartHandler cartHandler;
+
+    Boolean minusButtonIsHoverd = false;
+    Boolean plusButtonIsHoverd = false;
+    Boolean favoriteButtonIsHoverd = false;
+
+
     @FXML Label productLabel;
     @FXML Label productPriceLabel;
     @FXML Label productAmountLabel;
@@ -68,7 +74,7 @@ public class ProductCard extends AnchorPane {
 
 
     private void updateAmountLabel(){
-        productAmountLabel.setText(String.valueOf(cartHandler.getAmountInCart(product)));
+        productAmountLabel.setText(String.valueOf(cartHandler.getAmountInCart(product)) + "/st");
     }
 
     @FXML
@@ -88,6 +94,23 @@ public class ProductCard extends AnchorPane {
         cartHandler.removeProductFromCart(product);
         updateAmountLabel();
     }
+
+    @FXML
+    public void togglePlusButtonHover(){
+        plusButtonIsHoverd = !plusButtonIsHoverd;
+    }
+
+    @FXML
+    public void toggleMinusButtonHover(){
+        minusButtonIsHoverd = !minusButtonIsHoverd;
+    }
+
+    @FXML
+    public void toggleFavoriteButtonHover(){
+        favoriteButtonIsHoverd = !minusButtonIsHoverd;
+    }
+
+
 
 
 }
