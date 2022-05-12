@@ -17,5 +17,6 @@
    <styleClass>
       <String fx:value="card" />
       <String fx:value="category-image" />
+      <String fx:value="clickable" />
    </styleClass>
 </fx:root>

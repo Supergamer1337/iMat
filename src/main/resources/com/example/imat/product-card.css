@@ -51,3 +51,7 @@
 .text-color-secondary {
     -fx-text-fill: -fx-secondary-text-color;
 }
+
+.clickable {
+    -fx-cursor: hand;
+}
