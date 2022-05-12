@@ -17,10 +17,10 @@ public class CategoryCard extends AnchorPane {
     @FXML private ImageView categoryImage;
 
     private ProductCategory category;
+    private IMatController parentController;
 
 
-
-    public CategoryCard(ProductCategory category, String imageName) {
+    public CategoryCard(ProductCategory category, String imageName, IMatController parentController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("category-card.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -30,6 +30,7 @@ public class CategoryCard extends AnchorPane {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        this.parentController = parentController;
         this.category = category;
         categoryLabel.setText(setCategoryName(category));
 
@@ -37,6 +38,11 @@ public class CategoryCard extends AnchorPane {
         cardAnchorPane.setStyle("-fx-background-image: url('" + image + "'); " +
                 "-fx-background-position: center;" +
                 "-fx-background-repeat: no-repeat;");
+    }
+
+    @FXML
+    public void goToCategory() {
+        parentController.showCategory(category);
     }
 
     public String setCategoryName(ProductCategory category ) {

@@ -28,6 +28,10 @@ public class IMatController {
 
     @FXML private FlowPane categoryFlowPane;
 
+    @FXML private ScrollPane productsPage;
+
+    @FXML private ScrollPane categoriesPage;
+
     @FXML
     public void initialize() {
         System.out.println("Current home path: " + System.getProperty("user.home"));
@@ -36,14 +40,28 @@ public class IMatController {
         for (ProductCategory category : categories) {
             for (Product product : dataHandler.getProducts()) {
                 if (product.getCategory() == category){
-                    categoryFlowPane.getChildren().add(new CategoryCard(category, product.getImageName()));
+                    categoryFlowPane.getChildren().add(new CategoryCard(category, product.getImageName(), this));
                     break;
                 }
             }
         }
     }
 
+    @FXML public void goToCategories() {
+        categoriesPage.toFront();
+    }
 
+    @FXML public void showCategory(ProductCategory category) {
+        System.out.println("Opening category" + category.toString());
+        productsPage.toFront();
+
+        List<Product> products = dataHandler.getProducts();
+        for (Product product : products) {
+            if (product.getCategory() == category) {
+                // TODO: Create product card
+            }
+        }
+    }
 
     @FXML
     public void toggleShoppingCartHover() {
