@@ -138,7 +138,7 @@
                   </FlowPane>
                </content>
             </ScrollPane>
-            <SplitPane fx:id="shoppingCartSplitPane" dividerPositions="0.7023643949930459" prefHeight="200.0" prefWidth="200.0">
+            <SplitPane fx:id="shoppingCartSplitPane" dividerPositions="0.7023643949930459" prefHeight="589.0" prefWidth="1440.0">
                <items>
                   <ScrollPane prefHeight="757.0" prefWidth="642.0">
                      <content>
@@ -149,7 +149,7 @@
                         </FlowPane>
                      </content>
                   </ScrollPane>
-                  <AnchorPane prefHeight="757.0" prefWidth="606.0" styleClass="back-bar">
+                  <AnchorPane prefHeight="594.0" prefWidth="426.0" styleClass="back-bar">
                      <children>
                         <AnchorPane layoutY="620.0" prefHeight="132.0" prefWidth="726.0" styleClass="back-bar" stylesheets="@shopping-cart.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <children>
@@ -163,7 +163,7 @@
                               </Button>
                            </children>
                         </AnchorPane>
-                        <Label fx:id="cartProductNameLabel" layoutX="144.0" layoutY="222.0" styleClass="primary-text" stylesheets="@shopping-cart.css" text="Produktnanm" AnchorPane.bottomAnchor="503.0" AnchorPane.leftAnchor="143.0" AnchorPane.rightAnchor="143.5" AnchorPane.topAnchor="222.0" />
+                        <Label fx:id="cartProductNameLabel" layoutX="139.0" layoutY="209.0" prefHeight="31.0" prefWidth="151.0" styleClass="primary-text" stylesheets="@shopping-cart.css" text="Produktnanm" AnchorPane.leftAnchor="139.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="209.0" />
                         <ImageView fx:id="cartImage" fitHeight="168.0" fitWidth="321.0" layoutX="83.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="81.16279602050781" AnchorPane.rightAnchor="96.83720397949219" AnchorPane.topAnchor="41.0">
                            <image>
                               <Image url="@images/missing.jpg" />
@@ -171,7 +171,7 @@
                         </ImageView>
                         <Label fx:id="cartProductPriceLabel" layoutX="20.0" layoutY="579.0" styleClass="primary-text" stylesheets="@shopping-cart.css" text="00:00/st" AnchorPane.bottomAnchor="148.0" AnchorPane.leftAnchor="15.0" />
                         <Label fx:id="cartTotalProductPriceLabel" layoutX="252.0" layoutY="579.0" styleClass="primary-text" stylesheets="@shopping-cart.css" text="(xxst) 000:00kr" AnchorPane.bottomAnchor="147.0" AnchorPane.rightAnchor="23.0" />
-                        <TextArea fx:id="cartDescriptionTextArea" layoutX="24.0" layoutY="259.0" prefHeight="307.0" prefWidth="378.0" AnchorPane.bottomAnchor="191.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="23.5" AnchorPane.topAnchor="259.0" />
+                        <TextArea fx:id="cartDescriptionTextArea" layoutX="27.0" layoutY="259.0" prefHeight="309.0" prefWidth="373.0" AnchorPane.bottomAnchor="194.0" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="253.0" />
                      </children>
                   </AnchorPane>
                </items>

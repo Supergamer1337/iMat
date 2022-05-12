@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -13,6 +14,7 @@ import javafx.scene.layout.FlowPane;
 import se.chalmers.cse.dat216.project.*;
 
 import java.net.URL;
+import java.time.format.TextStyle;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -35,6 +37,12 @@ public class IMatController implements ShoppingCartListener {
     @FXML private FlowPane favoriteFlowPane;
     @FXML private ScrollPane favoriteScrollPane;
     @FXML private Label shoppingCartCounterLabel;
+
+    @FXML private Label cartProductNameLabel;
+    @FXML private Label cartProductPriceLabel, cartTotalProductPriceLabel,
+            cartTotalAmountItemsLabel, cartTotalPriceLabel;
+    @FXML private TextArea cartDescriptionTextArea;
+    @FXML private ImageView cartImage;
 
     @FXML
     public void initialize() {
@@ -59,10 +67,11 @@ public class IMatController implements ShoppingCartListener {
     @FXML public void goToShoppingCart(){
         shoppingCartFlowPane.getChildren().clear();
         shoppingCartSplitPane.toFront();
+        updateShoppingCartInformation();
         List<ShoppingItem> shoppingItems = dataHandler.getShoppingCart().getItems();
 
         for (ShoppingItem shoppingItem: shoppingItems) {
-            shoppingCartFlowPane.getChildren().add(new ShoppingCartCard(shoppingItem));
+            shoppingCartFlowPane.getChildren().add(new ShoppingCartCard(shoppingItem, this));
         }
     }
 
@@ -94,13 +103,35 @@ public class IMatController implements ShoppingCartListener {
     }
 
     @FXML
+    public void cartItemPressed(ShoppingItem shoppingItem){
+        cartProductNameLabel.setText(shoppingItem.getProduct().getName());
+        Image image = new Image(getClass().getResourceAsStream("images/" + shoppingItem.getProduct().getImageName()));
+        cartImage.setImage(image);
+        //cartDescriptionTextArea.setText(shoppingItem.getProduct().get);
+        cartProductPriceLabel.setText("(" + shoppingItem.getAmount() + " st) " + shoppingItem.getTotal() + "kr");
+        cartTotalProductPriceLabel.setText(shoppingItem.getProduct().getPrice() + " kr");
+    }
+
+    @FXML
     public void toggleProfileHover() {
         profileIsHovered = !profileIsHovered;
         StyleUtils.toggleHoverImage(profileIsHovered, "icons/profile-hover.png", "icons/profile.png", profileImage);
     }
 
+    private void updateShoppingCartInformation(){
+        List<ShoppingItem> shoppingItems = dataHandler.getShoppingCart().getItems();
+        int ctr = 0;
+        for (ShoppingItem shoppingitem:
+             shoppingItems) {
+            ctr += shoppingitem.getAmount();
+        }
+        cartTotalAmountItemsLabel.setText(ctr + " st");
+        cartTotalPriceLabel.setText(dataHandler.getShoppingCart().getTotal() + " kr");
+    }
+
     @Override
     public void shoppingCartChanged(CartEvent cartEvent) {
+
         List<ShoppingItem> shopItem = dataHandler.getShoppingCart().getItems();
         shoppingCartCounterLabel.setText(String.valueOf(shopItem.size()));
     }

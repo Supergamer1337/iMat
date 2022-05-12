@@ -22,10 +22,11 @@ public class ShoppingCartCard extends AnchorPane {
 
     ShoppingCartHandler cartHandler;
     ShoppingItem shoppingItem;
+    IMatController parentController;
 
 
 
-    public ShoppingCartCard(ShoppingItem shoppingItem) {
+    public ShoppingCartCard(ShoppingItem shoppingItem, IMatController parentController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("shopping-cart-card.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -36,6 +37,7 @@ public class ShoppingCartCard extends AnchorPane {
             throw new RuntimeException(e);
         }
 
+        this.parentController = parentController;
         cartHandler = new ShoppingCartHandler();
         this.shoppingItem = shoppingItem;
         productNameLabel.setText(shoppingItem.getProduct().getName());
@@ -48,6 +50,10 @@ public class ShoppingCartCard extends AnchorPane {
     private void updateAmountLabels(){
         totalAmountLabel.setText(String.valueOf(shoppingItem.getAmount()));
         totalPriceLabel.setText(String.valueOf(shoppingItem.getTotal()));
+    }
+
+    @FXML void showDetails() {
+        parentController.cartItemPressed(shoppingItem);
     }
 
 
