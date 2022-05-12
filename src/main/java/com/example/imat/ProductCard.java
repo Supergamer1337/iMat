@@ -20,7 +20,7 @@ public class ProductCard {
         this.product = product;
         this.dataHandler = IMatDataHandler.getInstance();
         this.productLabel.setText(product.getName());
-        this.productPriceLabel.setText(String.valueOf(product.getPrice()));
+        this.productPriceLabel.setText(String.valueOf(product.getPrice()) + "/st");
         this.cartHandler = new ShoppingCartHandler();
         setBgImage();
         updateAmountLabel();
