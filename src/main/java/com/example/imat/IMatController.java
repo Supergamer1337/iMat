@@ -5,12 +5,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.SplitPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ProductCategory;
+import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.net.URL;
 import java.util.List;
@@ -30,6 +32,8 @@ public class IMatController {
     @FXML private ScrollPane productsPage;
     @FXML private ScrollPane categoriesPage;
     @FXML private FlowPane productsFlowPane;
+    @FXML private SplitPane shoppingCartSplitPane;
+    @FXML private FlowPane shoppingCartFlowPane;
 
     @FXML
     public void initialize() {
@@ -48,6 +52,16 @@ public class IMatController {
 
     @FXML public void goToCategories() {
         categoriesPage.toFront();
+    }
+
+    @FXML public void goToShoppingCart(){
+        shoppingCartFlowPane.getChildren().clear();
+        shoppingCartSplitPane.toFront();
+        List<ShoppingItem> shoppingItems = dataHandler.getShoppingCart().getItems();
+
+        for (ShoppingItem shoppingItem: shoppingItems) {
+            shoppingCartFlowPane.getChildren().add(new ShoppingCartCard(shoppingItem));
+        }
     }
 
     @FXML public void showCategory(ProductCategory category) {

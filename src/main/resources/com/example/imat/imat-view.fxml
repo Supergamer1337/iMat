@@ -40,7 +40,7 @@
                         <String fx:value="profile-button" />
                      </styleClass>
                   </ImageView>
-                  <ImageView fx:id="shoppingCartImage" fitHeight="67.0" fitWidth="68.0" layoutX="1266.0" layoutY="41.0" onMouseEntered="#toggleShoppingCartHover" onMouseExited="#toggleShoppingCartHover" pickOnBounds="true" preserveRatio="true" styleClass="clickable" AnchorPane.bottomAnchor="36.224998474121094" AnchorPane.rightAnchor="106.0" AnchorPane.topAnchor="41.0">
+                  <ImageView fx:id="shoppingCartImage" fitHeight="67.0" fitWidth="68.0" layoutX="1266.0" layoutY="41.0" onMouseClicked="#goToShoppingCart" onMouseEntered="#toggleShoppingCartHover" onMouseExited="#toggleShoppingCartHover" pickOnBounds="true" preserveRatio="true" styleClass="clickable" AnchorPane.bottomAnchor="36.224998474121094" AnchorPane.rightAnchor="106.0" AnchorPane.topAnchor="41.0">
                      <image>
                         <Image url="@icons/shopping-cart.png" />
                      </image>
@@ -107,10 +107,7 @@
          <children>
             <ScrollPane fx:id="productsPage" fitToWidth="true">
                <content>
-                  <FlowPane fx:id="productsFlowPane" hgap="20.0" prefHeight="200.0" prefWidth="200.0" vgap="20.0">
-                     <padding>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                     </padding></FlowPane>
+                  <FlowPane fx:id="productsFlowPane" prefHeight="200.0" prefWidth="200.0" />
                </content>
             </ScrollPane>
             <ScrollPane fx:id="categoriesPage" fitToWidth="true" hbarPolicy="NEVER" prefHeight="733.0" prefWidth="1440.0">
@@ -122,12 +119,16 @@
                   </FlowPane>
                </content>
             </ScrollPane>
-            <SplitPane dividerPositions="0.7343532684283728" prefHeight="200.0" prefWidth="200.0">
+            <SplitPane fx:id="shoppingCartSplitPane" dividerPositions="0.7023643949930459" prefHeight="200.0" prefWidth="200.0">
                <items>
                   <ScrollPane prefHeight="757.0" prefWidth="642.0">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-                    </content>
+                     <content>
+                        <FlowPane fx:id="shoppingCartFlowPane" hgap="15.0" prefHeight="756.0" prefWidth="1052.0" vgap="10.0">
+                           <padding>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </padding>
+                        </FlowPane>
+                     </content>
                   </ScrollPane>
                   <AnchorPane prefHeight="757.0" prefWidth="606.0" styleClass="back-bar">
                      <children>
@@ -143,15 +144,15 @@
                               </Button>
                            </children>
                         </AnchorPane>
-                        <Label layoutX="121.0" layoutY="223.0" styleClass="primary-text" stylesheets="@shopping-cart.css" text="Produktnanm" />
-                        <ImageView fitHeight="182.0" fitWidth="207.0" layoutX="83.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+                        <Label layoutX="144.0" layoutY="222.0" styleClass="primary-text" stylesheets="@shopping-cart.css" text="Produktnanm" />
+                        <ImageView fitHeight="168.0" fitWidth="321.0" layoutX="83.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="81.16279602050781" AnchorPane.rightAnchor="96.83720397949219" AnchorPane.topAnchor="41.0">
                            <image>
                               <Image url="@images/missing.jpg" />
                            </image>
                         </ImageView>
-                        <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="262.0" prefHeight="288.0" prefWidth="360.0" styleClass="secondary-text" stylesheets="@shopping-cart.css" text="&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;" wrapText="true" />
-                        <Label layoutX="20.0" layoutY="579.0" styleClass="primary-text" stylesheets="@shopping-cart.css" text="00:00/st" />
-                        <Label layoutX="203.0" layoutY="579.0" styleClass="primary-text" stylesheets="@shopping-cart.css" text="(xxst) 000:00kr" />
+                        <Label alignment="TOP_LEFT" layoutX="33.0" layoutY="263.0" prefHeight="288.0" prefWidth="360.0" styleClass="secondary-text" stylesheets="@shopping-cart.css" text="&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;" wrapText="true" />
+                        <Label layoutX="20.0" layoutY="579.0" styleClass="primary-text" stylesheets="@shopping-cart.css" text="00:00/st" AnchorPane.bottomAnchor="148.0" AnchorPane.leftAnchor="15.0" />
+                        <Label layoutX="252.0" layoutY="579.0" styleClass="primary-text" stylesheets="@shopping-cart.css" text="(xxst) 000:00kr" AnchorPane.bottomAnchor="147.0" AnchorPane.rightAnchor="23.0" />
                      </children>
                   </AnchorPane>
                </items>
