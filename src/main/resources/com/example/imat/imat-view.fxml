@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1440.0" stylesheets="@imat-view.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.imat.IMatController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1440.0" stylesheets="@imat-view.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.imat.IMatController">
    <children>
-      <AnchorPane prefHeight="165.0" prefWidth="1440.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane prefHeight="260.0" prefWidth="1440.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane prefHeight="138.0" prefWidth="1440.0" styleClass="top-header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -89,13 +89,24 @@
                   </Button>
                </children>
             </AnchorPane>
+            <AnchorPane layoutY="213.0" prefHeight="52.0" prefWidth="1440.0" styleClass="back-bar">
+               <children>
+                  <Label fx:id="currentLocationLabel" layoutX="691.0" layoutY="11.0" styleClass="back-bar-text" text="Label" />
+                  <ImageView fx:id="backArrowImage" fitHeight="39.0" fitWidth="68.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/back-arrow.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="backToLabel" layoutX="91.0" layoutY="11.0" styleClass="back-bar-text" text="Gå tillbaka till" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
-      <StackPane layoutY="214.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="214.0">
+      <StackPane layoutY="265.0" prefHeight="759.0" prefWidth="1440.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="265.0">
          <children>
-            <ScrollPane fitToWidth="true" hbarPolicy="NEVER">
+            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="733.0" prefWidth="1440.0">
                <content>
-                  <FlowPane fx:id="categoryFlowPane" alignment="TOP_CENTER" hgap="20.0" prefWrapLength="1.0E27" vgap="20.0">
+                  <FlowPane fx:id="categoryFlowPane" alignment="TOP_CENTER" hgap="20.0" prefHeight="50.0" prefWidth="1438.0" prefWrapLength="1.0E27" vgap="20.0">
                      <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </padding>
