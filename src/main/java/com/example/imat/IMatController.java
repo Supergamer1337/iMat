@@ -8,6 +8,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
@@ -34,6 +35,8 @@ public class IMatController {
     @FXML private FlowPane productsFlowPane;
     @FXML private SplitPane shoppingCartSplitPane;
     @FXML private FlowPane shoppingCartFlowPane;
+    @FXML private FlowPane favoriteFlowPane;
+    @FXML private ScrollPane favoriteScrollPane;
 
     @FXML
     public void initialize() {
@@ -73,6 +76,15 @@ public class IMatController {
             if (product.getCategory() == category) {
                productsFlowPane.getChildren().add(new ProductCard(product));
             }
+        }
+    }
+
+    @FXML public void showFavorites() {
+        favoriteFlowPane.getChildren().clear();
+        favoriteScrollPane.toFront();
+        List<Product> products = dataHandler.favorites();
+        for (Product product : products) {
+            favoriteFlowPane.getChildren().add(new ProductCard(product));
         }
     }
 
