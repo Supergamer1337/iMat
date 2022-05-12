@@ -10,20 +10,18 @@ import se.chalmers.cse.dat216.project.ShoppingItem;
 public class ProductCard {
     Product product;
     IMatDataHandler dataHandler;
+    ShoppingCartHandler cartHandler;
     @FXML Label productLabel;
     @FXML Label productPriceLabel;
     @FXML Label productAmountLabel;
     @FXML AnchorPane productAnchorPane;
-
-
-
-
 
     public ProductCard(Product product) {
         this.product = product;
         this.dataHandler = IMatDataHandler.getInstance();
         this.productLabel.setText(product.getName());
         this.productPriceLabel.setText(String.valueOf(product.getPrice()));
+        this.cartHandler = new ShoppingCartHandler();
         setBgImage();
         updateAmountLabel();
     }
@@ -37,10 +35,6 @@ public class ProductCard {
         return false;
     }
 
-    private void favoriteButtonInteraction(){
-        changeFavoriteState();
-        //TODO: change the star icon.
-    }
 
     private void changeFavoriteState(){
         if (!isFavorite()){
@@ -59,46 +53,25 @@ public class ProductCard {
                 "-fx-background-repeat: no-repeat;");
     }
 
-    private int getAmountInCart(){
-        int ctr = 0;
-        for (ShoppingItem shoppingItem :
-                dataHandler.getShoppingCart().getItems()) {
-            if(shoppingItem.getProduct() == product){
-                ctr+=shoppingItem.getAmount();
-            }
-        }
-        return ctr;
-    }
 
     private void updateAmountLabel(){
-        productAmountLabel.setText(String.valueOf(getAmountInCart()));
+        productAmountLabel.setText(String.valueOf(cartHandler.getAmountInCart(product)));
     }
 
-    private void addProductToCart(){
-        Boolean founditem = false;
-        for (ShoppingItem shoppingItem :
-                dataHandler.getShoppingCart().getItems()) {
-            if(shoppingItem.getProduct()==product) {
-                shoppingItem.setAmount(shoppingItem.getAmount()+1);
-                founditem = true;
-            }
-        }
-        if(!founditem){
-            dataHandler.getShoppingCart().addProduct(product);
-        }
+    @FXML private void favoriteButtonInteraction(){
+        changeFavoriteState();
+        //TODO: change the star icon.
+    }
+
+    @FXML private void addItemToCartInteraction(){
+        cartHandler.addProductToCart(product);
         updateAmountLabel();
     }
 
-    private void removeProductFromCart(){
-        for (ShoppingItem shoppingItem :
-                dataHandler.getShoppingCart().getItems()) {
-            if(shoppingItem.getProduct() == product){
-                shoppingItem.setAmount(shoppingItem.getAmount()-1);
-                if(shoppingItem.getAmount() == 0){
-                    dataHandler.getShoppingCart().removeItem(shoppingItem);
-                }
-            }
-        }
+    @FXML private void removeItemFromCartInteraction(){
+        cartHandler.removeProductFromCart(product);
         updateAmountLabel();
     }
+
+
 }
