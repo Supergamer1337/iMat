@@ -36,10 +36,7 @@ public class IMatController {
         for (ProductCategory category : categories) {
             for (Product product : dataHandler.getProducts()) {
                 if (product.getCategory() == category){
-                    categoryFlowPane.getChildren().add(new CategoryCard(category, System.getProperty("user.home") + "\\.dat215\\imat\\images\\" + product.getImageName()));
-                    System.out.println("main\\resources\\com\\example\\imat\\images\\"+product.getImageName());
-                    System.out.println(product.getCategory().toString());
-                    System.out.println(product.getImageName());
+                    categoryFlowPane.getChildren().add(new CategoryCard(category, product.getImageName()));
                     break;
                 }
             }

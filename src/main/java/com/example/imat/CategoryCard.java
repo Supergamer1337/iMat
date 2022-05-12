@@ -14,13 +14,13 @@ public class CategoryCard extends AnchorPane {
 
     @FXML private AnchorPane cardAnchorPane;
     @FXML private Label categoryLabel;
-    //@FXML private ImageView categoryImage;
+    @FXML private ImageView categoryImage;
 
     private ProductCategory category;
 
 
 
-    public CategoryCard(ProductCategory category, String imagePath) {
+    public CategoryCard(ProductCategory category, String imageName) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("category-card.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -32,12 +32,11 @@ public class CategoryCard extends AnchorPane {
         }
         this.category = category;
         categoryLabel.setText(setCategoryName(category));
-        //categoryImage.setImage(new Image(imagePath));
-        /*Image image = new Image(imagePath);
-        BackgroundImage bgImg = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        Background bkgrd = new Background(bgImg);
-        cardAnchorPane.setBackground(bkgrd);
-        System.out.println(cardAnchorPane.getBackground().getImages().get(0).getImage().getUrl());*/
+
+        String image = getClass().getResource("images/" + imageName).toExternalForm();
+        cardAnchorPane.setStyle("-fx-background-image: url('" + image + "'); " +
+                "-fx-background-position: center center; " +
+                "-fx-background-repeat: stretch;");
     }
 
     public String setCategoryName(ProductCategory category ) {
