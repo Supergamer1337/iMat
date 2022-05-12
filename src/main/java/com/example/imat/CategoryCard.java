@@ -37,8 +37,7 @@ public class CategoryCard extends AnchorPane {
         String image = getClass().getResource("images/" + imageName).toExternalForm();
         cardAnchorPane.setStyle("-fx-background-image: url('" + image + "'); " +
                 "-fx-background-position: center;" +
-                "-fx-background-repeat: no-repeat;"+
-                "-fx-text-overrun: ;");
+                "-fx-background-repeat: no-repeat;");
     }
 
     @FXML
