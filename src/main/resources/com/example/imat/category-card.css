@@ -23,9 +23,9 @@
 }
 
 .category-image {
-    -fx-background-image: url("images/missing.jpg");
+    /*-fx-background-image: url("images/missing.jpg");
     -fx-background-size: cover;
-    -fx-background-position: center;
+    -fx-background-position: center;*/
 }
 
 .title-bar {
