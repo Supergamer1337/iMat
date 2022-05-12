@@ -27,10 +27,9 @@ public class IMatController {
     private boolean profileIsHovered = false;
 
     @FXML private FlowPane categoryFlowPane;
-
     @FXML private ScrollPane productsPage;
-
     @FXML private ScrollPane categoriesPage;
+    @FXML private FlowPane productsFlowPane;
 
     @FXML
     public void initialize() {
@@ -52,13 +51,13 @@ public class IMatController {
     }
 
     @FXML public void showCategory(ProductCategory category) {
-        System.out.println("Opening category" + category.toString());
+        productsFlowPane.getChildren().clear();
         productsPage.toFront();
 
         List<Product> products = dataHandler.getProducts();
         for (Product product : products) {
             if (product.getCategory() == category) {
-                // TODO: Create product card
+               productsFlowPane.getChildren().add(new ProductCard(product));
             }
         }
     }
