@@ -62,7 +62,7 @@
                         <String fx:value="clickable" />
                      </styleClass>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="71.0" prefWidth="360.0" text="Favoriter" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="720.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="0.0">
+                  <Button mnemonicParsing="false" onMouseClicked="#showFavorites" prefHeight="71.0" prefWidth="360.0" text="Favoriter" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="720.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="0.0">
                      <styleClass>
                         <String fx:value="main-nav-button" />
                         <String fx:value="clickable" />
