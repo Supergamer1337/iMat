@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="84.0" prefWidth="1294.0" styleClass="card-container" stylesheets="@history-card.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="6.0" layoutY="6.0" prefHeight="72.0" prefWidth="72.0" styleClass="history-image" />
+      <Label layoutX="84.0" layoutY="25.0" styleClass="primary-text" text="Köp 0000-00-00" />
+      <Label layoutX="1083.0" layoutY="25.0" styleClass="primary-text" text="Summa: 000:00kr" />
+   </children>
+</AnchorPane>

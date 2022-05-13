@@ -1,0 +1,79 @@
+/* Globally declare colors */
+* {
+    /* Background colors, accents etc. */
+    -fx-accent1: #125B50;
+    -fx-accent2: #F8B400;
+    -fx-accent2-faded: rgba(248, 180, 0, 0.25);
+    -fx-accent3: #FAF5E4;
+
+    /* Text colors */
+    -fx-primary-text-color: #000000;
+    -fx-primary-text-color-faded: rgba(0, 0, 0, 0.8);
+
+    /* Border colors */
+    -fx-primary-border-color: #000000;
+
+    -fx-secondary-text-color: #FFFFFF; /* For matching the primary accent */
+}
+
+.information-box {
+    -fx-border-color: -fx-primary-border-color;
+    -fx-background-color: -fx-accent1;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.input-field {
+    -fx-background-color: -fx-secondary-text-color;
+    -fx-border-radius: 25px;
+    -fx-background-radius: 10px;
+    -fx-font-size: 16pt;
+    -fx-font-family: Roboto;
+    -fx-font-weight: bold;
+    -fx-prompt-text-fill: -fx-primary-text-color-faded;
+    -fx-text-fill: -fx-primary-text-color;
+}
+
+.primary-text {
+    -fx-font-size: 22pt;
+    -fx-font-family: Roboto;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-secondary-text-color;
+}
+.secondary-text {
+    -fx-font-size: 18pt;
+    -fx-font-family: Roboto;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-secondary-text-color;
+}
+
+.primary-text-black{
+    -fx-text-fill: -fx-primary-text-color;
+}
+
+.user-text {
+    -fx-font-size: 16pt;
+    -fx-font-family: Roboto;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-primary-text-color;
+}
+
+.choice-bar-button {
+    -fx-font-size: 24pt;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-primary-text-color;
+    -fx-background-color: transparent;
+    -fx-border-color: -fx-primary-border-color;
+    -fx-border-width: 1px;
+}
+
+.choice-bar-button:hover {
+    -fx-background-color: -fx-accent2-faded;
+    -fx-text-fill: -fx-primary-text-color-faded;
+}
+
+.choice-bar-button-active {
+    -fx-background-color: -fx-accent2;
+}
