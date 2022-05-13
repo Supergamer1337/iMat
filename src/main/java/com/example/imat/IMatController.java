@@ -38,6 +38,10 @@ public class IMatController implements ShoppingCartListener {
     @FXML private ScrollPane favoriteScrollPane;
     @FXML private Label shoppingCartCounterLabel;
 
+    @FXML private AnchorPane profileAnchorPane;
+    @FXML private ScrollPane profileHistoryPane;
+    @FXML private AnchorPane profileInformationPane;
+
     @FXML private Label cartProductNameLabel;
     @FXML private Label cartProductPriceLabel, cartTotalProductPriceLabel,
             cartTotalAmountItemsLabel, cartTotalPriceLabel;
@@ -94,6 +98,18 @@ public class IMatController implements ShoppingCartListener {
         for (Product product : products) {
             favoriteFlowPane.getChildren().add(new ProductCard(product));
         }
+    }
+
+    @FXML public void goToProfile(){
+        profileAnchorPane.toFront();
+    }
+
+    @FXML public void showProfileHistory(){
+        profileHistoryPane.toFront();
+    }
+
+    @FXML public void showProfileInformation(){
+        profileInformationPane.toFront();
     }
 
     @FXML
