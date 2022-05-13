@@ -8,7 +8,7 @@
    <children>
       <AnchorPane fx:id="historyImagePane" layoutX="6.0" layoutY="6.0" prefHeight="72.0" prefWidth="72.0" styleClass="history-image" />
       <Label fx:id="historyDateLabel" layoutX="84.0" layoutY="25.0" styleClass="primary-text" text="Köp 0000-00-00" />
-      <Label fx:id="historySumLabel" layoutX="771.0" layoutY="26.0" styleClass="primary-text" text="Summa: 000:00kr" />
+      <Label fx:id="historySumLabel" layoutX="770.0" layoutY="26.0" styleClass="primary-text" text="Summa: 000:00kr" />
       <AnchorPane fx:id="historyButton" layoutX="992.0" layoutY="12.0" prefHeight="62.0" prefWidth="278.0" styleClass="background" stylesheets="@button.css">
          <children>
             <Label layoutX="27.0" layoutY="14.0" styleClass="amount" text="Lägg till i kundvagn" />
