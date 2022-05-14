@@ -36,7 +36,7 @@ public class CategoryCard extends AnchorPane {
         this.category = category;
         categoryLabel.setText(setCategoryName(category));
 
-        StyleUtils.roundBackgroundImage(categoryImageAnchorPane);
+        StyleUtils.roundBackgroundImage(categoryImageAnchorPane, 180, 185);
 
         String image = getClass().getResource("images/" + imageName).toExternalForm();
         StyleUtils.coverBackgroundImage(categoryImageAnchorPane, image);

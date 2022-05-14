@@ -12,15 +12,15 @@ public class StyleUtils {
         imageView.setImage(image);
     }
 
-    public static void roundBackgroundImage(AnchorPane imagePane, double amount ) {
-        Rectangle rect = new Rectangle(180,185);
+    public static void roundBackgroundImage(AnchorPane imagePane, double imageShowcaseWidth, double imageShowcaseHeight, double amount ) {
+        Rectangle rect = new Rectangle(imageShowcaseWidth,imageShowcaseHeight);
         rect.setArcHeight(amount);
         rect.setArcWidth(amount);
         imagePane.setClip(rect);
     }
 
-    public static void roundBackgroundImage(AnchorPane imagePane) {
-        roundBackgroundImage(imagePane, 30.0);
+    public static void roundBackgroundImage(AnchorPane imagePane, double imageShowcaseWidth, double imageShowcaseHeight) {
+        roundBackgroundImage(imagePane, imageShowcaseWidth, imageShowcaseHeight, 30.0);
     }
 
     public static void coverBackgroundImage(AnchorPane imagePane, String imagePath) {
