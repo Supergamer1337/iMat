@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1440.0" stylesheets="@imat-view.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.imat.IMatController">
    <children>
@@ -32,7 +33,7 @@
                         <Image url="@icons/search-glass.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="profileImage" fitHeight="74.0" fitWidth="78.0" layoutX="1350.0" layoutY="34.0" onMouseEntered="#toggleProfileHover" onMouseExited="#toggleProfileHover" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="14.670661926269531" AnchorPane.topAnchor="34.0">
+                  <ImageView fx:id="profileImage" fitHeight="74.0" fitWidth="78.0" layoutX="1350.0" layoutY="34.0" onMouseClicked="#goToProfile" onMouseEntered="#toggleProfileHover" onMouseExited="#toggleProfileHover" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="14.670661926269531" AnchorPane.topAnchor="34.0">
                      <image>
                         <Image url="@icons/profile.png" />
                      </image>
@@ -176,6 +177,129 @@
                   </AnchorPane>
                </items>
             </SplitPane>
+            <AnchorPane fx:id="profileAnchorPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" stylesheets="@profile.css">
+               <children>
+                  <StackPane layoutY="347.0" prefHeight="412.0" prefWidth="1440.0">
+                     <children>
+                        <ScrollPane fx:id="profileHistoryPane" prefHeight="412.0" prefWidth="1394.0" style="-fx-background-color: #FFFFFF;">
+                           <content>
+                              <FlowPane prefHeight="408.0" prefWidth="1438.0" />
+                           </content>
+                        </ScrollPane>
+                        <AnchorPane fx:id="profileInformationPane" prefHeight="412.0" prefWidth="1440.0" style="-fx-background-color: #FFFFFF;">
+                           <children>
+                              <AnchorPane layoutX="14.0" layoutY="15.0" prefHeight="382.0" prefWidth="699.0" styleClass="information-box">
+                                 <children>
+                                    <TextField layoutX="40.0" layoutY="112.0" prefHeight="30.0" prefWidth="286.0" styleClass="input-field" />
+                                    <Label layoutX="41.0" layoutY="77.0" styleClass="secondary-text" text="Förnamn:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="245.0" layoutY="21.0" styleClass="primary-text" text="Leveransadress">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField layoutX="375.0" layoutY="112.0" prefHeight="30.0" prefWidth="286.0" styleClass="input-field" />
+                                    <Label layoutX="376.0" layoutY="77.0" styleClass="secondary-text" text="Efternamn:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField layoutX="39.0" layoutY="200.0" prefHeight="30.0" prefWidth="621.0" styleClass="input-field" />
+                                    <Label layoutX="40.0" layoutY="165.0" styleClass="secondary-text" text="Adress:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField layoutX="39.0" layoutY="299.0" prefHeight="30.0" prefWidth="286.0" styleClass="input-field" />
+                                    <Label layoutX="40.0" layoutY="264.0" styleClass="secondary-text" text="Postnummer:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField layoutX="374.0" layoutY="299.0" prefHeight="30.0" prefWidth="286.0" styleClass="input-field" />
+                                    <Label layoutX="375.0" layoutY="264.0" styleClass="secondary-text" text="Stad:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="727.0" layoutY="15.0" prefHeight="382.0" prefWidth="699.0" styleClass="information-box">
+                                 <children>
+                                    <TextField layoutX="40.0" layoutY="112.0" prefHeight="30.0" prefWidth="286.0" styleClass="input-field" />
+                                    <Label layoutX="40.0" layoutY="80.0" styleClass="secondary-text" text="Kortnamn:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="254.0" layoutY="22.0" styleClass="primary-text" text="Kortuppgifter">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField layoutX="375.0" layoutY="112.0" prefHeight="30.0" prefWidth="286.0" styleClass="input-field" />
+                                    <Label layoutX="375.0" layoutY="80.0" styleClass="secondary-text" text="Bank:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField layoutX="39.0" layoutY="200.0" prefHeight="30.0" prefWidth="621.0" styleClass="input-field" />
+                                    <Label layoutX="39.0" layoutY="168.0" styleClass="secondary-text" text="Kortnummer:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField layoutX="39.0" layoutY="299.0" prefHeight="30.0" prefWidth="286.0" styleClass="input-field" />
+                                    <Label layoutX="39.0" layoutY="267.0" styleClass="secondary-text" text="Datum:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField layoutX="374.0" layoutY="299.0" prefHeight="30.0" prefWidth="286.0" styleClass="input-field" />
+                                    <Label layoutX="374.0" layoutY="267.0" styleClass="secondary-text" text="CVC:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </StackPane>
+                  <Label alignment="CENTER" layoutX="626.0" layoutY="237.0" prefHeight="31.0" prefWidth="191.0" styleClass="user-text" text="Namn Namnesson" textAlignment="CENTER" />
+                  <AnchorPane layoutY="288.0" onMouseClicked="#showProfileInformation" prefHeight="56.0" prefWidth="720.0">
+                     <children>
+                        <Label layoutX="293.0" layoutY="8.0" text="Uppgifter">
+                           <styleClass>
+                              <String fx:value="primary-text" />
+                              <String fx:value="primary-text-black" />
+                           </styleClass></Label>
+                     </children>
+                     <styleClass>
+                        <String fx:value="choice-bar-button" />
+                        <String fx:value="choice-bar-button-active" />
+                     </styleClass>
+                  </AnchorPane>
+                  <AnchorPane layoutX="720.0" layoutY="288.0" onMouseClicked="#showProfileHistory" prefHeight="56.0" prefWidth="720.0" styleClass="choice-bar-button" AnchorPane.rightAnchor="0.0">
+                     <children>
+                        <Label layoutX="305.0" layoutY="7.0" text="Historik">
+                           <styleClass>
+                              <String fx:value="primary-text" />
+                              <String fx:value="primary-text-black" />
+                           </styleClass>
+                        </Label>
+                     </children></AnchorPane>
+                  <ImageView fitHeight="217.0" fitWidth="286.0" layoutX="578.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/product_132.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
          </children>
       </StackPane>
    </children>
