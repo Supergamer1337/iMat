@@ -19,10 +19,6 @@ public class StyleUtils {
         imagePane.setClip(rect);
     }
 
-    public static void roundBackgroundImage(AnchorPane imagePane, double imageShowcaseWidth, double imageShowcaseHeight) {
-        roundBackgroundImage(imagePane, imageShowcaseWidth, imageShowcaseHeight, 30.0);
-    }
-
     public static void coverBackgroundImage(AnchorPane imagePane, String imagePath) {
         imagePane.setStyle(
                 "-fx-background-image: url('" + imagePath + "');"
