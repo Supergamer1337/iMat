@@ -22,12 +22,6 @@
     -fx-background-radius: 10px;
 }
 
-.category-image {
-    /*-fx-background-image: url("images/missing.jpg");
-    -fx-background-size: cover;
-    -fx-background-position: center;*/
-}
-
 .title-bar {
     -fx-background-radius: 10px 10px 0 0;
     -fx-border-radius: 10px 10px 0 0;
