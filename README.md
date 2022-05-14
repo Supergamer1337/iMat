@@ -7,4 +7,4 @@ First clone the repository to whatever place you want it.
 Afterwards, download [this](https://chalmers.instructure.com/courses/18191/files/2046735/download?wrap=1) archive 
 and extract the ``resources/imat.zip/imat`` folder to ``$HOME_DIRECTORY/.dat215/``.
 
-Lastly, run the program using the main function in ``IMAT``. (Only tested in IntelliJ IDEA.)
+Lastly, run the program using the main function in ``IMat`` class. (Only tested in IntelliJ IDEA.)
