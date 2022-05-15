@@ -42,7 +42,7 @@ public class CategoryCard extends AnchorPane {
 
     @FXML
     public void goToCategory() {
-        parentController.showCategory(category);
+        parentController.showCategory(category, true);
     }
 
     public String setCategoryName(ProductCategory category ) {
