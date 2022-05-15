@@ -3,7 +3,6 @@ package com.example.imat;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import se.chalmers.cse.dat216.project.ProductCategory;
@@ -32,7 +31,7 @@ public class CategoryCard extends AnchorPane {
         }
         this.parentController = parentController;
         this.category = category;
-        categoryLabel.setText(setCategoryName(category));
+        categoryLabel.setText(getPrettyCategoryName(category));
 
         String image = getClass().getResource("images/" + imageName).toExternalForm();
         cardAnchorPane.setStyle("-fx-background-image: url('" + image + "'); " +
@@ -45,7 +44,7 @@ public class CategoryCard extends AnchorPane {
         parentController.showCategory(category, true);
     }
 
-    public String setCategoryName(ProductCategory category ) {
+    public static String getPrettyCategoryName(ProductCategory category ) {
         switch (category.toString()) {
             case "BERRY":
                 return "Bär";

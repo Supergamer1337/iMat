@@ -1,5 +1,6 @@
 package com.example.imat;
 
+import com.example.imat.models.LocationInfo;
 import com.example.imat.utils.StyleUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,8 +23,8 @@ import java.util.ResourceBundle;
 public class IMatController implements ShoppingCartListener {
 
     private IMatDataHandler dataHandler = IMatDataHandler.getInstance();
-    private ArrayList<String> previousLocations = new ArrayList<String>();
-    private String currentLocation;
+    private ArrayList<LocationInfo> previousLocations = new ArrayList<LocationInfo>();
+    private LocationInfo currentLocation;
 
     @FXML private ImageView shoppingCartImage;
     private boolean shoppingCartIsHovered = false;
@@ -57,7 +58,7 @@ public class IMatController implements ShoppingCartListener {
     public void initialize() {
         System.out.println("Current home path: " + System.getProperty("user.home"));
         dataHandler.getShoppingCart().addShoppingCartListener(this);
-        addToLocationHistory("Kategorier", true);
+        addToLocationHistory(new LocationInfo("Kategorier", "Kategorier", "Kategorier"), true);
 
         ProductCategory[] categories = ProductCategory.values();
         for (ProductCategory category : categories) {
@@ -75,7 +76,7 @@ public class IMatController implements ShoppingCartListener {
     }
 
     public void goToCategories(boolean addToHistory){
-        addToLocationHistory("Kategorier", addToHistory);
+        addToLocationHistory(new LocationInfo("Kategorier", "Kategorier", "Kategorier"), addToHistory);
 
         categoriesPage.toFront();
     }
@@ -85,7 +86,7 @@ public class IMatController implements ShoppingCartListener {
     }
 
     public void goToShoppingCart(boolean addToHistory){
-        addToLocationHistory("Kundvagn", addToHistory);
+        addToLocationHistory(new LocationInfo("Kundvagn", "Kundvagn", "Kundvagn"), addToHistory);
 
         shoppingCartFlowPane.getChildren().clear();
         shoppingCartSplitPane.toFront();
@@ -98,7 +99,7 @@ public class IMatController implements ShoppingCartListener {
     }
 
     @FXML public void showCategory(ProductCategory category, boolean addToHistory) {
-        addToLocationHistory(category.name(), addToHistory);
+        addToLocationHistory(new LocationInfo(category.name(), CategoryCard.getPrettyCategoryName(category), CategoryCard.getPrettyCategoryName(category)), addToHistory);
 
         productsFlowPane.getChildren().clear();
         productsPage.toFront();
@@ -116,7 +117,7 @@ public class IMatController implements ShoppingCartListener {
     }
 
     public void showFavorites(boolean addToHistory) {
-        addToLocationHistory("Favoriter", addToHistory);
+        addToLocationHistory(new LocationInfo("Favoriter", "Favoriter", "Favoriter"), addToHistory);
 
         favoriteFlowPane.getChildren().clear();
         favoriteScrollPane.toFront();
@@ -131,7 +132,7 @@ public class IMatController implements ShoppingCartListener {
     }
 
     public void goToProfile(boolean addToHistory){
-        addToLocationHistory("Profil", addToHistory);
+        addToLocationHistory(new LocationInfo("Profil", "Profil", "Profil"), addToHistory);
 
         profileAnchorPane.toFront();
     }
@@ -182,7 +183,7 @@ public class IMatController implements ShoppingCartListener {
         shoppingCartCounterLabel.setText(String.valueOf(shopItem.size()));
     }
 
-    private void addToLocationHistory(String currentLocation, boolean addToHistory) {
+    private void addToLocationHistory(LocationInfo currentLocation, boolean addToHistory) {
         if (addToHistory) {
             addCurrentToLocationHistory();
         }
@@ -193,23 +194,23 @@ public class IMatController implements ShoppingCartListener {
         this.previousLocations.add(this.currentLocation);
     }
 
-    private void updateLocationLabels(String currentLocation) {
+    private void updateLocationLabels(LocationInfo currentLocation) {
         this.currentLocation = currentLocation;
-        currentLocationLabel.setText(currentLocation);
+        currentLocationLabel.setText(currentLocation.getBreadcrumb());
         if (previousLocations.size() <= 1) {
             backToLabel.setText("");
             return;
         }
-        backToLabel.setText("Gå tillbaka till " + previousLocations.get(previousLocations.size() - 1));
+        backToLabel.setText("Gå tillbaka till " + previousLocations.get(previousLocations.size() - 1).getPrettyGoBack());
     }
 
     @FXML
     public void goBackToPrevious() {
         if (previousLocations.size() > 1) {
-            String previousLocation = previousLocations.get(previousLocations.size() - 1);
+            LocationInfo previousLocation = previousLocations.get(previousLocations.size() - 1);
             previousLocations.remove(previousLocations.size() - 1);
 
-            switch (previousLocation) {
+            switch (previousLocation.getLocation()) {
                 case "Profil":
                     goToProfile(false);
                     break;
