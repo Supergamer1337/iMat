@@ -53,6 +53,7 @@ public class IMatController implements ShoppingCartListener {
     @FXML private ImageView cartImage;
     @FXML private Label backToLabel;
     @FXML private Label currentLocationLabel;
+    @FXML private ImageView backArrowImage;
 
     @FXML
     public void initialize() {
@@ -206,8 +207,10 @@ public class IMatController implements ShoppingCartListener {
         currentLocationLabel.setText(currentLocation.getBreadcrumb());
         if (previousLocations.size() <= 1) {
             backToLabel.setText("");
+            backArrowImage.setStyle("-fx-opacity: 0;" + "-fx-cursor: default;");
             return;
         }
+        backArrowImage.setStyle("-fx-opacity: 1;" + "-fx-cursor: hand;");
         backToLabel.setText("Gå tillbaka till " + previousLocations.get(previousLocations.size() - 1).getPrettyGoBack());
     }
 
@@ -219,16 +222,16 @@ public class IMatController implements ShoppingCartListener {
 
             switch (previousLocation.getLocation()) {
                 case "Profil":
-                    goToProfile(false);
+                    goToProfile(true);
                     break;
                 case "Favoriter":
-                    showFavorites(false);
+                    showFavorites(true);
                     break;
                 case "Kundvagn":
                     goToShoppingCart(false);
                     break;
                 case "Kategorier":
-                    goToCategories(false);
+                    goToCategories(true);
                     break;
                 default:
                     showCategory(ProductCategory.valueOf(previousLocation.getLocation()), false);
