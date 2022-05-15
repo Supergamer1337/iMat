@@ -224,7 +224,7 @@ public class IMatController implements ShoppingCartListener {
                     goToCategories(false);
                     break;
                 default:
-                    goToCategories(false);
+                    showCategory(ProductCategory.valueOf(previousLocation.getLocation()), false);
             }
         }
     }
