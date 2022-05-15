@@ -76,6 +76,7 @@ public class IMatController implements ShoppingCartListener {
     }
 
     public void goToCategories(boolean addToHistory){
+        clearLocationHistory();
         addToLocationHistory(new LocationInfo("Kategorier", "Kategorier", "Kategorier"), addToHistory);
 
         categoriesPage.toFront();
@@ -117,6 +118,7 @@ public class IMatController implements ShoppingCartListener {
     }
 
     public void showFavorites(boolean addToHistory) {
+        clearLocationHistory();
         addToLocationHistory(new LocationInfo("Favoriter", "Favoriter", "Favoriter"), addToHistory);
 
         favoriteFlowPane.getChildren().clear();
@@ -132,6 +134,7 @@ public class IMatController implements ShoppingCartListener {
     }
 
     public void goToProfile(boolean addToHistory){
+        clearLocationHistory();
         addToLocationHistory(new LocationInfo("Profil", "Profil", "Profil"), addToHistory);
 
         profileAnchorPane.toFront();
@@ -192,6 +195,10 @@ public class IMatController implements ShoppingCartListener {
 
     private void addCurrentToLocationHistory() {
         this.previousLocations.add(this.currentLocation);
+    }
+
+    private void clearLocationHistory() {
+        this.previousLocations.clear();
     }
 
     private void updateLocationLabels(LocationInfo currentLocation) {
