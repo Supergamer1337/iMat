@@ -16,6 +16,7 @@ public class ProductCard extends AnchorPane {
     Product product;
     IMatDataHandler dataHandler;
     ShoppingCartHandler cartHandler;
+    IMatController parentController;
 
     Boolean minusButtonIsHoverd = false;
     Boolean plusButtonIsHoverd = false;
@@ -28,7 +29,7 @@ public class ProductCard extends AnchorPane {
     @FXML AnchorPane productImageAnchorPane;
     @FXML ImageView favoriteIcon;
 
-    public ProductCard(Product product) {
+    public ProductCard(Product product, IMatController parentController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("product-card.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -39,10 +40,11 @@ public class ProductCard extends AnchorPane {
             throw new RuntimeException(e);
         }
 
+        this.parentController = parentController;
         this.product = product;
         this.dataHandler = IMatDataHandler.getInstance();
         this.productLabel.setText(product.getName());
-        this.productPriceLabel.setText(String.valueOf(product.getPrice()) + "/st");
+        this.productPriceLabel.setText(product.getPrice() + "/st");
         this.cartHandler = new ShoppingCartHandler();
         StyleUtils.roundBackgroundImage(productImageAnchorPane, 240, 215, 20);
         StyleUtils.coverBackgroundImage(productImageAnchorPane, getClass().getResource("images/" + product.getImageName()).toExternalForm());
@@ -83,6 +85,10 @@ public class ProductCard extends AnchorPane {
         productAmountLabel.setText(String.valueOf(cartHandler.getAmountInCart(product)) + "/st");
     }
 
+    @FXML public void openProductDetails() {
+        parentController.productItemPressed(product);
+    }
+
     @FXML
     public void favoriteButtonInteraction(){
         changeFavoriteState();
@@ -99,6 +105,11 @@ public class ProductCard extends AnchorPane {
     public void removeItemFromCartInteraction(){
         cartHandler.removeProductFromCart(product);
         updateAmountLabel();
+    }
+
+    @FXML
+    public void doNothing(){
+        System.out.println("did nothing");
     }
 
     @FXML

@@ -53,6 +53,14 @@ public class IMatController implements ShoppingCartListener {
     @FXML private Button favoritesButton;
     @FXML private Button helpButton;
 
+    @FXML private AnchorPane detailPage;
+    @FXML private ImageView detailProductImage;
+    @FXML private Label detailProductLabel;
+    @FXML private Label detailProductPriceLabel;
+    @FXML private Label detailAmountLabel;
+    @FXML private Label detailCategoryLabel;
+    private Product currentProduct;
+
     @FXML
     public void initialize() {
         System.out.println("Current home path: " + System.getProperty("user.home"));
@@ -107,7 +115,7 @@ public class IMatController implements ShoppingCartListener {
         List<Product> products = dataHandler.getProducts();
         for (Product product : products) {
             if (product.getCategory() == category) {
-               productsFlowPane.getChildren().add(new ProductCard(product));
+               productsFlowPane.getChildren().add(new ProductCard(product, this));
             }
         }
     }
@@ -124,7 +132,7 @@ public class IMatController implements ShoppingCartListener {
         favoriteScrollPane.toFront();
         List<Product> products = dataHandler.favorites();
         for (Product product : products) {
-            favoriteFlowPane.getChildren().add(new ProductCard(product));
+            favoriteFlowPane.getChildren().add(new ProductCard(product, this));
         }
     }
 
@@ -163,6 +171,39 @@ public class IMatController implements ShoppingCartListener {
         cartProductPriceLabel.setText("(" + (int) shoppingItem.getAmount() + " st) " + shoppingItem.getTotal() + "kr");
         cartTotalProductPriceLabel.setText(shoppingItem.getProduct().getPrice() + " kr/st");
     }
+
+    public void productItemPressed(Product product) {
+        currentProduct = product;
+        detailProductLabel.setText(product.getName());
+        detailProductPriceLabel.setText(product.getPrice() + " kr/st");
+        detailProductImage.setImage(new Image(getClass().getResourceAsStream("images/" + product.getImageName())));
+        detailCategoryLabel.setText("Kategori: " + CategoryCard.getPrettyCategoryName(product.getCategory()));
+        updateAmountLabel();
+        detailPage.toFront();
+    }
+
+    @FXML
+    public void closeDetailPane(){
+        showCategory(currentProduct.getCategory(),false);
+    }
+
+    private ShoppingCartHandler cartHandler = new ShoppingCartHandler();
+
+    private void updateAmountLabel(){
+        detailAmountLabel.setText(cartHandler.getAmountInCart(currentProduct) + " st");
+    }
+    @FXML
+    public void addItemToCartInteraction(){
+        cartHandler.addProductToCart(currentProduct);
+        updateAmountLabel();
+    }
+
+    @FXML
+    public void removeItemFromCartInteraction(){
+        cartHandler.removeProductFromCart(currentProduct);
+        updateAmountLabel();
+    }
+
 
     @FXML
     public void toggleProfileHover() {
