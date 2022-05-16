@@ -57,20 +57,19 @@
             </AnchorPane>
             <AnchorPane layoutY="138.0" prefHeight="74.0" prefWidth="1440.0">
                <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#goToCategories" prefHeight="76.0" prefWidth="360.0" text="Kategorier" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1080.0" AnchorPane.topAnchor="0.0">
-                     <styleClass>
-                        <String fx:value="main-nav-button" />
-                        <String fx:value="clickable" />
-                        <String fx:value="main-nav-button-active" />
-                     </styleClass>
-                  </Button>
-                  <Button mnemonicParsing="false" prefHeight="76.0" prefWidth="360.0" text="Erbjudanden" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="720.0" AnchorPane.topAnchor="0.0">
+                  <Button fx:id="categoriesButton" mnemonicParsing="false" onMouseClicked="#goToCategories" prefHeight="76.0" prefWidth="360.0" text="Kategorier" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1080.0" AnchorPane.topAnchor="0.0">
                      <styleClass>
                         <String fx:value="main-nav-button" />
                         <String fx:value="clickable" />
                      </styleClass>
                   </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#showFavorites" prefHeight="71.0" prefWidth="360.0" text="Favoriter" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="720.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="0.0">
+                  <Button fx:id="offersButton" mnemonicParsing="false" prefHeight="76.0" prefWidth="360.0" text="Erbjudanden" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="720.0" AnchorPane.topAnchor="0.0">
+                     <styleClass>
+                        <String fx:value="main-nav-button" />
+                        <String fx:value="clickable" />
+                     </styleClass>
+                  </Button>
+                  <Button fx:id="favoritesButton" mnemonicParsing="false" onMouseClicked="#showFavorites" prefHeight="71.0" prefWidth="360.0" text="Favoriter" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="720.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="0.0">
                      <styleClass>
                         <String fx:value="main-nav-button" />
                         <String fx:value="clickable" />
@@ -83,7 +82,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="76.0" prefWidth="360.0" text="Hjälp" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1080.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Button fx:id="helpButton" mnemonicParsing="false" prefHeight="76.0" prefWidth="360.0" text="Hjälp" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1080.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <styleClass>
                         <String fx:value="main-nav-button" />
                         <String fx:value="clickable" />

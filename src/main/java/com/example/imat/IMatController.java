@@ -4,16 +4,14 @@ import com.example.imat.models.LocationInfo;
 import com.example.imat.utils.StyleUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.SplitPane;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import se.chalmers.cse.dat216.project.*;
 
+import java.io.InputStream;
 import java.net.URL;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
@@ -54,6 +52,11 @@ public class IMatController implements ShoppingCartListener {
     @FXML private Label backToLabel;
     @FXML private Label currentLocationLabel;
     @FXML private ImageView backArrowImage;
+
+    @FXML private Button categoriesButton;
+    @FXML private Button offersButton;
+    @FXML private Button favoritesButton;
+    @FXML private Button helpButton;
 
     @FXML
     public void initialize() {
@@ -152,7 +155,9 @@ public class IMatController implements ShoppingCartListener {
     @FXML
     public void toggleShoppingCartHover() {
         shoppingCartIsHovered = !shoppingCartIsHovered;
-        StyleUtils.toggleHoverImage(shoppingCartIsHovered, "icons/shopping-cart-hover.png", "icons/shopping-cart.png", shoppingCartImage);
+        if (!currentLocation.getLocation().equals("Kundvagn")) { // Too lazy to make it hoverable when active.
+            StyleUtils.toggleHoverImage(shoppingCartIsHovered, "icons/shopping-cart-hover.png", "icons/shopping-cart.png", shoppingCartImage);
+        }
     }
 
     @FXML
@@ -167,7 +172,9 @@ public class IMatController implements ShoppingCartListener {
     @FXML
     public void toggleProfileHover() {
         profileIsHovered = !profileIsHovered;
-        StyleUtils.toggleHoverImage(profileIsHovered, "icons/profile-hover.png", "icons/profile.png", profileImage);
+        if (!currentLocation.getLocation().equals("Profil")) { // Too lazy to make it hoverable when active.
+            StyleUtils.toggleHoverImage(profileIsHovered, "icons/profile-hover.png", "icons/profile.png", profileImage);
+        }
     }
 
     private void updateShoppingCartInformation(){
@@ -188,10 +195,12 @@ public class IMatController implements ShoppingCartListener {
     }
 
     private void addToLocationHistory(LocationInfo currentLocation, boolean addToHistory) {
+        removeLocationHighlight();
         if (addToHistory) {
             addCurrentToLocationHistory();
         }
         updateLocationLabels(currentLocation);
+        activateLocationHighlight();
     }
 
     private void addCurrentToLocationHistory() {
@@ -212,6 +221,60 @@ public class IMatController implements ShoppingCartListener {
         }
         backArrowImage.setStyle("-fx-opacity: 1;" + "-fx-cursor: hand;");
         backToLabel.setText("Gå tillbaka till " + previousLocations.get(previousLocations.size() - 1).getPrettyGoBack());
+    }
+
+    private void removeLocationHighlight() {
+        if (currentLocation == null) return; // Does not work on initial load, as categories is not yet set as current location.
+
+        switch (currentLocation.getLocation()) {
+            case "Kategorier":
+                categoriesButton.getStyleClass().remove("main-nav-button-active");
+                break;
+            case "Erbjudanden":
+                offersButton.getStyleClass().remove("main-nav-button-active");
+                break;
+            case "Favoriter":
+                favoritesButton.getStyleClass().remove("main-nav-button-active");
+                break;
+            case "Hjälp":
+                helpButton.getStyleClass().remove("main-nav-button-active");
+                break;
+            case "Kundvagn":
+                shoppingCartImage.setImage(new Image(getClass().getResourceAsStream("icons/shopping-cart.png")));
+                break;
+            case "Profil":
+                profileImage.setImage(new Image(getClass().getResourceAsStream("icons/profile.png")));
+                break;
+            default:
+                categoriesButton.getStyleClass().remove("main-nav-button-active");
+                break;
+        }
+    }
+
+    private void activateLocationHighlight() {
+        switch (currentLocation.getLocation()) {
+            case "Kategorier":
+                    categoriesButton.getStyleClass().add("main-nav-button-active");
+                    break;
+            case "Erbjudanden":
+                    offersButton.getStyleClass().add("main-nav-button-active");
+                    break;
+            case "Favoriter":
+                    favoritesButton.getStyleClass().add("main-nav-button-active");
+                    break;
+            case "Hjälp":
+                    helpButton.getStyleClass().add("main-nav-button-active");
+                    break;
+            case "Kundvagn":
+                    shoppingCartImage.setImage(new Image(getClass().getResourceAsStream("icons/shopping-cart-active.png")));
+                    break;
+            case "Profil":
+                    profileImage.setImage(new Image(getClass().getResourceAsStream("icons/profile-active.png")));
+                    break;
+            default:
+                    categoriesButton.getStyleClass().add("main-nav-button-active");
+                break;
+        }
     }
 
     @FXML
