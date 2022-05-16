@@ -246,6 +246,7 @@ public class IMatController implements ShoppingCartListener {
                 profileImage.setImage(new Image(getClass().getResourceAsStream("icons/profile.png")));
                 break;
             default:
+                categoriesButton.getStyleClass().remove("main-nav-button-active");
                 break;
         }
     }
@@ -271,6 +272,7 @@ public class IMatController implements ShoppingCartListener {
                     profileImage.setImage(new Image(getClass().getResourceAsStream("icons/profile-active.png")));
                     break;
             default:
+                    categoriesButton.getStyleClass().add("main-nav-button-active");
                 break;
         }
     }
