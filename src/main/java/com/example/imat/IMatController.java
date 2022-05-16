@@ -3,7 +3,6 @@ package com.example.imat;
 import com.example.imat.models.LocationInfo;
 import com.example.imat.utils.StyleUtils;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -11,12 +10,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import se.chalmers.cse.dat216.project.*;
 
-import java.io.InputStream;
-import java.net.URL;
-import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 
 public class IMatController implements ShoppingCartListener {
 
@@ -165,8 +160,8 @@ public class IMatController implements ShoppingCartListener {
         cartProductNameLabel.setText(shoppingItem.getProduct().getName());
         Image image = new Image(getClass().getResourceAsStream("images/" + shoppingItem.getProduct().getImageName()));
         cartImage.setImage(image);
-        cartProductPriceLabel.setText("(" + shoppingItem.getAmount() + " st) " + shoppingItem.getTotal() + "kr");
-        cartTotalProductPriceLabel.setText(shoppingItem.getProduct().getPrice() + " kr");
+        cartProductPriceLabel.setText("(" + (int) shoppingItem.getAmount() + " st) " + shoppingItem.getTotal() + "kr");
+        cartTotalProductPriceLabel.setText(shoppingItem.getProduct().getPrice() + " kr/st");
     }
 
     @FXML
@@ -177,12 +172,12 @@ public class IMatController implements ShoppingCartListener {
         }
     }
 
-    private void updateShoppingCartInformation(){
+    public void updateShoppingCartInformation(){
         List<ShoppingItem> shoppingItems = dataHandler.getShoppingCart().getItems();
         int ctr = 0;
         for (ShoppingItem shoppingitem:
              shoppingItems) {
-            ctr += shoppingitem.getAmount();
+            ctr += (int) shoppingitem.getAmount();
         }
         cartTotalAmountItemsLabel.setText(ctr + " st");
         cartTotalPriceLabel.setText(dataHandler.getShoppingCart().getTotal() + " kr");

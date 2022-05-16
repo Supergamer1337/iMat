@@ -6,7 +6,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
@@ -48,8 +47,9 @@ public class ShoppingCartCard extends AnchorPane {
     }
 
     private void updateAmountLabels(){
-        totalAmountLabel.setText(String.valueOf(shoppingItem.getAmount()));
-        totalPriceLabel.setText(String.valueOf(shoppingItem.getTotal()));
+        totalAmountLabel.setText(String.valueOf((int) shoppingItem.getAmount()) + " st");
+        totalPriceLabel.setText(String.valueOf(shoppingItem.getTotal()) + " kr");
+        parentController.updateShoppingCartInformation();
     }
 
     @FXML void showDetails() {
