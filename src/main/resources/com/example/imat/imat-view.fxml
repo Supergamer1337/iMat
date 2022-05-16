@@ -160,8 +160,8 @@
                               <Image url="@images/missing.jpg" />
                            </image>
                         </ImageView>
-                        <Label fx:id="cartProductPriceLabel" layoutX="20.0" layoutY="579.0" styleClass="primary-text" stylesheets="@shopping-cart.css" text="00:00/st" AnchorPane.bottomAnchor="148.0" AnchorPane.leftAnchor="15.0" />
-                        <Label fx:id="cartTotalProductPriceLabel" layoutX="252.0" layoutY="579.0" styleClass="primary-text" stylesheets="@shopping-cart.css" text="(xxst) 000:00kr" AnchorPane.bottomAnchor="147.0" AnchorPane.rightAnchor="23.0" />
+                        <Label fx:id="cartTotalProductPriceLabel" layoutX="20.0" layoutY="579.0" styleClass="primary-text" stylesheets="@shopping-cart.css" text="00:00/st" AnchorPane.bottomAnchor="148.0" AnchorPane.leftAnchor="15.0" />
+                        <Label fx:id="cartProductPriceLabel" layoutX="252.0" layoutY="579.0" styleClass="primary-text" stylesheets="@shopping-cart.css" text="(xxst) 000:00kr" AnchorPane.bottomAnchor="147.0" AnchorPane.rightAnchor="23.0" />
                         <TextArea fx:id="cartDescriptionTextArea" layoutX="27.0" layoutY="259.0" prefHeight="309.0" prefWidth="373.0" AnchorPane.bottomAnchor="194.0" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="253.0" />
                      </children>
                   </AnchorPane>
