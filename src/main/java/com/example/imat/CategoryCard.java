@@ -1,11 +1,13 @@
 package com.example.imat;
 
+import com.example.imat.utils.StyleUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.shape.Rectangle;
 import se.chalmers.cse.dat216.project.ProductCategory;
 
 import java.io.IOException;
@@ -14,7 +16,7 @@ public class CategoryCard extends AnchorPane {
 
     @FXML private AnchorPane cardAnchorPane;
     @FXML private Label categoryLabel;
-    @FXML private ImageView categoryImage;
+    @FXML private AnchorPane categoryImageAnchorPane;
 
     private ProductCategory category;
     private IMatController parentController;
@@ -34,10 +36,11 @@ public class CategoryCard extends AnchorPane {
         this.category = category;
         categoryLabel.setText(setCategoryName(category));
 
+        StyleUtils.roundBackgroundImage(categoryImageAnchorPane, 180, 185, 30);
+
         String image = getClass().getResource("images/" + imageName).toExternalForm();
-        cardAnchorPane.setStyle("-fx-background-image: url('" + image + "'); " +
-                "-fx-background-position: center;" +
-                "-fx-background-repeat: no-repeat;");
+        StyleUtils.coverBackgroundImage(categoryImageAnchorPane, image);
+
     }
 
     @FXML
