@@ -70,7 +70,6 @@ public class ProductCard extends AnchorPane {
         {
             dataHandler.removeFavorite(product);
         }
-        updateFavoriteIcon();
     }
 
     private void updateFavoriteIcon() {
@@ -81,6 +80,12 @@ public class ProductCard extends AnchorPane {
         }
     }
 
+    private void setBgImage(){
+        String image = getClass().getResource("images/" + product.getImageName()).toExternalForm();
+        productAnchorPane.setStyle("-fx-background-image: url('" + image + "'); " +
+                "-fx-background-repeat: no-repeat;");
+    }
+  
     private void updateAmountLabel(){
         productAmountLabel.setText(String.valueOf(cartHandler.getAmountInCart(product)) + "/st");
     }
@@ -88,7 +93,7 @@ public class ProductCard extends AnchorPane {
     @FXML
     public void favoriteButtonInteraction(){
         changeFavoriteState();
-        //TODO: change the star icon.
+        updateFavoriteIcon();
     }
 
     @FXML

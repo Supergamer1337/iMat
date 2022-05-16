@@ -1,5 +1,6 @@
 package com.example.imat;
 
+import com.example.imat.models.LocationInfo;
 import com.example.imat.utils.StyleUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,12 +16,15 @@ import se.chalmers.cse.dat216.project.*;
 
 import java.net.URL;
 import java.time.format.TextStyle;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class IMatController implements ShoppingCartListener {
 
-    IMatDataHandler dataHandler = IMatDataHandler.getInstance();
+    private IMatDataHandler dataHandler = IMatDataHandler.getInstance();
+    private ArrayList<LocationInfo> previousLocations = new ArrayList<LocationInfo>();
+    private LocationInfo currentLocation;
 
     @FXML private ImageView shoppingCartImage;
     private boolean shoppingCartIsHovered = false;
@@ -47,11 +51,15 @@ public class IMatController implements ShoppingCartListener {
             cartTotalAmountItemsLabel, cartTotalPriceLabel;
     @FXML private TextArea cartDescriptionTextArea;
     @FXML private ImageView cartImage;
+    @FXML private Label backToLabel;
+    @FXML private Label currentLocationLabel;
+    @FXML private ImageView backArrowImage;
 
     @FXML
     public void initialize() {
         System.out.println("Current home path: " + System.getProperty("user.home"));
         dataHandler.getShoppingCart().addShoppingCartListener(this);
+        addToLocationHistory(new LocationInfo("Kategorier", "Kategorier", "Kategorier"), true);
 
         ProductCategory[] categories = ProductCategory.values();
         for (ProductCategory category : categories) {
@@ -65,10 +73,23 @@ public class IMatController implements ShoppingCartListener {
     }
 
     @FXML public void goToCategories() {
+        goToCategories(true);
+    }
+
+    public void goToCategories(boolean addToHistory){
+        clearLocationHistory();
+        addToLocationHistory(new LocationInfo("Kategorier", "Kategorier", "Kategorier"), addToHistory);
+
         categoriesPage.toFront();
     }
 
-    @FXML public void goToShoppingCart(){
+    @FXML public void goToShoppingCart() {
+        goToShoppingCart(true);
+    }
+
+    public void goToShoppingCart(boolean addToHistory){
+        addToLocationHistory(new LocationInfo("Kundvagn", "Kundvagn", "Kundvagn"), addToHistory);
+
         shoppingCartFlowPane.getChildren().clear();
         shoppingCartSplitPane.toFront();
         updateShoppingCartInformation();
@@ -79,7 +100,9 @@ public class IMatController implements ShoppingCartListener {
         }
     }
 
-    @FXML public void showCategory(ProductCategory category) {
+    @FXML public void showCategory(ProductCategory category, boolean addToHistory) {
+        addToLocationHistory(new LocationInfo(category.name(), CategoryCard.getPrettyCategoryName(category), CategoryCard.getPrettyCategoryName(category)), addToHistory);
+
         productsFlowPane.getChildren().clear();
         productsPage.toFront();
 
@@ -92,6 +115,13 @@ public class IMatController implements ShoppingCartListener {
     }
 
     @FXML public void showFavorites() {
+        showFavorites(true);
+    }
+
+    public void showFavorites(boolean addToHistory) {
+        clearLocationHistory();
+        addToLocationHistory(new LocationInfo("Favoriter", "Favoriter", "Favoriter"), addToHistory);
+
         favoriteFlowPane.getChildren().clear();
         favoriteScrollPane.toFront();
         List<Product> products = dataHandler.favorites();
@@ -100,7 +130,14 @@ public class IMatController implements ShoppingCartListener {
         }
     }
 
-    @FXML public void goToProfile(){
+    @FXML public void goToProfile() {
+        goToProfile(true);
+    }
+
+    public void goToProfile(boolean addToHistory){
+        clearLocationHistory();
+        addToLocationHistory(new LocationInfo("Profil", "Profil", "Profil"), addToHistory);
+
         profileAnchorPane.toFront();
     }
 
@@ -123,7 +160,6 @@ public class IMatController implements ShoppingCartListener {
         cartProductNameLabel.setText(shoppingItem.getProduct().getName());
         Image image = new Image(getClass().getResourceAsStream("images/" + shoppingItem.getProduct().getImageName()));
         cartImage.setImage(image);
-        //cartDescriptionTextArea.setText(shoppingItem.getProduct().get);
         cartProductPriceLabel.setText("(" + shoppingItem.getAmount() + " st) " + shoppingItem.getTotal() + "kr");
         cartTotalProductPriceLabel.setText(shoppingItem.getProduct().getPrice() + " kr");
     }
@@ -147,8 +183,59 @@ public class IMatController implements ShoppingCartListener {
 
     @Override
     public void shoppingCartChanged(CartEvent cartEvent) {
-
         List<ShoppingItem> shopItem = dataHandler.getShoppingCart().getItems();
         shoppingCartCounterLabel.setText(String.valueOf(shopItem.size()));
+    }
+
+    private void addToLocationHistory(LocationInfo currentLocation, boolean addToHistory) {
+        if (addToHistory) {
+            addCurrentToLocationHistory();
+        }
+        updateLocationLabels(currentLocation);
+    }
+
+    private void addCurrentToLocationHistory() {
+        this.previousLocations.add(this.currentLocation);
+    }
+
+    private void clearLocationHistory() {
+        this.previousLocations.clear();
+    }
+
+    private void updateLocationLabels(LocationInfo currentLocation) {
+        this.currentLocation = currentLocation;
+        currentLocationLabel.setText(currentLocation.getBreadcrumb());
+        if (previousLocations.size() <= 1) {
+            backToLabel.setText("");
+            backArrowImage.setStyle("-fx-opacity: 0;" + "-fx-cursor: default;");
+            return;
+        }
+        backArrowImage.setStyle("-fx-opacity: 1;" + "-fx-cursor: hand;");
+        backToLabel.setText("Gå tillbaka till " + previousLocations.get(previousLocations.size() - 1).getPrettyGoBack());
+    }
+
+    @FXML
+    public void goBackToPrevious() {
+        if (previousLocations.size() > 1) {
+            LocationInfo previousLocation = previousLocations.get(previousLocations.size() - 1);
+            previousLocations.remove(previousLocations.size() - 1);
+
+            switch (previousLocation.getLocation()) {
+                case "Profil":
+                    goToProfile(true);
+                    break;
+                case "Favoriter":
+                    showFavorites(true);
+                    break;
+                case "Kundvagn":
+                    goToShoppingCart(false);
+                    break;
+                case "Kategorier":
+                    goToCategories(true);
+                    break;
+                default:
+                    showCategory(ProductCategory.valueOf(previousLocation.getLocation()), false);
+            }
+        }
     }
 }

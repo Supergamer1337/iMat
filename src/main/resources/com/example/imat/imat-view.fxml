@@ -101,7 +101,7 @@
             <AnchorPane layoutY="213.0" prefHeight="52.0" prefWidth="1440.0" styleClass="back-bar">
                <children>
                   <Label fx:id="currentLocationLabel" layoutX="691.0" layoutY="11.0" styleClass="back-bar-text" text="Label" />
-                  <ImageView fx:id="backArrowImage" fitHeight="39.0" fitWidth="68.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="backArrowImage" fitHeight="39.0" fitWidth="68.0" layoutX="14.0" layoutY="7.0" onMouseClicked="#goBackToPrevious" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@icons/back-arrow.png" />
                      </image>
@@ -119,15 +119,6 @@
                      <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </padding></FlowPane>
-               </content>
-            </ScrollPane>
-            <ScrollPane fx:id="categoriesPage" fitToWidth="true" hbarPolicy="NEVER" prefHeight="733.0" prefWidth="1440.0">
-               <content>
-                  <FlowPane fx:id="categoryFlowPane" alignment="TOP_CENTER" hgap="20.0" prefHeight="758.0" prefWidth="1424.0" prefWrapLength="1.0E27" vgap="20.0">
-                     <padding>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                     </padding>
-                  </FlowPane>
                </content>
             </ScrollPane>
             <ScrollPane fx:id="favoriteScrollPane" prefHeight="200.0" prefWidth="200.0">
@@ -300,6 +291,15 @@
                   </ImageView>
                </children>
             </AnchorPane>
+            <ScrollPane fx:id="categoriesPage" fitToWidth="true" hbarPolicy="NEVER" prefHeight="733.0" prefWidth="1440.0">
+               <content>
+                  <FlowPane fx:id="categoryFlowPane" alignment="TOP_CENTER" hgap="20.0" prefHeight="758.0" prefWidth="1424.0" prefWrapLength="1.0E27" vgap="20.0">
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </FlowPane>
+               </content>
+            </ScrollPane>
          </children>
       </StackPane>
    </children>

@@ -4,7 +4,6 @@ import com.example.imat.utils.StyleUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
@@ -34,7 +33,7 @@ public class CategoryCard extends AnchorPane {
         }
         this.parentController = parentController;
         this.category = category;
-        categoryLabel.setText(setCategoryName(category));
+        categoryLabel.setText(getPrettyCategoryName(category));
 
         StyleUtils.roundBackgroundImage(categoryImageAnchorPane, 180, 185, 30);
 
@@ -45,10 +44,10 @@ public class CategoryCard extends AnchorPane {
 
     @FXML
     public void goToCategory() {
-        parentController.showCategory(category);
+        parentController.showCategory(category, true);
     }
 
-    public String setCategoryName(ProductCategory category ) {
+    public static String getPrettyCategoryName(ProductCategory category ) {
         switch (category.toString()) {
             case "BERRY":
                 return "Bär";
