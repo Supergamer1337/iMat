@@ -1,5 +1,6 @@
 package com.example.imat;
 
+import com.example.imat.utils.StyleUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -25,7 +26,7 @@ public class ProductCard extends AnchorPane {
     @FXML Label productLabel;
     @FXML Label productPriceLabel;
     @FXML Label productAmountLabel;
-    @FXML AnchorPane productAnchorPane;
+    @FXML AnchorPane productImageAnchorPane;
     @FXML ImageView favoriteIcon;
 
     public ProductCard(Product product) {
@@ -44,9 +45,10 @@ public class ProductCard extends AnchorPane {
         this.productLabel.setText(product.getName());
         this.productPriceLabel.setText(String.valueOf(product.getPrice()) + "/st");
         this.cartHandler = new ShoppingCartHandler();
-        setBgImage();
-        updateAmountLabel();
+        StyleUtils.roundBackgroundImage(productImageAnchorPane, 240, 215, 20);
+        StyleUtils.coverBackgroundImage(productImageAnchorPane, getClass().getResource("images/" + product.getImageName()).toExternalForm());
 
+        updateAmountLabel();
         updateFavoriteIcon();
     }
 
@@ -83,8 +85,7 @@ public class ProductCard extends AnchorPane {
         productAnchorPane.setStyle("-fx-background-image: url('" + image + "'); " +
                 "-fx-background-repeat: no-repeat;");
     }
-
-
+  
     private void updateAmountLabel(){
         productAmountLabel.setText(String.valueOf(cartHandler.getAmountInCart(product)) + "/st");
     }
