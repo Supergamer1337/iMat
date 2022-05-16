@@ -79,12 +79,6 @@ public class ProductCard extends AnchorPane {
             favoriteIcon.setImage(new Image(getClass().getResourceAsStream("icons/star.png")));
         }
     }
-
-    private void setBgImage(){
-        String image = getClass().getResource("images/" + product.getImageName()).toExternalForm();
-        productAnchorPane.setStyle("-fx-background-image: url('" + image + "'); " +
-                "-fx-background-repeat: no-repeat;");
-    }
   
     private void updateAmountLabel(){
         productAmountLabel.setText(String.valueOf(cartHandler.getAmountInCart(product)) + "/st");
