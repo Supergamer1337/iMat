@@ -59,6 +59,7 @@ public class IMatController implements ShoppingCartListener {
     @FXML private Label detailProductPriceLabel;
     @FXML private Label detailAmountLabel;
     @FXML private Label detailCategoryLabel;
+    private Product currentProduct;
 
     @FXML
     public void initialize() {
@@ -172,12 +173,37 @@ public class IMatController implements ShoppingCartListener {
     }
 
     public void productItemPressed(Product product) {
+        currentProduct = product;
         detailProductLabel.setText(product.getName());
         detailProductPriceLabel.setText(product.getPrice() + " kr/st");
         detailProductImage.setImage(new Image(getClass().getResourceAsStream("images/" + product.getImageName())));
         detailCategoryLabel.setText("Kategori: " + CategoryCard.getPrettyCategoryName(product.getCategory()));
+        updateAmountLabel();
         detailPage.toFront();
     }
+
+    @FXML
+    public void closeDetailPane(){
+        showCategory(currentProduct.getCategory(),false);
+    }
+
+    private ShoppingCartHandler cartHandler = new ShoppingCartHandler();
+
+    private void updateAmountLabel(){
+        detailAmountLabel.setText(cartHandler.getAmountInCart(currentProduct) + " st");
+    }
+    @FXML
+    public void addItemToCartInteraction(){
+        cartHandler.addProductToCart(currentProduct);
+        updateAmountLabel();
+    }
+
+    @FXML
+    public void removeItemFromCartInteraction(){
+        cartHandler.removeProductFromCart(currentProduct);
+        updateAmountLabel();
+    }
+
 
     @FXML
     public void toggleProfileHover() {

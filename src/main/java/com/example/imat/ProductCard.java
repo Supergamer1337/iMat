@@ -108,6 +108,11 @@ public class ProductCard extends AnchorPane {
     }
 
     @FXML
+    public void doNothing(){
+        System.out.println("did nothing");
+    }
+
+    @FXML
     public void togglePlusButtonHover(){
         plusButtonIsHoverd = !plusButtonIsHoverd;
     }
