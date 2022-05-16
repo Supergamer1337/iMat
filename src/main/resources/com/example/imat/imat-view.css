@@ -70,3 +70,54 @@
 .clickable {
     -fx-cursor: hand;
 }
+
+.darkening {
+    -fx-background-color: rgba(0, 0, 0, 0.5);
+}
+
+.detail-bg {
+    -fx-background-color: #fff;
+    -fx-background-radius: 20px;
+}
+
+.detail-header {
+    -fx-text-fill: -fx-primary-text-color;
+    -fx-font-size: 24pt;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: bold;
+}
+
+.detail-amount-per-item {
+    -fx-text-fill: -fx-primary-text-color;
+    -fx-font-size: 14pt;
+    -fx-font-family: "Roboto";
+}
+
+.detail-origin-category {
+    -fx-text-fill: -fx-primary-text-color;
+    -fx-font-size: 16pt;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: bold;
+}
+
+.detail-selector {
+    -fx-background-color: -fx-accent1;
+    -fx-border-color: -fx-primary-border-color;
+    -fx-border-width: 1px;
+    -fx-border-radius: 9999999999px;
+    -fx-background-radius: 9999999999px;
+}
+
+.detail-amount-text {
+    -fx-text-fill: -fx-secondary-text-color;
+    -fx-font-size: 16pt;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: bold;
+}
+
+.detail-info {
+    -fx-border-width: 0px;
+    -fx-text-fill: -fx-primary-text-color;
+    -fx-font-size: 14pt;
+    -fx-font-family: "Roboto";
+}
