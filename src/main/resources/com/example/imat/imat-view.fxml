@@ -572,11 +572,19 @@
                            <image>
                               <Image url="@icons/wizard-forward-arrow.png" />
                            </image>
+                           <styleClass>
+                              <String fx:value="clickable" />
+                              <String fx:value="opacity-hover" />
+                           </styleClass>
                         </ImageView>
                         <ImageView fx:id="wizardBackwardsArrow" fitHeight="76.0" fitWidth="96.0" layoutX="21.0" layoutY="8.0" onMouseClicked="#wizardBackwards" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@icons/wizard-backward-arrow.png" />
                            </image>
+                           <styleClass>
+                              <String fx:value="clickable" />
+                              <String fx:value="opacity-hover" />
+                           </styleClass>
                         </ImageView>
                      </children>
                   </AnchorPane>
