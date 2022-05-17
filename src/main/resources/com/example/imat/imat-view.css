@@ -175,3 +175,50 @@
     -fx-font-family: "Roboto";
     -fx-font-weight: bold;
 }
+
+.weekday-label {
+    -fx-text-fill: -fx-secondary-text-color;
+    -fx-font-size: 18pt;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: bold;
+}
+
+.time-selector-option-background {
+    -fx-background-color: -fx-secondary-text-color;
+    -fx-background-radius: 5px;
+}
+
+.time-selector-option-text {
+    -fx-text-fill: -fx-primary-text-color;
+    -fx-font-size: 14pt;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: bold;
+}
+
+.form-background {
+    -fx-background-color: -fx-accent1;
+    -fx-background-radius: 10px;
+}
+
+.form-text-input {
+    -fx-text-fill: -fx-primary-text-color;
+    -fx-font-size: 14pt;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: bold;
+    -fx-background-color: -fx-secondary-text-color;
+    -fx-background-radius: 9999999999px;
+}
+
+.form-input-label {
+    -fx-text-fill: -fx-secondary-text-color;
+    -fx-font-size: 16pt;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: bold;
+}
+
+.delivery-text {
+    -fx-text-fill: -fx-primary-text-color;
+    -fx-font-size: 18pt;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: bold;
+}
