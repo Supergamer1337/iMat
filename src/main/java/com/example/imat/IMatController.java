@@ -97,6 +97,7 @@ public class IMatController implements ShoppingCartListener {
 
     public void goToShoppingCart(boolean addToHistory){
         addToLocationHistory(new LocationInfo("Kundvagn", "Kundvagn", "Kundvagn"), addToHistory);
+        cartHandler.updateShoppingCart();
 
         shoppingCartFlowPane.getChildren().clear();
         shoppingCartSplitPane.toFront();
@@ -107,14 +108,12 @@ public class IMatController implements ShoppingCartListener {
             if(shoppingItem.getAmount() > 0){
                 shoppingCartFlowPane.getChildren().add(new ShoppingCartCard(shoppingItem, this));
             }
-            else {
-                dataHandler.getShoppingCart().removeItem(shoppingItem);
-            }
         }
     }
 
     @FXML public void showCategory(ProductCategory category, boolean addToHistory) {
         addToLocationHistory(new LocationInfo(category.name(), CategoryCard.getPrettyCategoryName(category), CategoryCard.getPrettyCategoryName(category)), addToHistory);
+        cartHandler.updateShoppingCart();
 
         productsFlowPane.getChildren().clear();
         productsPage.toFront();
@@ -133,6 +132,7 @@ public class IMatController implements ShoppingCartListener {
 
     public void showFavorites(boolean addToHistory) {
         clearLocationHistory();
+        cartHandler.updateShoppingCart();
         addToLocationHistory(new LocationInfo("Favoriter", "Favoriter", "Favoriter"), addToHistory);
 
         favoriteFlowPane.getChildren().clear();
@@ -168,6 +168,11 @@ public class IMatController implements ShoppingCartListener {
         if (!currentLocation.getLocation().equals("Kundvagn")) { // Too lazy to make it hoverable when active.
             StyleUtils.toggleHoverImage(shoppingCartIsHovered, "icons/shopping-cart-hover.png", "icons/shopping-cart.png", shoppingCartImage);
         }
+    }
+
+    @FXML
+    public void togglePlusbuttonHover(){
+
     }
 
     @FXML
