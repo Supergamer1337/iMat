@@ -88,12 +88,14 @@ public class IMatController implements ShoppingCartListener {
     @FXML private TextField paymentAddress;
     @FXML private TextField paymentPostalCode;
     @FXML private TextField paymentCity;
+    @FXML private CheckBox paymentAddressSaveCheckbox;
 
     @FXML private TextField paymentCardName;
     @FXML private TextField paymentCardBank;
     @FXML private TextField paymentCardNumber;
     @FXML private TextField paymentCardDate;
     @FXML private TextField paymentCardCVC;
+    @FXML private CheckBox paymentSaveCardCheckbox;
 
     @FXML private Label wizardIndicator1;
     @FXML private Label wizardIndicator2;
@@ -222,20 +224,30 @@ public class IMatController implements ShoppingCartListener {
     }
 
     @FXML public void pay() {
-        CreditCard card = dataHandler.getCreditCard();
+        if (paymentSaveCardCheckbox.isSelected()) {
+            CreditCard card = dataHandler.getCreditCard();
+            card.setHoldersName(paymentCardName.getText());
+            card.setCardType(paymentCardBank.getText());
+            card.setCardNumber(paymentCardNumber.getText());
+            String cardExpiry = paymentCardDate.getText();
+            String expiryMonth = cardExpiry.substring(0, 2);
+            String expiryYear = cardExpiry.substring(3, 5);
+            card.setValidMonth(Integer.parseInt(expiryMonth));
+            card.setValidYear(Integer.parseInt(expiryYear));
+            card.setVerificationCode(Integer.parseInt(paymentCardCVC.getText()));
+        }
 
-        card.setHoldersName(paymentCardName.getText());
-        card.setCardType(paymentCardBank.getText());
-        card.setCardNumber(paymentCardNumber.getText());
-        String cardExpiry = paymentCardDate.getText();
-        String expiryMonth = cardExpiry.substring(0, 2);
-        String expiryYear = cardExpiry.substring(3, 5);
-        card.setValidMonth(Integer.parseInt(expiryMonth));
-        card.setValidYear(Integer.parseInt(expiryYear));
-        card.setVerificationCode(Integer.parseInt(paymentCardCVC.getText()));
+        if (!paymentAddressSaveCheckbox.isSelected()) {
+            Customer customer = dataHandler.getCustomer();
+
+            customer.setFirstName("");
+            customer.setLastName("");
+            customer.setAddress("");
+            customer.setPostCode("");
+            customer.setPostAddress("");
+        }
 
         dataHandler.placeOrder(true);
-        System.out.println(dataHandler.getOrders());
 
         goToCategories(true);
     }

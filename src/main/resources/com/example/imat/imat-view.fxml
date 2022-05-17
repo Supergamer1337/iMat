@@ -354,7 +354,7 @@
                                     <TextField fx:id="paymentCity" layoutX="13.0" layoutY="463.0" prefHeight="39.0" prefWidth="337.0" styleClass="form-text-input" />
                                     <Label layoutX="27.0" layoutY="432.0" styleClass="form-input-label" text="Stad:" />
                                     <Label layoutX="14.0" styleClass="form-header" text="Faktureringsaddress" />
-                                    <CheckBox fx:id="addressSaveCheckbox" layoutX="27.0" layoutY="528.0" mnemonicParsing="false" selected="true" styleClass="form-checkbox-text" text="Spara Information" />
+                                    <CheckBox fx:id="paymentAddressSaveCheckbox" layoutX="27.0" layoutY="528.0" mnemonicParsing="false" selected="true" styleClass="form-checkbox-text" text="Spara Information" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="761.0" layoutY="14.0" prefHeight="569.0" prefWidth="371.0" styleClass="form-background">
