@@ -126,6 +126,7 @@ public class IMatController implements ShoppingCartListener {
     public void goToCategories(boolean addToHistory){
         clearLocationHistory();
         addToLocationHistory(new LocationInfo("Kategorier", "Kategorier", "Kategorier"), addToHistory);
+        resetWizard();
 
         categoriesPage.toFront();
     }
@@ -136,6 +137,7 @@ public class IMatController implements ShoppingCartListener {
 
     public void goToShoppingCart(boolean addToHistory){
         addToLocationHistory(new LocationInfo("Kundvagn", "Kundvagn", "Kundvagn"), addToHistory);
+        resetWizard();
 
         shoppingCartFlowPane.getChildren().clear();
         shoppingCartSplitPane.toFront();
@@ -299,9 +301,43 @@ public class IMatController implements ShoppingCartListener {
         }
     }
 
+    private void resetWizard() {
+        wizardPageNavigation = 1;
+        wizardPage1Done = false;
+        wizardPage2Done = false;
+        wizardPage3Done = false;
+
+        deliveryFirstName.setText("");
+        deliveryLastName.setText("");
+        deliveryAddress.setText("");
+        deliveryCity.setText("");
+        deliveryPostalCode.setText("");
+
+        paymentFirstName.setText("");
+        paymentLastName.setText("");
+        paymentAddress.setText("");
+        paymentCity.setText("");
+        paymentPostalCode.setText("");
+
+        paymentCardName.setText("");
+        paymentCardBank.setText("");
+        paymentCardNumber.setText("");
+        paymentCardDate.setText("");
+        paymentCardCVC.setText("");
+
+        if (previousLocations.size() > 1) {
+            if (previousLocations.get(1).getLocation().equals("Wizard")) {
+                previousLocations.remove(previousLocations.size() - 1);
+                updateLocationLabels(this.currentLocation);
+            }
+        }
+
+    }
+
 
     @FXML public void showCategory(ProductCategory category, boolean addToHistory) {
         addToLocationHistory(new LocationInfo(category.name(), CategoryCard.getPrettyCategoryName(category), CategoryCard.getPrettyCategoryName(category)), addToHistory);
+        resetWizard();
 
         productsFlowPane.getChildren().clear();
         productsPage.toFront();
@@ -321,6 +357,7 @@ public class IMatController implements ShoppingCartListener {
     public void showFavorites(boolean addToHistory) {
         clearLocationHistory();
         addToLocationHistory(new LocationInfo("Favoriter", "Favoriter", "Favoriter"), addToHistory);
+        resetWizard();
 
         favoriteFlowPane.getChildren().clear();
         favoriteScrollPane.toFront();
@@ -337,6 +374,7 @@ public class IMatController implements ShoppingCartListener {
     public void goToProfile(boolean addToHistory){
         clearLocationHistory();
         addToLocationHistory(new LocationInfo("Profil", "Profil", "Profil"), addToHistory);
+        resetWizard();
 
         profileAnchorPane.toFront();
     }
