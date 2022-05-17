@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
@@ -22,6 +23,7 @@ public class ShoppingCartCard extends AnchorPane {
     ShoppingCartHandler cartHandler;
     ShoppingItem shoppingItem;
     IMatController parentController;
+    IMatDataHandler dataHandler;
 
 
 
@@ -37,6 +39,7 @@ public class ShoppingCartCard extends AnchorPane {
         }
 
         this.parentController = parentController;
+        this.dataHandler = IMatDataHandler.getInstance();
         cartHandler = new ShoppingCartHandler();
         this.shoppingItem = shoppingItem;
         productNameLabel.setText(shoppingItem.getProduct().getName());
@@ -65,7 +68,7 @@ public class ShoppingCartCard extends AnchorPane {
 
     @FXML
     public void removeItemFromCartInteraction(){
-        cartHandler.removeProductFromCart(shoppingItem.getProduct());
+        cartHandler.removeProductFromCart(shoppingItem.getProduct(), true);
         updateAmountLabels();
     }
 

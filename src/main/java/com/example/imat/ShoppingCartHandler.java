@@ -36,14 +36,27 @@ public class ShoppingCartHandler {
         }
     }
 
-    public void removeProductFromCart(Product product){
+    public void removeProductFromCart(Product product, Boolean cartIsOpen){
         for (ShoppingItem shoppingItem :
                 dataHandler.getShoppingCart().getItems()) {
             if(shoppingItem.getProduct() == product){
                 shoppingItem.setAmount(shoppingItem.getAmount()-1);
-                if(shoppingItem.getAmount() == 0){
-                    dataHandler.getShoppingCart().removeItem(shoppingItem);
+                if(shoppingItem.getAmount() <= 0){
+                    if(cartIsOpen)
+                        shoppingItem.setAmount(0);
+                    else
+                        dataHandler.getShoppingCart().removeItem(shoppingItem);
                 }
+            }
+        }
+    }
+
+    public void updateShoppingCart(){
+        List<ShoppingItem> shoppingItems = dataHandler.getShoppingCart().getItems();
+
+        for (ShoppingItem shoppingItem: shoppingItems) {
+            if(shoppingItem.getAmount() <= 0){
+                dataHandler.getShoppingCart().removeItem(shoppingItem);
             }
         }
     }

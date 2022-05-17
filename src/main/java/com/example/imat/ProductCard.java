@@ -103,7 +103,7 @@ public class ProductCard extends AnchorPane {
 
     @FXML
     public void removeItemFromCartInteraction(){
-        cartHandler.removeProductFromCart(product);
+        cartHandler.removeProductFromCart(product, false);
         updateAmountLabel();
     }
 
