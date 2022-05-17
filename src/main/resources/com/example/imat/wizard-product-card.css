@@ -21,6 +21,6 @@
 }
 
 .text {
-    color: -fx-secondary-text-color;
+    -fx-text-fill: -fx-secondary-text-color;
     -fx-font-size: 16pt;
 }

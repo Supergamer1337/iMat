@@ -18,6 +18,7 @@ public class IMatController implements ShoppingCartListener {
     private IMatDataHandler dataHandler = IMatDataHandler.getInstance();
     private ArrayList<LocationInfo> previousLocations = new ArrayList<LocationInfo>();
     private LocationInfo currentLocation;
+    private ShoppingCartHandler cartHandler = new ShoppingCartHandler();
 
     @FXML private ImageView shoppingCartImage;
     private boolean shoppingCartIsHovered = false;
@@ -61,7 +62,47 @@ public class IMatController implements ShoppingCartListener {
     @FXML private Label detailCategoryLabel;
     private Product currentProduct;
 
-    @FXML private FlowPane wizardCheckoutWares;
+    @FXML private AnchorPane wizardPage;
+    @FXML private AnchorPane wizardPage1;
+    @FXML private ScrollPane wizardPage2;
+    @FXML private AnchorPane wizardPage3;
+
+    private int wizardPageNavigation = 1;
+
+    private boolean wizardPage1Done = false;
+    private boolean wizardPage2Done = false;
+    private boolean wizardPage3Done = false;
+
+    @FXML private FlowPane wizardShoppingFlowPane;
+    @FXML private Label wizardTotalPriceLabel;
+    @FXML private Label wizardTotalAmount;
+
+    @FXML private TextField deliveryFirstName;
+    @FXML private TextField deliveryLastName;
+    @FXML private TextField deliveryAddress;
+    @FXML private TextField deliveryPostalCode;
+    @FXML private TextField deliveryCity;
+
+    @FXML private TextField paymentFirstName;
+    @FXML private TextField paymentLastName;
+    @FXML private TextField paymentAddress;
+    @FXML private TextField paymentPostalCode;
+    @FXML private TextField paymentCity;
+    @FXML private CheckBox paymentAddressSaveCheckbox;
+
+    @FXML private TextField paymentCardName;
+    @FXML private TextField paymentCardBank;
+    @FXML private TextField paymentCardNumber;
+    @FXML private TextField paymentCardDate;
+    @FXML private TextField paymentCardCVC;
+    @FXML private CheckBox paymentSaveCardCheckbox;
+
+    @FXML private Label wizardIndicator1;
+    @FXML private Label wizardIndicator2;
+    @FXML private Label wizardIndicator3;
+
+    @FXML private ImageView wizardBackwardsArrow;
+    @FXML private ImageView wizardForwardArrow;
 
     @FXML
     public void initialize() {
@@ -87,6 +128,7 @@ public class IMatController implements ShoppingCartListener {
     public void goToCategories(boolean addToHistory){
         clearLocationHistory();
         addToLocationHistory(new LocationInfo("Kategorier", "Kategorier", "Kategorier"), addToHistory);
+        resetWizard();
 
         categoriesPage.toFront();
     }
@@ -97,6 +139,7 @@ public class IMatController implements ShoppingCartListener {
 
     public void goToShoppingCart(boolean addToHistory){
         addToLocationHistory(new LocationInfo("Kundvagn", "Kundvagn", "Kundvagn"), addToHistory);
+        resetWizard();
         cartHandler.updateShoppingCart();
 
         shoppingCartFlowPane.getChildren().clear();
@@ -111,8 +154,205 @@ public class IMatController implements ShoppingCartListener {
         }
     }
 
+    @FXML public void goToWizard() {
+        goToWizard(true);
+    }
+
+    public void goToWizard(boolean doSpecial) {
+        wizardPageNavigation = 1;
+
+        if (doSpecial && !wizardPage1Done) {
+            addToLocationHistory(new LocationInfo("Wizard", "", ""), true);
+            wizardShoppingFlowPane.getChildren().clear();
+
+            wizardTotalPriceLabel.setText(dataHandler.getShoppingCart().getTotal() + " kr");
+            int totalAmount = 0;
+            for (ShoppingItem shoppingItem: dataHandler.getShoppingCart().getItems()) {
+                totalAmount += shoppingItem.getAmount();
+            }
+
+            wizardTotalAmount.setText("Totalt (" + totalAmount + " varor)");
+
+            List<ShoppingItem> shoppingItems = dataHandler.getShoppingCart().getItems();
+            for (ShoppingItem shoppingItem: shoppingItems) {
+                wizardShoppingFlowPane.getChildren().add(new WizardProductCard(shoppingItem));
+            }
+            wizardPage1Done = true;
+        }
+
+        wizardPage.toFront();
+        wizardPage1.toFront();
+        updateWizardIndicator();
+    }
+
+    @FXML void goToDelivery() {
+        goToDelivery(true);
+    }
+
+    public void goToDelivery(boolean doSpecial) {
+        if (doSpecial) {
+            wizardPage2Done = true;
+        }
+        wizardPageNavigation = 2;
+        wizardPage2.toFront();
+        updateWizardIndicator();
+    }
+
+    @FXML public void goToPayment() {
+        goToPayment(true);
+    }
+
+    public void goToPayment(boolean doSpecial) {
+        wizardPageNavigation = 3;
+
+        if (doSpecial && !wizardPage3Done) {
+            Customer customer = dataHandler.getCustomer();
+            customer.setFirstName(deliveryFirstName.getText());
+            customer.setLastName(deliveryLastName.getText());
+            customer.setAddress(deliveryAddress.getText());
+            customer.setPostCode(deliveryPostalCode.getText());
+            customer.setPostAddress(deliveryCity.getText());
+
+            paymentFirstName.setText(customer.getFirstName());
+            paymentLastName.setText(customer.getLastName());
+            paymentAddress.setText(customer.getAddress());
+            paymentPostalCode.setText(customer.getPostCode());
+            paymentCity.setText(customer.getPostAddress());
+
+            wizardPage3Done = true;
+        }
+
+        wizardPage3.toFront();
+        updateWizardIndicator();
+    }
+
+    @FXML public void pay() {
+        if (paymentSaveCardCheckbox.isSelected()) {
+            CreditCard card = dataHandler.getCreditCard();
+            card.setHoldersName(paymentCardName.getText());
+            card.setCardType(paymentCardBank.getText());
+            card.setCardNumber(paymentCardNumber.getText());
+            String cardExpiry = paymentCardDate.getText();
+            String expiryMonth = cardExpiry.substring(0, 2);
+            String expiryYear = cardExpiry.substring(3, 5);
+            card.setValidMonth(Integer.parseInt(expiryMonth));
+            card.setValidYear(Integer.parseInt(expiryYear));
+            card.setVerificationCode(Integer.parseInt(paymentCardCVC.getText()));
+        }
+
+        if (!paymentAddressSaveCheckbox.isSelected()) {
+            Customer customer = dataHandler.getCustomer();
+
+            customer.setFirstName("");
+            customer.setLastName("");
+            customer.setAddress("");
+            customer.setPostCode("");
+            customer.setPostAddress("");
+        }
+
+        dataHandler.placeOrder(true);
+
+        goToCategories(true);
+    }
+
+    public void wizardForward() {
+        switch (wizardPageNavigation) {
+            case 1:
+                goToDelivery(false);
+                break;
+            case 2:
+                goToPayment(false);
+                break;
+            default:
+                goToWizard(false);
+                break;
+        }
+    }
+
+    public void wizardBackwards() {
+        switch (wizardPageNavigation) {
+            case 2:
+                goToWizard(false);
+                break;
+            case 3:
+                goToDelivery();
+                break;
+            default:
+                wizardPageNavigation = 1;
+                goToWizard(false);
+                break;
+        }
+    }
+
+    private void updateWizardIndicator() {
+        wizardIndicator1.getStyleClass().remove("active-wizard-tab-number");
+        wizardIndicator2.getStyleClass().remove("active-wizard-tab-number");
+        wizardIndicator3.getStyleClass().remove("active-wizard-tab-number");
+
+        switch (wizardPageNavigation) {
+            case 1:
+                wizardIndicator1.getStyleClass().add("active-wizard-tab-number");
+                break;
+            case 2:
+                wizardIndicator2.getStyleClass().add("active-wizard-tab-number");
+                break;
+            case 3:
+                wizardIndicator3.getStyleClass().add("active-wizard-tab-number");
+                break;
+            default:
+                break;
+        }
+
+        if (wizardPageNavigation > 1) {
+            wizardBackwardsArrow.setVisible(true);
+        } else {
+            wizardBackwardsArrow.setVisible(false);
+        }
+
+        if (wizardPage2Done && wizardPageNavigation < 2 || wizardPage3Done && wizardPageNavigation < 3) {
+            wizardForwardArrow.setVisible(true);
+        } else {
+            wizardForwardArrow.setVisible(false);
+        }
+    }
+
+    private void resetWizard() {
+        wizardPageNavigation = 1;
+        wizardPage1Done = false;
+        wizardPage2Done = false;
+        wizardPage3Done = false;
+
+        deliveryFirstName.setText("");
+        deliveryLastName.setText("");
+        deliveryAddress.setText("");
+        deliveryCity.setText("");
+        deliveryPostalCode.setText("");
+
+        paymentFirstName.setText("");
+        paymentLastName.setText("");
+        paymentAddress.setText("");
+        paymentCity.setText("");
+        paymentPostalCode.setText("");
+
+        paymentCardName.setText("");
+        paymentCardBank.setText("");
+        paymentCardNumber.setText("");
+        paymentCardDate.setText("");
+        paymentCardCVC.setText("");
+
+        if (previousLocations.size() > 1) {
+            if (previousLocations.get(1).getLocation().equals("Wizard")) {
+                previousLocations.remove(previousLocations.size() - 1);
+                updateLocationLabels(this.currentLocation);
+            }
+        }
+
+    }
+
+
     @FXML public void showCategory(ProductCategory category, boolean addToHistory) {
         addToLocationHistory(new LocationInfo(category.name(), CategoryCard.getPrettyCategoryName(category), CategoryCard.getPrettyCategoryName(category)), addToHistory);
+        resetWizard();
         cartHandler.updateShoppingCart();
 
         productsFlowPane.getChildren().clear();
@@ -134,6 +374,7 @@ public class IMatController implements ShoppingCartListener {
         clearLocationHistory();
         cartHandler.updateShoppingCart();
         addToLocationHistory(new LocationInfo("Favoriter", "Favoriter", "Favoriter"), addToHistory);
+        resetWizard();
 
         favoriteFlowPane.getChildren().clear();
         favoriteScrollPane.toFront();
@@ -150,6 +391,7 @@ public class IMatController implements ShoppingCartListener {
     public void goToProfile(boolean addToHistory){
         clearLocationHistory();
         addToLocationHistory(new LocationInfo("Profil", "Profil", "Profil"), addToHistory);
+        resetWizard();
 
         profileAnchorPane.toFront();
     }
@@ -201,8 +443,6 @@ public class IMatController implements ShoppingCartListener {
         else
             showCategory(currentProduct.getCategory(),false);
     }
-
-    private ShoppingCartHandler cartHandler = new ShoppingCartHandler();
 
     private void updateAmountLabel(){
         detailAmountLabel.setText(cartHandler.getAmountInCart(currentProduct) + " st");
