@@ -67,6 +67,8 @@ public class IMatController implements ShoppingCartListener {
     @FXML private ScrollPane wizardPage2;
     @FXML private AnchorPane wizardPage3;
 
+    private int wizardPageNavigation = 1;
+
     @FXML private FlowPane wizardShoppingFlowPane;
     @FXML private Label wizardTotalPriceLabel;
     @FXML private Label wizardTotalAmount;
@@ -134,45 +136,62 @@ public class IMatController implements ShoppingCartListener {
         }
     }
 
-    @FXML
-    public void goToWizard() {
-        addToLocationHistory(new LocationInfo("Wizard", "", ""), true);
-        wizardShoppingFlowPane.getChildren().clear();
+    @FXML public void goToWizard() {
+        goToWizard(true);
+    }
+
+    public void goToWizard(boolean doSpecial) {
+        wizardPageNavigation = 1;
+
+        if (doSpecial) {
+            addToLocationHistory(new LocationInfo("Wizard", "", ""), true);
+            wizardShoppingFlowPane.getChildren().clear();
+
+            wizardTotalPriceLabel.setText(dataHandler.getShoppingCart().getTotal() + " kr");
+            int totalAmount = 0;
+            for (ShoppingItem shoppingItem: dataHandler.getShoppingCart().getItems()) {
+                totalAmount += shoppingItem.getAmount();
+            }
+
+            wizardTotalAmount.setText("Totalt (" + totalAmount + " varor)");
+
+            List<ShoppingItem> shoppingItems = dataHandler.getShoppingCart().getItems();
+            for (ShoppingItem shoppingItem: shoppingItems) {
+                wizardShoppingFlowPane.getChildren().add(new WizardProductCard(shoppingItem));
+            }
+        }
+
         wizardPage.toFront();
         wizardPage1.toFront();
-
-        wizardTotalPriceLabel.setText(dataHandler.getShoppingCart().getTotal() + " kr");
-        int totalAmount = 0;
-        for (ShoppingItem shoppingItem: dataHandler.getShoppingCart().getItems()) {
-            totalAmount += shoppingItem.getAmount();
-        }
-
-        wizardTotalAmount.setText("Totalt (" + totalAmount + " varor)");
-
-        List<ShoppingItem> shoppingItems = dataHandler.getShoppingCart().getItems();
-        for (ShoppingItem shoppingItem: shoppingItems) {
-            wizardShoppingFlowPane.getChildren().add(new WizardProductCard(shoppingItem));
-        }
     }
 
     @FXML
     public void goToDelivery() {
+        wizardPageNavigation = 2;
         wizardPage2.toFront();
     }
 
     @FXML public void goToPayment() {
-        Customer customer = dataHandler.getCustomer();
-        customer.setFirstName(deliveryFirstName.getText());
-        customer.setLastName(deliveryLastName.getText());
-        customer.setAddress(deliveryAddress.getText());
-        customer.setPostCode(deliveryPostalCode.getText());
-        customer.setPostAddress(deliveryCity.getText());
+        goToPayment(true);
+    }
 
-        paymentFirstName.setText(customer.getFirstName());
-        paymentLastName.setText(customer.getLastName());
-        paymentAddress.setText(customer.getAddress());
-        paymentPostalCode.setText(customer.getPostCode());
-        paymentCity.setText(customer.getPostAddress());
+    public void goToPayment(boolean doSpecial) {
+        wizardPageNavigation = 3;
+
+        if (doSpecial) {
+            Customer customer = dataHandler.getCustomer();
+            customer.setFirstName(deliveryFirstName.getText());
+            customer.setLastName(deliveryLastName.getText());
+            customer.setAddress(deliveryAddress.getText());
+            customer.setPostCode(deliveryPostalCode.getText());
+            customer.setPostAddress(deliveryCity.getText());
+
+            paymentFirstName.setText(customer.getFirstName());
+            paymentLastName.setText(customer.getLastName());
+            paymentAddress.setText(customer.getAddress());
+            paymentPostalCode.setText(customer.getPostCode());
+            paymentCity.setText(customer.getPostAddress());
+        }
 
         wizardPage3.toFront();
     }
@@ -195,6 +214,36 @@ public class IMatController implements ShoppingCartListener {
 
         goToCategories(true);
     }
+
+    public void wizardForward() {
+        switch (wizardPageNavigation) {
+            case 1:
+                goToDelivery();
+                break;
+            case 2:
+                goToPayment(false);
+                break;
+            default:
+                goToWizard(false);
+                break;
+        }
+    }
+
+    public void wizardBackwards() {
+        switch (wizardPageNavigation) {
+            case 2:
+                goToWizard(false);
+                break;
+            case 3:
+                goToDelivery();
+                break;
+            default:
+                wizardPageNavigation = 1;
+                goToWizard(false);
+                break;
+        }
+    }
+
 
     @FXML public void showCategory(ProductCategory category, boolean addToHistory) {
         addToLocationHistory(new LocationInfo(category.name(), CategoryCard.getPrettyCategoryName(category), CategoryCard.getPrettyCategoryName(category)), addToHistory);
