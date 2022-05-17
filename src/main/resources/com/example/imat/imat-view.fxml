@@ -557,7 +557,7 @@
                   </StackPane>
                   <AnchorPane layoutY="667.0" prefHeight="92.0" prefWidth="1440.0" styleClass="green-background">
                      <children>
-                        <Label alignment="CENTER" layoutX="235.0" layoutY="27.0" prefHeight="39.0" prefWidth="40.0" text="1">
+                        <Label fx:id="wizardIndicator1" alignment="CENTER" layoutX="235.0" layoutY="27.0" prefHeight="39.0" prefWidth="40.0" text="1">
                            <styleClass>
                               <String fx:value="wizard-text" />
                               <String fx:value="active-wizard-tab-number" />
@@ -566,8 +566,8 @@
                         <Label layoutX="288.0" layoutY="27.0" styleClass="wizard-text" text="Varukorg" />
                         <Label layoutX="680.0" layoutY="27.0" styleClass="wizard-text" text="Leverans" />
                         <Label layoutX="1065.0" layoutY="27.0" styleClass="wizard-text" text="Betalning" />
-                        <Label alignment="CENTER" layoutX="628.0" layoutY="27.0" prefHeight="39.0" prefWidth="40.0" styleClass="wizard-text" text="2" />
-                        <Label alignment="CENTER" layoutX="1016.0" layoutY="27.0" prefHeight="39.0" prefWidth="40.0" styleClass="wizard-text" text="3" />
+                        <Label fx:id="wizardIndicator2" alignment="CENTER" layoutX="628.0" layoutY="27.0" prefHeight="39.0" prefWidth="40.0" styleClass="wizard-text" text="2" />
+                        <Label fx:id="wizardIndicator3" alignment="CENTER" layoutX="1016.0" layoutY="27.0" prefHeight="39.0" prefWidth="40.0" styleClass="wizard-text" text="3" />
                         <ImageView fitHeight="76.0" fitWidth="96.0" layoutX="1322.0" layoutY="8.0" onMouseClicked="#wizardForward" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@icons/wizard-forward-arrow.png" />

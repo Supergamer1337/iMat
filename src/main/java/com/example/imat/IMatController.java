@@ -91,6 +91,10 @@ public class IMatController implements ShoppingCartListener {
     @FXML private TextField paymentCardDate;
     @FXML private TextField paymentCardCVC;
 
+    @FXML private Label wizardIndicator1;
+    @FXML private Label wizardIndicator2;
+    @FXML private Label wizardIndicator3;
+
     @FXML
     public void initialize() {
         System.out.println("Current home path: " + System.getProperty("user.home"));
@@ -163,12 +167,14 @@ public class IMatController implements ShoppingCartListener {
 
         wizardPage.toFront();
         wizardPage1.toFront();
+        updateWizardIndicator();
     }
 
     @FXML
     public void goToDelivery() {
         wizardPageNavigation = 2;
         wizardPage2.toFront();
+        updateWizardIndicator();
     }
 
     @FXML public void goToPayment() {
@@ -194,6 +200,7 @@ public class IMatController implements ShoppingCartListener {
         }
 
         wizardPage3.toFront();
+        updateWizardIndicator();
     }
 
     @FXML public void pay() {
@@ -240,6 +247,25 @@ public class IMatController implements ShoppingCartListener {
             default:
                 wizardPageNavigation = 1;
                 goToWizard(false);
+                break;
+        }
+    }
+
+    private void updateWizardIndicator() {
+        wizardIndicator1.getStyleClass().remove("active-wizard-tab-number");
+        wizardIndicator2.getStyleClass().remove("active-wizard-tab-number");
+        wizardIndicator3.getStyleClass().remove("active-wizard-tab-number");
+        switch (wizardPageNavigation) {
+            case 1:
+                wizardIndicator1.getStyleClass().add("active-wizard-tab-number");
+                break;
+            case 2:
+                wizardIndicator2.getStyleClass().add("active-wizard-tab-number");
+                break;
+            case 3:
+                wizardIndicator3.getStyleClass().add("active-wizard-tab-number");
+                break;
+            default:
                 break;
         }
     }
