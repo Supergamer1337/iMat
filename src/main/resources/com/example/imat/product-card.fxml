@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<fx:root fx:id="productAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="240.0" stylesheets="@product-card.css" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="productAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="240.0" styleClass="card" stylesheets="@product-card.css" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane fx:id="productImageAnchorPane" prefHeight="215.0" prefWidth="240.0" styleClass="productImage">
          <children>
@@ -31,15 +31,23 @@
                </styleClass></Label>
             <AnchorPane layoutX="7.0" layoutY="153.0" prefHeight="37.0" prefWidth="226.0" styleClass="background" stylesheets="@quantity-selector.css">
                <children>
-                  <ImageView fx:id="minusButtonImage" fitHeight="34.0" fitWidth="34.0" layoutX="4.0" layoutY="6.0" onMouseClicked="#removeItemFromCartInteraction" pickOnBounds="true" preserveRatio="true" styleClass="clickable" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="2.0">
+                  <ImageView fx:id="minusButtonImage" fitHeight="34.0" fitWidth="34.0" layoutX="4.0" layoutY="6.0" onMouseClicked="#removeItemFromCartInteraction" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="2.0">
                      <image>
                         <Image url="@icons/minus-button.png" />
                      </image>
+                     <styleClass>
+                        <String fx:value="clickable" />
+                        <String fx:value="button" />
+                     </styleClass>
                   </ImageView>
-                  <ImageView fx:id="plusButtonImage" fitHeight="34.0" fitWidth="34.0" layoutX="195.0" layoutY="6.0" onMouseClicked="#addItemToCartInteraction" pickOnBounds="true" preserveRatio="true" styleClass="clickable" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+                  <ImageView fx:id="plusButtonImage" fitHeight="34.0" fitWidth="34.0" layoutX="195.0" layoutY="6.0" onMouseClicked="#addItemToCartInteraction" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
                      <image>
                         <Image url="@icons/plus-button.png" />
                      </image>
+                     <styleClass>
+                        <String fx:value="clickable" />
+                        <String fx:value="button" />
+                     </styleClass>
                   </ImageView>
                   <Label fx:id="productAmountLabel" layoutX="100.0" layoutY="8.0" styleClass="amount" text="0st" />
                </children>

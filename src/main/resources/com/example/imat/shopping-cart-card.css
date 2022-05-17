@@ -23,6 +23,10 @@
     -fx-background-radius: 10px;
 }
 
+.background:hover {
+    -fx-background-color: #002E27;
+}
+
 .light-text {
     -fx-text-fill: -fx-secondary-text-color;
     -fx-font-size: 16pt;
@@ -38,4 +42,11 @@
 
 .clickable {
     -fx-cursor: hand;
+}
+
+.button {
+    -fx-opacity: 1.0;
+}
+.button:hover {
+    -fx-opacity: 0.7;
 }
