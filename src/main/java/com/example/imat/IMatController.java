@@ -63,9 +63,25 @@ public class IMatController implements ShoppingCartListener {
     private Product currentProduct;
 
     @FXML private AnchorPane wizardPage;
+    @FXML private AnchorPane wizardPage1;
+    @FXML private ScrollPane wizardPage2;
+    @FXML private AnchorPane wizardPage3;
+
     @FXML private FlowPane wizardShoppingFlowPane;
     @FXML private Label wizardTotalPriceLabel;
     @FXML private Label wizardTotalAmount;
+
+    @FXML private TextField deliveryFirstName;
+    @FXML private TextField deliveryLastName;
+    @FXML private TextField deliveryAddress;
+    @FXML private TextField deliveryPostalCode;
+    @FXML private TextField deliveryCity;
+
+    @FXML private TextField paymentFirstName;
+    @FXML private TextField paymentLastName;
+    @FXML private TextField paymentAddress;
+    @FXML private TextField paymentPostalCode;
+    @FXML private TextField paymentCity;
 
     @FXML
     public void initialize() {
@@ -112,10 +128,12 @@ public class IMatController implements ShoppingCartListener {
         }
     }
 
+    @FXML
     public void goToWizard() {
         addToLocationHistory(new LocationInfo("Wizard", "", ""), true);
         wizardShoppingFlowPane.getChildren().clear();
         wizardPage.toFront();
+        wizardPage1.toFront();
 
         wizardTotalPriceLabel.setText(dataHandler.getShoppingCart().getTotal() + " kr");
         int totalAmount = 0;
@@ -129,6 +147,28 @@ public class IMatController implements ShoppingCartListener {
         for (ShoppingItem shoppingItem: shoppingItems) {
             wizardShoppingFlowPane.getChildren().add(new WizardProductCard(shoppingItem));
         }
+    }
+
+    @FXML
+    public void goToDelivery() {
+        wizardPage2.toFront();
+    }
+
+    @FXML public void goToPayment() {
+        Customer customer = dataHandler.getCustomer();
+        customer.setFirstName(deliveryFirstName.getText());
+        customer.setLastName(deliveryLastName.getText());
+        customer.setAddress(deliveryAddress.getText());
+        customer.setPostCode(deliveryPostalCode.getText());
+        customer.setPostAddress(deliveryCity.getText());
+
+        paymentFirstName.setText(customer.getFirstName());
+        paymentLastName.setText(customer.getLastName());
+        paymentAddress.setText(customer.getAddress());
+        paymentPostalCode.setText(customer.getPostCode());
+        paymentCity.setText(customer.getPostAddress());
+
+        wizardPage3.toFront();
     }
 
     @FXML public void showCategory(ProductCategory category, boolean addToHistory) {

@@ -114,15 +114,6 @@
       </AnchorPane>
       <StackPane layoutY="265.0" prefHeight="759.0" prefWidth="1440.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="265.0">
          <children>
-            <ScrollPane fx:id="favoriteScrollPane" prefHeight="200.0" prefWidth="200.0">
-               <content>
-                  <FlowPane fx:id="favoriteFlowPane" hgap="20.0" prefHeight="757.0" prefWidth="1438.0" vgap="20.0">
-                     <padding>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                     </padding>
-                  </FlowPane>
-               </content>
-            </ScrollPane>
             <AnchorPane fx:id="profileAnchorPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" stylesheets="@profile.css">
                <children>
                   <StackPane layoutY="347.0" prefHeight="412.0" prefWidth="1440.0">
@@ -335,9 +326,9 @@
                   </AnchorPane>
                </items>
             </SplitPane>
-            <ScrollPane fx:id="categoriesPage" fitToWidth="true" hbarPolicy="NEVER" prefHeight="733.0" prefWidth="1440.0">
+            <ScrollPane fx:id="favoriteScrollPane" prefHeight="200.0" prefWidth="200.0">
                <content>
-                  <FlowPane fx:id="categoryFlowPane" alignment="TOP_CENTER" hgap="20.0" prefHeight="758.0" prefWidth="1424.0" prefWrapLength="1.0E27" vgap="20.0">
+                  <FlowPane fx:id="favoriteFlowPane" hgap="20.0" prefHeight="757.0" prefWidth="1438.0" vgap="20.0">
                      <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </padding>
@@ -348,7 +339,60 @@
                <children>
                   <StackPane prefHeight="667.0" prefWidth="1440.0" styleClass="page-background">
                      <children>
-                        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0">
+                        <AnchorPane fx:id="wizardPage3" prefHeight="200.0" prefWidth="200.0" styleClass="page-background">
+                           <children>
+                              <AnchorPane layoutX="308.0" layoutY="14.0" prefHeight="569.0" prefWidth="371.0" styleClass="form-background">
+                                 <children>
+                                    <TextField fx:id="paymentFirstName" layoutX="14.0" layoutY="99.0" prefHeight="39.0" prefWidth="337.0" styleClass="form-text-input" />
+                                    <Label layoutX="28.0" layoutY="68.0" styleClass="form-input-label" text="Förnamn:" />
+                                    <TextField fx:id="paymentLastName" layoutX="14.0" layoutY="192.0" prefHeight="39.0" prefWidth="337.0" styleClass="form-text-input" />
+                                    <Label layoutX="28.0" layoutY="161.0" styleClass="form-input-label" text="Efternamn:" />
+                                    <TextField fx:id="paymentAddress" layoutX="13.0" layoutY="285.0" prefHeight="39.0" prefWidth="337.0" styleClass="form-text-input" />
+                                    <Label layoutX="27.0" layoutY="254.0" styleClass="form-input-label" text="Adress:" />
+                                    <TextField fx:id="paymentPostalCode" layoutX="13.0" layoutY="374.0" prefHeight="39.0" prefWidth="337.0" styleClass="form-text-input" />
+                                    <Label layoutX="27.0" layoutY="343.0" styleClass="form-input-label" text="Postnummer:" />
+                                    <TextField fx:id="paymentCity" layoutX="13.0" layoutY="463.0" prefHeight="39.0" prefWidth="337.0" styleClass="form-text-input" />
+                                    <Label layoutX="27.0" layoutY="432.0" styleClass="form-input-label" text="Stad:" />
+                                    <Label layoutX="14.0" styleClass="form-header" text="Faktureringsaddress" />
+                                    <CheckBox fx:id="addressSaveCheckbox" layoutX="27.0" layoutY="528.0" mnemonicParsing="false" selected="true" styleClass="form-checkbox-text" text="Spara Information" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="761.0" layoutY="14.0" prefHeight="569.0" prefWidth="371.0" styleClass="form-background">
+                                 <children>
+                                    <TextField layoutX="14.0" layoutY="99.0" prefHeight="39.0" prefWidth="337.0" styleClass="form-text-input" />
+                                    <Label layoutX="28.0" layoutY="68.0" styleClass="form-input-label" text="Namn på kort:" />
+                                    <TextField layoutX="14.0" layoutY="192.0" prefHeight="39.0" prefWidth="337.0" styleClass="form-text-input" />
+                                    <Label layoutX="28.0" layoutY="161.0" styleClass="form-input-label" text="Bank:" />
+                                    <TextField layoutX="13.0" layoutY="285.0" prefHeight="39.0" prefWidth="337.0" styleClass="form-text-input" />
+                                    <Label layoutX="27.0" layoutY="254.0" styleClass="form-input-label" text="Kortnummer:" />
+                                    <TextField layoutX="13.0" layoutY="374.0" prefHeight="39.0" prefWidth="337.0" styleClass="form-text-input" />
+                                    <Label layoutX="27.0" layoutY="343.0" styleClass="form-input-label" text="Datum:" />
+                                    <TextField layoutX="13.0" layoutY="463.0" prefHeight="39.0" prefWidth="337.0" styleClass="form-text-input" />
+                                    <Label layoutX="27.0" layoutY="432.0" styleClass="form-input-label" text="CVC" />
+                                    <Label layoutX="14.0" styleClass="form-header" text="Kortinformation" />
+                                    <CheckBox layoutX="21.0" layoutY="528.0" mnemonicParsing="false" selected="true" styleClass="form-checkbox-text" text="Spara Information" />
+                                 </children>
+                              </AnchorPane>
+                              <Button layoutX="606.0" layoutY="590.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="229.0" styleClass="big-prominent-done-button" text="BETALA" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="wizardPage1" prefHeight="667.0" prefWidth="1393.0" styleClass="page-background">
+                           <children>
+                              <ScrollPane hbarPolicy="NEVER" layoutX="296.0" prefHeight="513.0" prefWidth="850.0">
+                                 <content>
+                                    <FlowPane fx:id="wizardShoppingFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" prefHeight="511.0" prefWidth="850.0" vgap="10.0" />
+                                 </content>
+                              </ScrollPane>
+                              <Button layoutX="606.0" layoutY="524.0" mnemonicParsing="false" onMouseClicked="#goToDelivery" styleClass="big-prominent-done-button" text="Till Leverans" />
+                              <AnchorPane layoutX="-1.0" layoutY="598.0" prefHeight="69.0" prefWidth="1440.0" styleClass="wizard-show-total-box" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0">
+                                 <children>
+                                    <Label fx:id="wizardTotalAmount" alignment="CENTER_RIGHT" layoutX="423.0" layoutY="17.0" styleClass="wizard-total-text" text="Totalt (34 varor)" />
+                                    <Label fx:id="wizardTotalPriceLabel" layoutX="837.0" layoutY="17.0" styleClass="wizard-total-text" text="Totalt Pris" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <ScrollPane fx:id="wizardPage2" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0">
                            <content>
                               <AnchorPane prefHeight="665.0" prefWidth="1438.0">
                                  <children>
@@ -491,79 +535,24 @@
                                     </AnchorPane>
                                     <AnchorPane layoutX="264.0" layoutY="210.0" prefHeight="265.0" prefWidth="940.0" styleClass="form-background">
                                        <children>
-                                          <TextField layoutX="37.0" layoutY="40.0" prefHeight="39.0" prefWidth="399.0" styleClass="form-text-input" />
-                                          <Label layoutX="49.0" layoutY="12.0" styleClass="form-input-label" text="Förnamn:" />
-                                          <TextField layoutX="470.0" layoutY="38.0" prefHeight="39.0" prefWidth="426.0" styleClass="form-text-input" />
+                                          <TextField fx:id="deliveryFirstName" layoutX="37.0" layoutY="40.0" prefHeight="39.0" prefWidth="399.0" styleClass="form-text-input" />
+                                          <TextField fx:id="deliveryLastName" layoutX="470.0" layoutY="38.0" prefHeight="39.0" prefWidth="426.0" styleClass="form-text-input" />
                                           <Label layoutX="482.0" layoutY="10.0" styleClass="form-input-label" text="Efternamn:" />
-                                          <TextField layoutX="37.0" layoutY="115.0" prefHeight="39.0" prefWidth="860.0" styleClass="form-text-input" />
+                                          <TextField fx:id="deliveryAddress" layoutX="37.0" layoutY="115.0" prefHeight="39.0" prefWidth="860.0" styleClass="form-text-input" />
                                           <Label layoutX="49.0" layoutY="87.0" styleClass="form-input-label" text="Address:" />
-                                          <TextField layoutX="38.0" layoutY="196.0" prefHeight="39.0" prefWidth="399.0" styleClass="form-text-input" />
+                                          <TextField fx:id="deliveryPostalCode" layoutX="38.0" layoutY="196.0" prefHeight="39.0" prefWidth="399.0" styleClass="form-text-input" />
                                           <Label layoutX="50.0" layoutY="168.0" styleClass="form-input-label" text="Postnummer:" />
-                                          <TextField layoutX="471.0" layoutY="194.0" prefHeight="39.0" prefWidth="426.0" styleClass="form-text-input" />
+                                          <TextField fx:id="deliveryCity" layoutX="471.0" layoutY="194.0" prefHeight="39.0" prefWidth="426.0" styleClass="form-text-input" />
                                           <Label layoutX="483.0" layoutY="166.0" styleClass="form-input-label" text="Stad/Ort:" />
-                                          <TextField layoutX="47.0" layoutY="50.0" prefHeight="39.0" prefWidth="399.0" styleClass="form-text-input" />
-                                          <Label layoutX="59.0" layoutY="22.0" styleClass="form-input-label" text="Förnamn:" />
+                                          <Label layoutX="50.0" layoutY="10.0" styleClass="form-input-label" text="Förnamn:" />
                                        </children>
                                     </AnchorPane>
-                                    <Button layoutX="592.0" layoutY="559.0" mnemonicParsing="false" styleClass="big-prominent-done-button" text="Till Betalning" />
+                                    <Button layoutX="592.0" layoutY="559.0" mnemonicParsing="false" onMouseClicked="#goToPayment" styleClass="big-prominent-done-button" text="Till Betalning" />
                                     <Label alignment="CENTER" layoutX="309.0" layoutY="510.0" prefHeight="35.0" prefWidth="850.0" styleClass="delivery-text" text="Leveransen sker mellan 10:00-10:45 den 29/4" />
                                  </children>
                               </AnchorPane>
                            </content>
                         </ScrollPane>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="page-background">
-                           <children>
-                              <AnchorPane layoutX="308.0" layoutY="14.0" prefHeight="569.0" prefWidth="371.0" styleClass="form-background">
-                                 <children>
-                                    <TextField layoutX="14.0" layoutY="99.0" prefHeight="39.0" prefWidth="337.0" styleClass="form-text-input" />
-                                    <Label layoutX="28.0" layoutY="68.0" styleClass="form-input-label" text="Förnamn:" />
-                                    <TextField layoutX="14.0" layoutY="192.0" prefHeight="39.0" prefWidth="337.0" styleClass="form-text-input" />
-                                    <Label layoutX="28.0" layoutY="161.0" styleClass="form-input-label" text="Efternamn:" />
-                                    <TextField layoutX="13.0" layoutY="285.0" prefHeight="39.0" prefWidth="337.0" styleClass="form-text-input" />
-                                    <Label layoutX="27.0" layoutY="254.0" styleClass="form-input-label" text="Adress:" />
-                                    <TextField layoutX="13.0" layoutY="374.0" prefHeight="39.0" prefWidth="337.0" styleClass="form-text-input" />
-                                    <Label layoutX="27.0" layoutY="343.0" styleClass="form-input-label" text="Postnummer:" />
-                                    <TextField layoutX="13.0" layoutY="463.0" prefHeight="39.0" prefWidth="337.0" styleClass="form-text-input" />
-                                    <Label layoutX="27.0" layoutY="432.0" styleClass="form-input-label" text="Stad:" />
-                                    <Label layoutX="14.0" styleClass="form-header" text="Faktureringsaddress" />
-                                    <CheckBox layoutX="27.0" layoutY="528.0" mnemonicParsing="false" styleClass="form-checkbox-text" text="Spara Information" />
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane layoutX="761.0" layoutY="14.0" prefHeight="569.0" prefWidth="371.0" styleClass="form-background">
-                                 <children>
-                                    <TextField layoutX="14.0" layoutY="99.0" prefHeight="39.0" prefWidth="337.0" styleClass="form-text-input" />
-                                    <Label layoutX="28.0" layoutY="68.0" styleClass="form-input-label" text="Namn på kort:" />
-                                    <TextField layoutX="14.0" layoutY="192.0" prefHeight="39.0" prefWidth="337.0" styleClass="form-text-input" />
-                                    <Label layoutX="28.0" layoutY="161.0" styleClass="form-input-label" text="Bank:" />
-                                    <TextField layoutX="13.0" layoutY="285.0" prefHeight="39.0" prefWidth="337.0" styleClass="form-text-input" />
-                                    <Label layoutX="27.0" layoutY="254.0" styleClass="form-input-label" text="Kortnummer:" />
-                                    <TextField layoutX="13.0" layoutY="374.0" prefHeight="39.0" prefWidth="337.0" styleClass="form-text-input" />
-                                    <Label layoutX="27.0" layoutY="343.0" styleClass="form-input-label" text="Datum:" />
-                                    <TextField layoutX="13.0" layoutY="463.0" prefHeight="39.0" prefWidth="337.0" styleClass="form-text-input" />
-                                    <Label layoutX="27.0" layoutY="432.0" styleClass="form-input-label" text="CVC" />
-                                    <Label layoutX="14.0" styleClass="form-header" text="Kortinformation" />
-                                    <CheckBox layoutX="21.0" layoutY="528.0" mnemonicParsing="false" styleClass="form-checkbox-text" text="Spara Information" />
-                                 </children>
-                              </AnchorPane>
-                              <Button layoutX="606.0" layoutY="591.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="229.0" styleClass="big-prominent-done-button" text="BETALA" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="667.0" prefWidth="1393.0" styleClass="page-background">
-                           <children>
-                              <ScrollPane hbarPolicy="NEVER" layoutX="296.0" prefHeight="513.0" prefWidth="850.0">
-                                 <content>
-                                    <FlowPane fx:id="wizardShoppingFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" prefHeight="511.0" prefWidth="850.0" vgap="10.0" />
-                                 </content>
-                              </ScrollPane>
-                              <Button layoutX="606.0" layoutY="524.0" mnemonicParsing="false" styleClass="big-prominent-done-button" text="Till Leverans" />
-                              <AnchorPane layoutX="-1.0" layoutY="598.0" prefHeight="69.0" prefWidth="1440.0" styleClass="wizard-show-total-box" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0">
-                                 <children>
-                                    <Label fx:id="wizardTotalAmount" alignment="CENTER_RIGHT" layoutX="423.0" layoutY="17.0" styleClass="wizard-total-text" text="Totalt (34 varor)" />
-                                    <Label fx:id="wizardTotalPriceLabel" layoutX="837.0" layoutY="17.0" styleClass="wizard-total-text" text="Totalt Pris" />
-                                 </children>
-                              </AnchorPane>
-                           </children>
-                        </AnchorPane>
                      </children>
                   </StackPane>
                   <AnchorPane layoutY="667.0" prefHeight="92.0" prefWidth="1440.0" styleClass="green-background">
@@ -588,6 +577,15 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
+            <ScrollPane fx:id="categoriesPage" fitToWidth="true" hbarPolicy="NEVER" prefHeight="733.0" prefWidth="1440.0">
+               <content>
+                  <FlowPane fx:id="categoryFlowPane" alignment="TOP_CENTER" hgap="20.0" prefHeight="758.0" prefWidth="1424.0" prefWrapLength="1.0E27" vgap="20.0">
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </FlowPane>
+               </content>
+            </ScrollPane>
          </children>
       </StackPane>
    </children>
