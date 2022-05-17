@@ -104,7 +104,12 @@ public class IMatController implements ShoppingCartListener {
         List<ShoppingItem> shoppingItems = dataHandler.getShoppingCart().getItems();
 
         for (ShoppingItem shoppingItem: shoppingItems) {
-            shoppingCartFlowPane.getChildren().add(new ShoppingCartCard(shoppingItem, this));
+            if(shoppingItem.getAmount() > 0){
+                shoppingCartFlowPane.getChildren().add(new ShoppingCartCard(shoppingItem, this));
+            }
+            else {
+                dataHandler.getShoppingCart().removeItem(shoppingItem);
+            }
         }
     }
 
@@ -202,7 +207,7 @@ public class IMatController implements ShoppingCartListener {
 
     @FXML
     public void removeItemFromCartInteraction(){
-        cartHandler.removeProductFromCart(currentProduct);
+        cartHandler.removeProductFromCart(currentProduct, false);
         updateAmountLabel();
     }
 

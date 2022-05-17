@@ -36,12 +36,12 @@ public class ShoppingCartHandler {
         }
     }
 
-    public void removeProductFromCart(Product product){
+    public void removeProductFromCart(Product product, Boolean cartIsOpen){
         for (ShoppingItem shoppingItem :
                 dataHandler.getShoppingCart().getItems()) {
             if(shoppingItem.getProduct() == product){
                 shoppingItem.setAmount(shoppingItem.getAmount()-1);
-                if(shoppingItem.getAmount() == 0){
+                if(shoppingItem.getAmount() == 0 && !cartIsOpen){
                     dataHandler.getShoppingCart().removeItem(shoppingItem);
                 }
             }
