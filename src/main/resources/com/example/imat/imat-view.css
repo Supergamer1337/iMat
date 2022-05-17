@@ -216,6 +216,21 @@
     -fx-font-weight: bold;
 }
 
+.form-header {
+    -fx-text-fill: -fx-secondary-text-color;
+    -fx-font-size: 24pt;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: bold;
+}
+
+.form-checkbox-text {
+    -fx-text-fill: -fx-secondary-text-color;
+    -fx-font-size: 14pt;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+}
+
 .delivery-text {
     -fx-text-fill: -fx-primary-text-color;
     -fx-font-size: 18pt;
