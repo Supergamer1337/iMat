@@ -21,6 +21,10 @@
     -fx-background-color: #EC2020;
 }
 
+.background:hover{
+    -fx-background-color: #D14545;
+}
+
 .amount {
     -fx-text-fill: -fx-secondary-text-color;
     -fx-font-size: 18pt;

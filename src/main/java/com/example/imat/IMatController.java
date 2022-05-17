@@ -140,6 +140,7 @@ public class IMatController implements ShoppingCartListener {
     public void goToShoppingCart(boolean addToHistory){
         addToLocationHistory(new LocationInfo("Kundvagn", "Kundvagn", "Kundvagn"), addToHistory);
         resetWizard();
+        cartHandler.updateShoppingCart();
 
         shoppingCartFlowPane.getChildren().clear();
         shoppingCartSplitPane.toFront();
@@ -147,7 +148,9 @@ public class IMatController implements ShoppingCartListener {
         List<ShoppingItem> shoppingItems = dataHandler.getShoppingCart().getItems();
 
         for (ShoppingItem shoppingItem: shoppingItems) {
-            shoppingCartFlowPane.getChildren().add(new ShoppingCartCard(shoppingItem, this));
+            if(shoppingItem.getAmount() > 0){
+                shoppingCartFlowPane.getChildren().add(new ShoppingCartCard(shoppingItem, this));
+            }
         }
     }
 
@@ -350,6 +353,7 @@ public class IMatController implements ShoppingCartListener {
     @FXML public void showCategory(ProductCategory category, boolean addToHistory) {
         addToLocationHistory(new LocationInfo(category.name(), CategoryCard.getPrettyCategoryName(category), CategoryCard.getPrettyCategoryName(category)), addToHistory);
         resetWizard();
+        cartHandler.updateShoppingCart();
 
         productsFlowPane.getChildren().clear();
         productsPage.toFront();
@@ -368,6 +372,7 @@ public class IMatController implements ShoppingCartListener {
 
     public void showFavorites(boolean addToHistory) {
         clearLocationHistory();
+        cartHandler.updateShoppingCart();
         addToLocationHistory(new LocationInfo("Favoriter", "Favoriter", "Favoriter"), addToHistory);
         resetWizard();
 
@@ -408,6 +413,11 @@ public class IMatController implements ShoppingCartListener {
     }
 
     @FXML
+    public void togglePlusbuttonHover(){
+
+    }
+
+    @FXML
     public void cartItemPressed(ShoppingItem shoppingItem){
         cartProductNameLabel.setText(shoppingItem.getProduct().getName());
         Image image = new Image(getClass().getResourceAsStream("images/" + shoppingItem.getProduct().getImageName()));
@@ -428,7 +438,10 @@ public class IMatController implements ShoppingCartListener {
 
     @FXML
     public void closeDetailPane(){
-        showCategory(currentProduct.getCategory(),false);
+        if(currentLocation.getLocation() == "Favoriter")
+            showFavorites(false);
+        else
+            showCategory(currentProduct.getCategory(),false);
     }
 
     private void updateAmountLabel(){
@@ -442,7 +455,7 @@ public class IMatController implements ShoppingCartListener {
 
     @FXML
     public void removeItemFromCartInteraction(){
-        cartHandler.removeProductFromCart(currentProduct);
+        cartHandler.removeProductFromCart(currentProduct, false);
         updateAmountLabel();
     }
 
