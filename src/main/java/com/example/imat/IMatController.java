@@ -18,6 +18,7 @@ public class IMatController implements ShoppingCartListener {
     private IMatDataHandler dataHandler = IMatDataHandler.getInstance();
     private ArrayList<LocationInfo> previousLocations = new ArrayList<LocationInfo>();
     private LocationInfo currentLocation;
+    private ShoppingCartHandler cartHandler = new ShoppingCartHandler();
 
     @FXML private ImageView shoppingCartImage;
     private boolean shoppingCartIsHovered = false;
@@ -61,7 +62,10 @@ public class IMatController implements ShoppingCartListener {
     @FXML private Label detailCategoryLabel;
     private Product currentProduct;
 
-    @FXML private FlowPane wizardCheckoutWares;
+    @FXML private AnchorPane wizardPage;
+    @FXML private FlowPane wizardShoppingFlowPane;
+    @FXML private Label wizardTotalPriceLabel;
+    @FXML private Label wizardTotalAmount;
 
     @FXML
     public void initialize() {
@@ -105,6 +109,25 @@ public class IMatController implements ShoppingCartListener {
 
         for (ShoppingItem shoppingItem: shoppingItems) {
             shoppingCartFlowPane.getChildren().add(new ShoppingCartCard(shoppingItem, this));
+        }
+    }
+
+    public void goToWizard() {
+        addToLocationHistory(new LocationInfo("Wizard", "", ""), true);
+        wizardShoppingFlowPane.getChildren().clear();
+        wizardPage.toFront();
+
+        wizardTotalPriceLabel.setText(dataHandler.getShoppingCart().getTotal() + " kr");
+        int totalAmount = 0;
+        for (ShoppingItem shoppingItem: dataHandler.getShoppingCart().getItems()) {
+            totalAmount += shoppingItem.getAmount();
+        }
+
+        wizardTotalAmount.setText("Totalt (" + totalAmount + " varor)");
+
+        List<ShoppingItem> shoppingItems = dataHandler.getShoppingCart().getItems();
+        for (ShoppingItem shoppingItem: shoppingItems) {
+            wizardShoppingFlowPane.getChildren().add(new WizardProductCard(shoppingItem));
         }
     }
 
@@ -188,8 +211,6 @@ public class IMatController implements ShoppingCartListener {
     public void closeDetailPane(){
         showCategory(currentProduct.getCategory(),false);
     }
-
-    private ShoppingCartHandler cartHandler = new ShoppingCartHandler();
 
     private void updateAmountLabel(){
         detailAmountLabel.setText(cartHandler.getAmountInCart(currentProduct) + " st");
