@@ -191,7 +191,10 @@ public class IMatController implements ShoppingCartListener {
 
     @FXML
     public void closeDetailPane(){
-        showCategory(currentProduct.getCategory(),false);
+        if(currentLocation.getLocation() == "Favoriter")
+            showFavorites(false);
+        else
+            showCategory(currentProduct.getCategory(),false);
     }
 
     private ShoppingCartHandler cartHandler = new ShoppingCartHandler();
