@@ -83,6 +83,12 @@ public class IMatController implements ShoppingCartListener {
     @FXML private TextField paymentPostalCode;
     @FXML private TextField paymentCity;
 
+    @FXML private TextField paymentCardName;
+    @FXML private TextField paymentCardBank;
+    @FXML private TextField paymentCardNumber;
+    @FXML private TextField paymentCardDate;
+    @FXML private TextField paymentCardCVC;
+
     @FXML
     public void initialize() {
         System.out.println("Current home path: " + System.getProperty("user.home"));
@@ -169,6 +175,25 @@ public class IMatController implements ShoppingCartListener {
         paymentCity.setText(customer.getPostAddress());
 
         wizardPage3.toFront();
+    }
+
+    @FXML public void pay() {
+        CreditCard card = dataHandler.getCreditCard();
+
+        card.setHoldersName(paymentCardName.getText());
+        card.setCardType(paymentCardBank.getText());
+        card.setCardNumber(paymentCardNumber.getText());
+        String cardExpiry = paymentCardDate.getText();
+        String expiryMonth = cardExpiry.substring(0, 2);
+        String expiryYear = cardExpiry.substring(3, 5);
+        card.setValidMonth(Integer.parseInt(expiryMonth));
+        card.setValidYear(Integer.parseInt(expiryYear));
+        card.setVerificationCode(Integer.parseInt(paymentCardCVC.getText()));
+
+        dataHandler.placeOrder(true);
+        System.out.println(dataHandler.getOrders());
+
+        goToCategories(true);
     }
 
     @FXML public void showCategory(ProductCategory category, boolean addToHistory) {
