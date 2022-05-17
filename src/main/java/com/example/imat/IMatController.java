@@ -154,7 +154,7 @@ public class IMatController implements ShoppingCartListener {
     public void goToWizard(boolean doSpecial) {
         wizardPageNavigation = 1;
 
-        if (doSpecial) {
+        if (doSpecial && !wizardPage1Done) {
             addToLocationHistory(new LocationInfo("Wizard", "", ""), true);
             wizardShoppingFlowPane.getChildren().clear();
 
@@ -198,7 +198,7 @@ public class IMatController implements ShoppingCartListener {
     public void goToPayment(boolean doSpecial) {
         wizardPageNavigation = 3;
 
-        if (doSpecial) {
+        if (doSpecial && !wizardPage3Done) {
             Customer customer = dataHandler.getCustomer();
             customer.setFirstName(deliveryFirstName.getText());
             customer.setLastName(deliveryLastName.getText());
