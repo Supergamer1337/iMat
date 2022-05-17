@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -16,15 +17,23 @@
       <Label fx:id="totalPriceLabel" layoutX="532.0" layoutY="10.0" styleClass="light-text" text="Total price" />
       <AnchorPane layoutX="741.0" layoutY="2.0" prefHeight="41.0" prefWidth="195.0" styleClass="amount-selector">
          <children>
-            <ImageView fitHeight="41.0" fitWidth="46.0" layoutX="7.0" layoutY="3.0" onMouseClicked="#removeItemFromCartInteraction" onMouseEntered="#toggleMinusButtonHover" onMouseExited="#toggleMinusButtonHover" pickOnBounds="true" preserveRatio="true" styleClass="clickable" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.topAnchor="1.0">
+            <ImageView fitHeight="41.0" fitWidth="46.0" layoutX="7.0" layoutY="3.0" onMouseClicked="#removeItemFromCartInteraction" onMouseEntered="#toggleMinusButtonHover" onMouseExited="#toggleMinusButtonHover" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.topAnchor="1.0">
                <image>
                   <Image url="@icons/minus-button.png" />
                </image>
+               <styleClass>
+                  <String fx:value="clickable" />
+                  <String fx:value="button" />
+               </styleClass>
             </ImageView>
-            <ImageView fitHeight="41.0" fitWidth="46.0" layoutX="155.0" layoutY="6.0" onMouseClicked="#addItemToCartInteraction" onMouseEntered="#togglePlusButtonHover" onMouseExited="#togglePlusButtonHover" pickOnBounds="true" preserveRatio="true" styleClass="clickable" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
+            <ImageView fitHeight="41.0" fitWidth="46.0" layoutX="155.0" layoutY="6.0" onMouseClicked="#addItemToCartInteraction" onMouseEntered="#togglePlusButtonHover" onMouseExited="#togglePlusButtonHover" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
                <image>
                   <Image url="@icons/plus-button.png" />
                </image>
+               <styleClass>
+                  <String fx:value="clickable" />
+                  <String fx:value="button" />
+               </styleClass>
             </ImageView>
             <Label fx:id="totalAmountLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="51.0" layoutY="5.0" prefHeight="31.0" prefWidth="107.0" styleClass="light-text" text="Amount" textAlignment="CENTER" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="51.0" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="3.0" />
          </children>

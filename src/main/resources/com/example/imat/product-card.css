@@ -2,6 +2,7 @@
 * {
     /* Background colors, accents etc. */
     -fx-accent1: #125B50;
+    -fx-accent1-faded: #032F28;
     -fx-accent2: #F8B400;
     -fx-accent2-faded: rgba(248, 180, 0, 0.25);
 
@@ -25,6 +26,13 @@
 
     -fx-border-color: -fx-primary-border-color;
     -fx-border-width: 1px;
+}
+
+.card{
+
+}
+.card:hover .bottom-container{
+    -fx-background-color: #002E27;
 }
 
 .bottom-container {
@@ -54,4 +62,11 @@
 
 .clickable {
     -fx-cursor: hand;
+}
+
+.button {
+    -fx-opacity: 1.0;
+}
+.button:hover {
+    -fx-opacity: 0.7;
 }
