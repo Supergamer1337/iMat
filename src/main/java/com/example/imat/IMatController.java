@@ -303,7 +303,7 @@ public class IMatController implements ShoppingCartListener {
                 break;
         }
 
-        if (wizardPage1Done && wizardPageNavigation > 1) {
+        if (wizardPageNavigation > 1) {
             wizardBackwardsArrow.setVisible(true);
         } else {
             wizardBackwardsArrow.setVisible(false);
