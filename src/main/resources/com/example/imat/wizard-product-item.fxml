@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="850.0" styleClass="background" stylesheets="@wizard-product-item.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="8.0" layoutY="5.0" prefHeight="17.0" prefWidth="150.0" styleClass="text" text="Vara" />
+      <Label layoutX="296.0" layoutY="5.0" styleClass="text" text="Kostnad" />
+      <Label layoutX="498.0" layoutY="5.0" styleClass="text" text="Antal" />
+      <Label alignment="CENTER_RIGHT" layoutX="664.0" layoutY="5.0" styleClass="text" text="Summa: Pengar kr" />
+   </children>
+</AnchorPane>

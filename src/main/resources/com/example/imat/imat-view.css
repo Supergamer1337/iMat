@@ -5,6 +5,7 @@
     -fx-accent2: #F8B400;
     -fx-accent2-faded: rgba(248, 180, 0, 0.25);
     -fx-accent3: #FAF5E4;
+    -fx-accent4: #EC2020;
 
     /* Text colors */
     -fx-primary-text-color: #000000;
@@ -125,6 +126,114 @@
 .detail-price {
     -fx-text-fill: -fx-primary-text-color;
     -fx-font-size: 14pt;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: bold;
+}
+
+.page-background {
+    -fx-background-color: #f4f4f4;
+}
+
+.green-background {
+    -fx-background-color: -fx-accent1;
+}
+
+.wizard-text {
+    -fx-text-fill: -fx-secondary-text-color;
+    -fx-font-size: 20pt;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: bold;
+}
+
+.active-wizard-tab-number {
+    -fx-background-color: -fx-accent4;
+    -fx-background-radius: 100%;
+}
+
+.big-prominent-done-button {
+    -fx-background-color: -fx-accent4;
+    -fx-background-radius: 10px;
+    -fx-font-family: Roboto;
+    -fx-font-size: 24pt;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-secondary-text-color;
+    -fx-cursor: hand;
+}
+
+.big-prominent-done-button:hover {
+    -fx-opacity: 0.8;
+}
+
+.wizard-show-total-box {
+    -fx-border-width: 1px;
+    -fx-border-color: -fx-primary-border-color;
+}
+
+.wizard-total-text {
+    -fx-text-fill: -fx-primary-text-color;
+    -fx-font-size: 18pt;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: bold;
+}
+
+.weekday-label {
+    -fx-text-fill: -fx-secondary-text-color;
+    -fx-font-size: 18pt;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: bold;
+}
+
+.time-selector-option-background {
+    -fx-background-color: -fx-secondary-text-color;
+    -fx-background-radius: 5px;
+}
+
+.time-selector-option-text {
+    -fx-text-fill: -fx-primary-text-color;
+    -fx-font-size: 14pt;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: bold;
+}
+
+.form-background {
+    -fx-background-color: -fx-accent1;
+    -fx-background-radius: 10px;
+}
+
+.form-text-input {
+    -fx-text-fill: -fx-primary-text-color;
+    -fx-font-size: 14pt;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: bold;
+    -fx-background-color: -fx-secondary-text-color;
+    -fx-background-radius: 9999999999px;
+}
+
+.form-input-label {
+    -fx-text-fill: -fx-secondary-text-color;
+    -fx-font-size: 16pt;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: bold;
+}
+
+.form-header {
+    -fx-text-fill: -fx-secondary-text-color;
+    -fx-font-size: 24pt;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: bold;
+}
+
+.form-checkbox-text {
+    -fx-text-fill: -fx-secondary-text-color;
+    -fx-font-size: 14pt;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+}
+
+.delivery-text {
+    -fx-text-fill: -fx-primary-text-color;
+    -fx-font-size: 18pt;
     -fx-font-family: "Roboto";
     -fx-font-weight: bold;
 }
