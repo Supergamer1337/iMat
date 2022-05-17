@@ -61,6 +61,8 @@ public class IMatController implements ShoppingCartListener {
     @FXML private Label detailCategoryLabel;
     private Product currentProduct;
 
+    @FXML private FlowPane wizardCheckoutWares;
+
     @FXML
     public void initialize() {
         System.out.println("Current home path: " + System.getProperty("user.home"));

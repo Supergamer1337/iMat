@@ -294,15 +294,6 @@
                   </FlowPane>
                </content>
             </ScrollPane>
-            <ScrollPane fx:id="categoriesPage" fitToWidth="true" hbarPolicy="NEVER" prefHeight="733.0" prefWidth="1440.0">
-               <content>
-                  <FlowPane fx:id="categoryFlowPane" alignment="TOP_CENTER" hgap="20.0" prefHeight="758.0" prefWidth="1424.0" prefWrapLength="1.0E27" vgap="20.0">
-                     <padding>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                     </padding>
-                  </FlowPane>
-               </content>
-            </ScrollPane>
             <AnchorPane fx:id="detailPage" prefHeight="200.0" prefWidth="200.0">
                <children>
                   <AnchorPane onMouseClicked="#closeDetailPane" prefHeight="643.0" prefWidth="1237.0" styleClass="darkening" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
@@ -337,6 +328,59 @@
                         <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="886.0" layoutY="14.0" onMouseClicked="#closeDetailPane" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@icons/cross.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <ScrollPane fx:id="categoriesPage" fitToWidth="true" hbarPolicy="NEVER" prefHeight="733.0" prefWidth="1440.0">
+               <content>
+                  <FlowPane fx:id="categoryFlowPane" alignment="TOP_CENTER" hgap="20.0" prefHeight="758.0" prefWidth="1424.0" prefWrapLength="1.0E27" vgap="20.0">
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </FlowPane>
+               </content>
+            </ScrollPane>
+            <AnchorPane fx:id="wizardPage" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <StackPane prefHeight="667.0" prefWidth="1440.0" styleClass="page-background">
+                     <children>
+                        <AnchorPane prefHeight="667.0" prefWidth="1393.0">
+                           <children>
+                              <ScrollPane hbarPolicy="NEVER" layoutX="295.0" prefHeight="513.0" prefWidth="850.0">
+                                 <content>
+                                    <FlowPane fx:id="wizardCheckoutWares" alignment="TOP_CENTER" columnHalignment="CENTER" prefHeight="511.0" prefWidth="851.0" />
+                                 </content>
+                              </ScrollPane>
+                              <Button layoutX="606.0" layoutY="524.0" mnemonicParsing="false" styleClass="big-prominent-done-button" text="Till Leverans" />
+                              <AnchorPane layoutX="-1.0" layoutY="598.0" prefHeight="69.0" prefWidth="1440.0" styleClass="wizard-show-total-box" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0">
+                                 <children>
+                                    <Label alignment="CENTER_RIGHT" layoutX="423.0" layoutY="17.0" styleClass="wizard-total-text" text="Totalt (34 varor)" />
+                                    <Label layoutX="837.0" layoutY="17.0" styleClass="wizard-total-text" text="Totalt Pris" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </StackPane>
+                  <AnchorPane layoutY="667.0" prefHeight="92.0" prefWidth="1440.0" styleClass="green-background">
+                     <children>
+                        <Label alignment="CENTER" layoutX="235.0" layoutY="27.0" prefHeight="39.0" prefWidth="40.0" text="1">
+                           <styleClass>
+                              <String fx:value="wizard-text" />
+                              <String fx:value="active-wizard-tab-number" />
+                           </styleClass>
+                        </Label>
+                        <Label layoutX="288.0" layoutY="27.0" styleClass="wizard-text" text="Varukorg" />
+                        <Label layoutX="680.0" layoutY="27.0" styleClass="wizard-text" text="Leverans" />
+                        <Label layoutX="1065.0" layoutY="27.0" styleClass="wizard-text" text="Betalning" />
+                        <Label alignment="CENTER" layoutX="628.0" layoutY="27.0" prefHeight="39.0" prefWidth="40.0" styleClass="wizard-text" text="2" />
+                        <Label alignment="CENTER" layoutX="1016.0" layoutY="27.0" prefHeight="39.0" prefWidth="40.0" styleClass="wizard-text" text="3" />
+                        <ImageView fitHeight="76.0" fitWidth="96.0" layoutX="1322.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/wizard-forward-arrow.png" />
                            </image>
                         </ImageView>
                      </children>
