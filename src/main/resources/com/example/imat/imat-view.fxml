@@ -568,12 +568,12 @@
                         <Label layoutX="1065.0" layoutY="27.0" styleClass="wizard-text" text="Betalning" />
                         <Label fx:id="wizardIndicator2" alignment="CENTER" layoutX="628.0" layoutY="27.0" prefHeight="39.0" prefWidth="40.0" styleClass="wizard-text" text="2" />
                         <Label fx:id="wizardIndicator3" alignment="CENTER" layoutX="1016.0" layoutY="27.0" prefHeight="39.0" prefWidth="40.0" styleClass="wizard-text" text="3" />
-                        <ImageView fitHeight="76.0" fitWidth="96.0" layoutX="1322.0" layoutY="8.0" onMouseClicked="#wizardForward" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="wizardForwardArrow" fitHeight="76.0" fitWidth="96.0" layoutX="1322.0" layoutY="8.0" onMouseClicked="#wizardForward" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@icons/wizard-forward-arrow.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="76.0" fitWidth="96.0" layoutX="21.0" layoutY="8.0" onMouseClicked="#wizardBackwards" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="wizardBackwardsArrow" fitHeight="76.0" fitWidth="96.0" layoutX="21.0" layoutY="8.0" onMouseClicked="#wizardBackwards" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@icons/wizard-backward-arrow.png" />
                            </image>

@@ -69,6 +69,10 @@ public class IMatController implements ShoppingCartListener {
 
     private int wizardPageNavigation = 1;
 
+    private boolean wizardPage1Done = false;
+    private boolean wizardPage2Done = false;
+    private boolean wizardPage3Done = false;
+
     @FXML private FlowPane wizardShoppingFlowPane;
     @FXML private Label wizardTotalPriceLabel;
     @FXML private Label wizardTotalAmount;
@@ -94,6 +98,9 @@ public class IMatController implements ShoppingCartListener {
     @FXML private Label wizardIndicator1;
     @FXML private Label wizardIndicator2;
     @FXML private Label wizardIndicator3;
+
+    @FXML private ImageView wizardBackwardsArrow;
+    @FXML private ImageView wizardForwardArrow;
 
     @FXML
     public void initialize() {
@@ -163,6 +170,7 @@ public class IMatController implements ShoppingCartListener {
             for (ShoppingItem shoppingItem: shoppingItems) {
                 wizardShoppingFlowPane.getChildren().add(new WizardProductCard(shoppingItem));
             }
+            wizardPage1Done = true;
         }
 
         wizardPage.toFront();
@@ -170,8 +178,14 @@ public class IMatController implements ShoppingCartListener {
         updateWizardIndicator();
     }
 
-    @FXML
-    public void goToDelivery() {
+    @FXML void goToDelivery() {
+        goToDelivery(true);
+    }
+
+    public void goToDelivery(boolean doSpecial) {
+        if (doSpecial) {
+            wizardPage2Done = true;
+        }
         wizardPageNavigation = 2;
         wizardPage2.toFront();
         updateWizardIndicator();
@@ -197,6 +211,8 @@ public class IMatController implements ShoppingCartListener {
             paymentAddress.setText(customer.getAddress());
             paymentPostalCode.setText(customer.getPostCode());
             paymentCity.setText(customer.getPostAddress());
+
+            wizardPage3Done = true;
         }
 
         wizardPage3.toFront();
@@ -225,7 +241,7 @@ public class IMatController implements ShoppingCartListener {
     public void wizardForward() {
         switch (wizardPageNavigation) {
             case 1:
-                goToDelivery();
+                goToDelivery(false);
                 break;
             case 2:
                 goToPayment(false);
@@ -255,6 +271,7 @@ public class IMatController implements ShoppingCartListener {
         wizardIndicator1.getStyleClass().remove("active-wizard-tab-number");
         wizardIndicator2.getStyleClass().remove("active-wizard-tab-number");
         wizardIndicator3.getStyleClass().remove("active-wizard-tab-number");
+
         switch (wizardPageNavigation) {
             case 1:
                 wizardIndicator1.getStyleClass().add("active-wizard-tab-number");
@@ -267,6 +284,18 @@ public class IMatController implements ShoppingCartListener {
                 break;
             default:
                 break;
+        }
+
+        if (wizardPage1Done && wizardPageNavigation > 1) {
+            wizardBackwardsArrow.setVisible(true);
+        } else {
+            wizardBackwardsArrow.setVisible(false);
+        }
+
+        if (wizardPage2Done && wizardPageNavigation < 2 || wizardPage3Done && wizardPageNavigation < 3) {
+            wizardForwardArrow.setVisible(true);
+        } else {
+            wizardForwardArrow.setVisible(false);
         }
     }
 
