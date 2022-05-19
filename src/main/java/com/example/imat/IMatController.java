@@ -112,6 +112,9 @@ public class IMatController implements ShoppingCartListener {
     @FXML private FlowPane searchPane;
     @FXML private ScrollPane searchBase;
 
+    @FXML private AnchorPane confirmationPane;
+    @FXML private Label confirmDateLabel;
+
     @FXML
     public void initialize() {
         System.out.println("Current home path: " + System.getProperty("user.home"));
@@ -351,8 +354,8 @@ public class IMatController implements ShoppingCartListener {
         }
 
         dataHandler.placeOrder(true);
-
-        goToCategories(true);
+        confirmDateLabel.setText("12/7 kl: 22:30"); //TODO: fix date
+        confirmationPane.toFront();
     }
 
     public void wizardForward() {
