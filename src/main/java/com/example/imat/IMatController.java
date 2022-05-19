@@ -139,6 +139,10 @@ public class IMatController implements ShoppingCartListener {
     }
 
     public void goToShoppingCart(boolean addToHistory){
+        if (currentLocation != null) {
+            if (currentLocation.getLocation().equals("Kundvagn")) return;
+        }
+
         addToLocationHistory(new LocationInfo("Kundvagn", "Kundvagn", "Kundvagn"), addToHistory);
         resetWizard();
         cartHandler.updateShoppingCart();
@@ -401,7 +405,7 @@ public class IMatController implements ShoppingCartListener {
 
 
     @FXML public void showCategory(ProductCategory category, boolean addToHistory) {
-        addToLocationHistory(new LocationInfo(category.name(), CategoryCard.getPrettyCategoryName(category), CategoryCard.getPrettyCategoryName(category)), addToHistory);
+        addToLocationHistory(new LocationInfo(category.name(), CategoryCard.getPrettyCategoryName(category), "Kategorier/" + CategoryCard.getPrettyCategoryName(category)), addToHistory);
         resetWizard();
         cartHandler.updateShoppingCart();
 
@@ -439,7 +443,9 @@ public class IMatController implements ShoppingCartListener {
     }
 
     public void goToProfile(boolean addToHistory){
-        clearLocationHistory();
+        if (currentLocation != null) {
+            if (currentLocation.getLocation().equals("Profil")) return;
+        }
         addToLocationHistory(new LocationInfo("Profil", "Profil", "Profil"), addToHistory);
         resetWizard();
 
