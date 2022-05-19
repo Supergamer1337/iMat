@@ -355,7 +355,7 @@ public class IMatController implements ShoppingCartListener {
 
 
     @FXML public void showCategory(ProductCategory category, boolean addToHistory) {
-        addToLocationHistory(new LocationInfo(category.name(), CategoryCard.getPrettyCategoryName(category), CategoryCard.getPrettyCategoryName(category)), addToHistory);
+        addToLocationHistory(new LocationInfo(category.name(), CategoryCard.getPrettyCategoryName(category), "Kategorier/" + CategoryCard.getPrettyCategoryName(category)), addToHistory);
         resetWizard();
         cartHandler.updateShoppingCart();
 
