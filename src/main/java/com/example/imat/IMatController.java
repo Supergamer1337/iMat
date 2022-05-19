@@ -114,6 +114,11 @@ public class IMatController implements ShoppingCartListener {
 
     @FXML
     public void initialize() {
+        // Shutdown hooks
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            dataHandler.shutDown();
+        }));
+
         System.out.println("Current home path: " + System.getProperty("user.home"));
         dataHandler.getShoppingCart().addShoppingCartListener(this);
         addToLocationHistory(new LocationInfo("Kategorier", "Kategorier", "Kategorier"), true);
