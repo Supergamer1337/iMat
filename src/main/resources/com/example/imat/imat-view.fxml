@@ -19,7 +19,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1440.0" stylesheets="@imat-view.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.imat.IMatController">
    <children>
-      <ScrollPane fx:id="searchBase" layoutX="495.0" layoutY="98.0" prefHeight="265.0" prefWidth="445.0">
+      <ScrollPane fx:id="searchBase" layoutX="495.0" layoutY="98.0" prefHeight="265.0" prefWidth="445.0" style="-fx-opacity: 0%;">
          <content>
             <FlowPane fx:id="searchPane" prefHeight="262.0" prefWidth="443.0" />
          </content>
