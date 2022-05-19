@@ -196,11 +196,22 @@ public class IMatController implements ShoppingCartListener {
 
     public void goToDelivery(boolean doSpecial) {
         if (doSpecial) {
+            updateDeliveryDataFromBackend();
             wizardPage2Done = true;
         }
         wizardPageNavigation = 2;
         wizardPage2.toFront();
         updateWizardIndicator();
+    }
+
+    private void updateDeliveryDataFromBackend() {
+        Customer customer = dataHandler.getCustomer();
+
+        deliveryFirstName.setText(customer.getFirstName());
+        deliveryLastName.setText(customer.getLastName());
+        deliveryAddress.setText(customer.getAddress());
+        deliveryPostalCode.setText(customer.getPostCode());
+        deliveryCity.setText(customer.getPostAddress());
     }
 
     @FXML public void goToPayment() {
@@ -211,18 +222,13 @@ public class IMatController implements ShoppingCartListener {
         wizardPageNavigation = 3;
 
         if (doSpecial && !wizardPage3Done) {
-            Customer customer = dataHandler.getCustomer();
-            customer.setFirstName(deliveryFirstName.getText());
-            customer.setLastName(deliveryLastName.getText());
-            customer.setAddress(deliveryAddress.getText());
-            customer.setPostCode(deliveryPostalCode.getText());
-            customer.setPostAddress(deliveryCity.getText());
+            paymentFirstName.setText(deliveryFirstName.getText());
+            paymentLastName.setText(deliveryLastName.getText());
+            paymentAddress.setText(deliveryAddress.getText());
+            paymentPostalCode.setText(deliveryPostalCode.getText());
+            paymentCity.setText(deliveryCity.getText());
 
-            paymentFirstName.setText(customer.getFirstName());
-            paymentLastName.setText(customer.getLastName());
-            paymentAddress.setText(customer.getAddress());
-            paymentPostalCode.setText(customer.getPostCode());
-            paymentCity.setText(customer.getPostAddress());
+            updatePaymentDataFromBackend();
 
             wizardPage3Done = true;
         }
@@ -231,8 +237,18 @@ public class IMatController implements ShoppingCartListener {
         updateWizardIndicator();
     }
 
+    private void updatePaymentDataFromBackend() {
+        CreditCard creditCard = dataHandler.getCreditCard();
+
+        paymentCardName.setText(creditCard.getHoldersName());
+        paymentCardBank.setText(creditCard.getCardType());
+        paymentCardNumber.setText(creditCard.getCardNumber());
+        paymentCardDate.setText(creditCard.getValidMonth() + "/" + creditCard.getValidYear());
+        paymentCardCVC.setText(String.valueOf(creditCard.getVerificationCode()));
+    }
+
     @FXML public void pay(){
-        boolean somthingIsWrong = false;
+        boolean somethingIsWrong = false;
         removeBorder(paymentCardNumber);
         removeBorder(paymentCardCVC);
         removeBorder(paymentCardDate);
@@ -245,27 +261,27 @@ public class IMatController implements ShoppingCartListener {
         Pattern cvcPat = Pattern.compile(cvcRegex);
         Pattern datePat = Pattern.compile(dateRegex);
 
-        if(paymentCardName.getText() == ""){
+        if(paymentCardName.getText().equals("")){
             setBorderColor(paymentCardName);
         }
 
-        if(paymentCardBank.getText() == ""){
+        if(paymentCardBank.getText().equals("")){
             setBorderColor(paymentCardBank);
         }
 
         if(!cardPat.matcher(paymentCardNumber.getText()).find()){
-            somthingIsWrong = true;
+            somethingIsWrong = true;
             setBorderColor(paymentCardNumber);
         }
         if(!cvcPat.matcher(paymentCardCVC.getText()).find()){
-            somthingIsWrong = true;
+            somethingIsWrong = true;
             setBorderColor(paymentCardCVC);
         }
         if(!datePat.matcher(paymentCardDate.getText()).find()){
-            somthingIsWrong = true;
+            somethingIsWrong = true;
             setBorderColor(paymentCardDate);
         }
-        if(somthingIsWrong){
+        if(somethingIsWrong){
             return;
         }
         confirmPayment();
@@ -279,7 +295,7 @@ public class IMatController implements ShoppingCartListener {
         textField.setStyle("-fx-border-width: 0px; -fx-border-color: #EC2020; -fx-border-radius: 9999999999;");
     }
 
-        public void confirmPayment() {
+    public void confirmPayment() {
         if (paymentSaveCardCheckbox.isSelected()) {
             CreditCard card = dataHandler.getCreditCard();
             card.setHoldersName(paymentCardName.getText());
@@ -294,14 +310,14 @@ public class IMatController implements ShoppingCartListener {
             card.setVerificationCode(Integer.parseInt(paymentCardCVC.getText()));
         }
 
-        if (!paymentAddressSaveCheckbox.isSelected()) {
+        if (paymentAddressSaveCheckbox.isSelected()) {
             Customer customer = dataHandler.getCustomer();
 
-            customer.setFirstName("");
-            customer.setLastName("");
-            customer.setAddress("");
-            customer.setPostCode("");
-            customer.setPostAddress("");
+            customer.setFirstName(paymentFirstName.getText());
+            customer.setLastName(paymentLastName.getText());
+            customer.setAddress(paymentAddress.getText());
+            customer.setPostCode(paymentPostalCode.getText());
+            customer.setPostAddress(paymentCity.getText());
         }
 
         dataHandler.placeOrder(true);
