@@ -2,6 +2,8 @@ package com.example.imat;
 
 import com.example.imat.models.LocationInfo;
 import com.example.imat.utils.StyleUtils;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -12,6 +14,7 @@ import se.chalmers.cse.dat216.project.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
 import java.util.regex.Pattern;
 
 public class IMatController implements ShoppingCartListener {
@@ -105,6 +108,10 @@ public class IMatController implements ShoppingCartListener {
     @FXML private ImageView wizardBackwardsArrow;
     @FXML private ImageView wizardForwardArrow;
 
+    @FXML private TextField searchBar;
+    @FXML private FlowPane searchPane;
+    @FXML private ScrollPane searchBase;
+
     @FXML
     public void initialize() {
         System.out.println("Current home path: " + System.getProperty("user.home"));
@@ -119,6 +126,29 @@ public class IMatController implements ShoppingCartListener {
                     break;
                 }
             }
+        }
+        searchBar.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                searchPane.getChildren().clear();
+                if(t1 != ""){
+                    searchBase.toFront();
+                    searchBase.setStyle("-fx-opacity: 0");
+
+                    List<Product> products = dataHandler.findProducts(s);
+                    showSeachProducts(products);
+                }
+                else {
+                    searchBase.toBack();
+                    searchBase.setStyle("-fx-opacity: 0");
+                }
+            }
+        });
+    }
+
+    private void showSeachProducts(List<Product> products){
+        for (Product product : products) {
+            searchPane.getChildren().add(new SearchCard(product,this));
         }
     }
 
@@ -488,10 +518,11 @@ public class IMatController implements ShoppingCartListener {
 
     @FXML
     public void closeDetailPane(){
-        if(currentLocation.getLocation() == "Favoriter")
+        detailPage.toBack();
+        /*if(currentLocation.getLocation() == "Favoriter")
             showFavorites(false);
         else
-            showCategory(currentProduct.getCategory(),false);
+            showCategory(currentProduct.getCategory(),false);*/
     }
 
     private void updateAmountLabel(){
@@ -534,6 +565,11 @@ public class IMatController implements ShoppingCartListener {
         int total = (int)dataHandler.getShoppingCart().getTotal();
         shoppingCartCounterLabel.setText(String.valueOf(total));
     }
+
+
+
+
+
 
     private void addToLocationHistory(LocationInfo currentLocation, boolean addToHistory) {
         removeLocationHighlight();
