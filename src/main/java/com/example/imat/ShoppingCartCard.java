@@ -16,6 +16,7 @@ public class ShoppingCartCard extends AnchorPane {
     @FXML Label productNameLabel;
     @FXML Label totalAmountLabel;
     @FXML ImageView productImageView;
+    @FXML AnchorPane cartAnchorPane;
 
     Boolean minusButtonIsHoverd = false;
     Boolean plusButtonIsHoverd = false;
@@ -63,12 +64,16 @@ public class ShoppingCartCard extends AnchorPane {
     @FXML
     public void addItemToCartInteraction(){
         cartHandler.addProductToCart(shoppingItem.getProduct());
+        cartAnchorPane.setStyle("-fx-opacity: 1;");
         updateAmountLabels();
     }
 
     @FXML
     public void removeItemFromCartInteraction(){
         cartHandler.removeProductFromCart(shoppingItem.getProduct(), true);
+        if(cartHandler.getAmountInCart(shoppingItem.getProduct()) == 0){
+            cartAnchorPane.setStyle("-fx-opacity: 0.4;");
+        }
         updateAmountLabels();
     }
 

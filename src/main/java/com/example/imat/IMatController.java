@@ -12,6 +12,7 @@ import se.chalmers.cse.dat216.project.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class IMatController implements ShoppingCartListener {
 
@@ -226,7 +227,55 @@ public class IMatController implements ShoppingCartListener {
         updateWizardIndicator();
     }
 
-    @FXML public void pay() {
+    @FXML public void pay(){
+        boolean somthingIsWrong = false;
+        removeBorder(paymentCardNumber);
+        removeBorder(paymentCardCVC);
+        removeBorder(paymentCardDate);
+        removeBorder(paymentCardName);
+        removeBorder(paymentCardBank);
+        final String dateRegex = "^\\d{2}\\/\\d{2}$";
+        final String cardRegex = "^\\d{16}$";
+        final String cvcRegex = "^\\d{3}$";
+        Pattern cardPat = Pattern.compile(cardRegex);
+        Pattern cvcPat = Pattern.compile(cvcRegex);
+        Pattern datePat = Pattern.compile(dateRegex);
+
+        if(paymentCardName.getText() == ""){
+            setBorderColor(paymentCardName);
+        }
+
+        if(paymentCardBank.getText() == ""){
+            setBorderColor(paymentCardBank);
+        }
+
+        if(!cardPat.matcher(paymentCardNumber.getText()).find()){
+            somthingIsWrong = true;
+            setBorderColor(paymentCardNumber);
+        }
+        if(!cvcPat.matcher(paymentCardCVC.getText()).find()){
+            somthingIsWrong = true;
+            setBorderColor(paymentCardCVC);
+        }
+        if(!datePat.matcher(paymentCardDate.getText()).find()){
+            somthingIsWrong = true;
+            setBorderColor(paymentCardDate);
+        }
+        if(somthingIsWrong){
+            return;
+        }
+        confirmPayment();
+    }
+
+    private void setBorderColor(TextField textField){
+        textField.setStyle("-fx-border-width: 2px; -fx-border-color: #EC2020; -fx-border-radius: 9999999999;");
+    }
+
+    private void removeBorder(TextField textField) {
+        textField.setStyle("-fx-border-width: 0px; -fx-border-color: #EC2020; -fx-border-radius: 9999999999;");
+    }
+
+        public void confirmPayment() {
         if (paymentSaveCardCheckbox.isSelected()) {
             CreditCard card = dataHandler.getCreditCard();
             card.setHoldersName(paymentCardName.getText());
@@ -235,6 +284,7 @@ public class IMatController implements ShoppingCartListener {
             String cardExpiry = paymentCardDate.getText();
             String expiryMonth = cardExpiry.substring(0, 2);
             String expiryYear = cardExpiry.substring(3, 5);
+
             card.setValidMonth(Integer.parseInt(expiryMonth));
             card.setValidYear(Integer.parseInt(expiryYear));
             card.setVerificationCode(Integer.parseInt(paymentCardCVC.getText()));
@@ -481,8 +531,8 @@ public class IMatController implements ShoppingCartListener {
 
     @Override
     public void shoppingCartChanged(CartEvent cartEvent) {
-        List<ShoppingItem> shopItem = dataHandler.getShoppingCart().getItems();
-        shoppingCartCounterLabel.setText(String.valueOf(shopItem.size()));
+        int total = (int)dataHandler.getShoppingCart().getTotal();
+        shoppingCartCounterLabel.setText(String.valueOf(total));
     }
 
     private void addToLocationHistory(LocationInfo currentLocation, boolean addToHistory) {
