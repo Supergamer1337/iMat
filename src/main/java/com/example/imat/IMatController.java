@@ -133,7 +133,7 @@ public class IMatController implements ShoppingCartListener {
                 searchPane.getChildren().clear();
                 if(t1 != ""){
                     searchBase.toFront();
-                    searchBase.setStyle("-fx-opacity: 0");
+                    searchBase.setStyle("-fx-opacity: 1");
 
                     List<Product> products = dataHandler.findProducts(s);
                     showSeachProducts(products);
