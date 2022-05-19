@@ -33,7 +33,7 @@ public class SearchCard extends AnchorPane {
         searchLabel.setText(product.getName());
     }
 
-    @FXML public void gu(){
+    @FXML public void openDetail(){
         parentController.productItemPressed(product);
     }
 }
