@@ -531,8 +531,8 @@ public class IMatController implements ShoppingCartListener {
 
     @Override
     public void shoppingCartChanged(CartEvent cartEvent) {
-        List<ShoppingItem> shopItem = dataHandler.getShoppingCart().getItems();
-        shoppingCartCounterLabel.setText(String.valueOf(shopItem.size()));
+        int total = (int)dataHandler.getShoppingCart().getTotal();
+        shoppingCartCounterLabel.setText(String.valueOf(total));
     }
 
     private void addToLocationHistory(LocationInfo currentLocation, boolean addToHistory) {

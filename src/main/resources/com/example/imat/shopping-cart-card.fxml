@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<fx:root fx:id="cartAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#showDetails" prefHeight="50.0" prefWidth="950.0" styleClass="background" stylesheets="@shopping-cart-card.css" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="cartAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#showDetails" prefHeight="50.0" prefWidth="950.0" stylesheets="@shopping-cart-card.css" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="productImageView" fitHeight="42.0" fitWidth="60.0" layoutX="11.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -38,6 +38,9 @@
             <Label fx:id="totalAmountLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="51.0" layoutY="5.0" prefHeight="31.0" prefWidth="107.0" styleClass="light-text" text="Amount" textAlignment="CENTER" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="51.0" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="3.0" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutY="1.0" prefHeight="50.0" prefWidth="736.0" styleClass="backgoundhover" />
    </children>
+   <styleClass>
+      <String fx:value="background" />
+      <String fx:value="clickable" />
+   </styleClass>
 </fx:root>
