@@ -23,8 +23,12 @@
     -fx-background-radius: 10px;
 }
 
-.background:hover {
+.backgoundhover{
+
+}
+.backgoundhover:hover .background{
     -fx-background-color: #002E27;
+
 }
 
 .light-text {
