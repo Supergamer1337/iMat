@@ -5,6 +5,7 @@ import com.example.imat.utils.StyleUtils;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -529,6 +530,11 @@ public class IMatController implements ShoppingCartListener {
 
     @FXML
     public void cartItemPressed(ShoppingItem shoppingItem){
+
+        for (Node card : shoppingCartFlowPane.getChildren()) {
+            card.getStyleClass().remove("background-selected");
+        }
+
         cartProductNameLabel.setText(shoppingItem.getProduct().getName());
         Image image = new Image(getClass().getResourceAsStream("images/" + shoppingItem.getProduct().getImageName()));
         cartImage.setImage(image);
@@ -549,10 +555,6 @@ public class IMatController implements ShoppingCartListener {
     @FXML
     public void closeDetailPane(){
         detailPage.toBack();
-        /*if(currentLocation.getLocation() == "Favoriter")
-            showFavorites(false);
-        else
-            showCategory(currentProduct.getCategory(),false);*/
     }
 
     private void updateAmountLabel(){
