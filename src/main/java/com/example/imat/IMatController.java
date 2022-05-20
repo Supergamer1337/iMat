@@ -510,6 +510,7 @@ public class IMatController implements ShoppingCartListener {
         resetWizard();
 
         profileAnchorPane.toFront();
+        showProfileInformation();
     }
 
     @FXML public void showProfileHistory(){
@@ -530,6 +531,14 @@ public class IMatController implements ShoppingCartListener {
         profileDeliveryAddress.setText(savedCustomerData.getAddress());
         profileDeliveryPostalcode.setText(savedCustomerData.getPostCode());
         profileDeliveryCity.setText(savedCustomerData.getPostAddress());
+
+        CreditCard savedCreditCardData = dataHandler.getCreditCard();
+
+        profilePaymentName.setText(savedCreditCardData.getHoldersName());
+        profilePaymentBank.setText(savedCreditCardData.getCardType());
+        profilePaymentCardNumber.setText(savedCreditCardData.getCardNumber());
+        profilePaymentDate.setText(savedCreditCardData.getValidMonth() + "/" + savedCreditCardData.getValidYear());
+        profilePaymentCVC.setText(String.valueOf(savedCreditCardData.getVerificationCode()));
     }
 
     @FXML public void saveProfileInformation() {
