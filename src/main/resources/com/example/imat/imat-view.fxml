@@ -54,7 +54,7 @@
                         <Image url="@icons/shopping-cart.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="shoppingCartCounterLabel" alignment="CENTER" layoutX="1308.0" layoutY="78.0" prefHeight="25.0" prefWidth="25.0" stylesheets="@shopping-cart.css" text="0" AnchorPane.rightAnchor="107.0" AnchorPane.topAnchor="78.0">
+                  <Label fx:id="shoppingCartCounterLabel" alignment="CENTER" layoutX="1285.0" layoutY="89.0" prefHeight="25.0" prefWidth="68.0" stylesheets="@shopping-cart.css" text="0" AnchorPane.rightAnchor="87.0" AnchorPane.topAnchor="89.0">
                      <styleClass>
                         <String fx:value="cart-counter" />
                         <String fx:value="third-text" />
