@@ -287,7 +287,9 @@ public class IMatController implements ShoppingCartListener {
         paymentCardName.setText(creditCard.getHoldersName());
         paymentCardBank.setText(creditCard.getCardType());
         paymentCardNumber.setText(creditCard.getCardNumber());
-        paymentCardDate.setText(creditCard.getValidMonth() + "/" + creditCard.getValidYear());
+        int month = creditCard.getValidMonth();
+        int year = creditCard.getValidYear();
+        paymentCardDate.setText((month > 9 ? month : "0" + month) + "/" + (year > 9 ? year : "0" + year));
         paymentCardCVC.setText(String.valueOf(creditCard.getVerificationCode()));
     }
 
@@ -537,7 +539,9 @@ public class IMatController implements ShoppingCartListener {
         profilePaymentName.setText(savedCreditCardData.getHoldersName());
         profilePaymentBank.setText(savedCreditCardData.getCardType());
         profilePaymentCardNumber.setText(savedCreditCardData.getCardNumber());
-        profilePaymentDate.setText(savedCreditCardData.getValidMonth() + "/" + savedCreditCardData.getValidYear());
+        int month = savedCreditCardData.getValidMonth();
+        int year = savedCreditCardData.getValidYear();
+        profilePaymentDate.setText((month > 9 ? month : "0" + month) + "/" + (year > 9 ? year : "0" + year));
         profilePaymentCVC.setText(String.valueOf(savedCreditCardData.getVerificationCode()));
     }
 
