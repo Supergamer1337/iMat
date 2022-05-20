@@ -128,6 +128,13 @@ public class IMatController implements ShoppingCartListener {
     @FXML private AnchorPane confirmationPane;
     @FXML private Label confirmDateLabel;
 
+    @FXML private AnchorPane date1030, date1031, date1001, date1002, date1003, date1004, date1005,
+            date1330, date1331, date1301, date1302, date1303, date1304, date1305,
+            date1530, date1531, date1501, date1502, date1503, date1504, date1505;
+    private AnchorPane[] delivList = {date1030, date1031, date1001, date1002, date1003, date1004, date1005,
+            date1330, date1331, date1301, date1302, date1303, date1304, date1305,
+            date1530, date1531, date1501, date1502, date1503, date1504, date1505};
+
     @FXML private FlowPane profileHistoryFlowPane;
 
     @FXML
@@ -589,11 +596,6 @@ public class IMatController implements ShoppingCartListener {
         if (!currentLocation.getLocation().equals("Kundvagn")) { // Too lazy to make it hoverable when active.
             StyleUtils.toggleHoverImage(shoppingCartIsHovered, "icons/shopping-cart-hover.png", "icons/shopping-cart.png", shoppingCartImage);
         }
-    }
-
-    @FXML
-    public void togglePlusbuttonHover(){
-
     }
 
     @FXML
