@@ -583,11 +583,6 @@ public class IMatController implements ShoppingCartListener {
     }
 
     @FXML
-    public void togglePlusbuttonHover(){
-
-    }
-
-    @FXML
     public void cartItemPressed(ShoppingItem shoppingItem){
 
         for (Node card : shoppingCartFlowPane.getChildren()) {
