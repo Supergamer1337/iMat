@@ -124,10 +124,11 @@ public class IMatController implements ShoppingCartListener {
     @FXML private TextField profilePaymentCardNumber;
     @FXML private TextField profilePaymentDate;
     @FXML private TextField profilePaymentCVC;
-    @FXML private Button profilePaymentSaveButton;
   
     @FXML private AnchorPane confirmationPane;
     @FXML private Label confirmDateLabel;
+
+    @FXML private FlowPane profileHistoryFlowPane;
 
     @FXML
     public void initialize() {
@@ -341,6 +342,13 @@ public class IMatController implements ShoppingCartListener {
         confirmPayment();
     }
 
+    private void updateHistory() {
+        profileHistoryFlowPane.getChildren().clear();
+        for (Order order : dataHandler.getOrders()) {
+            profileHistoryFlowPane.getChildren().add(new OrderHistoryCard(order));
+        }
+    }
+
     private void setBorderColor(TextField textField){
         textField.setStyle("-fx-border-width: 2px; -fx-border-color: #EC2020; -fx-border-radius: 9999999999;");
     }
@@ -524,6 +532,7 @@ public class IMatController implements ShoppingCartListener {
     }
 
     @FXML public void showProfileHistory(){
+        updateHistory();
         profileHistoryPane.toFront();
     }
 
