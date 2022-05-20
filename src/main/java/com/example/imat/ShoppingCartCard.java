@@ -58,6 +58,7 @@ public class ShoppingCartCard extends AnchorPane {
 
     @FXML void showDetails() {
         parentController.cartItemPressed(shoppingItem);
+        cartAnchorPane.getStyleClass().add("background-selected");
     }
 
 

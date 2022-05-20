@@ -6,15 +6,17 @@ import java.util.List;
 
 public class ShoppingCartHandler {
     IMatDataHandler dataHandler;
+    ShoppingCart shoppingCart;
 
     public ShoppingCartHandler() {
         dataHandler = IMatDataHandler.getInstance();
+        shoppingCart = dataHandler.getShoppingCart();
     }
 
     public int getAmountInCart(Product product){
         int ctr = 0;
         for (ShoppingItem shoppingItem :
-                dataHandler.getShoppingCart().getItems()) {
+                shoppingCart.getItems()) {
             if(shoppingItem.getProduct() == product){
                 ctr+=shoppingItem.getAmount();
             }
@@ -24,10 +26,15 @@ public class ShoppingCartHandler {
 
     public void addProductToCart(Product product){
         Boolean founditem = false;
+
+        double amount;
         for (ShoppingItem shoppingItem :
-                dataHandler.getShoppingCart().getItems()) {
+                shoppingCart.getItems()) {
             if(shoppingItem.getProduct()==product) {
-                shoppingItem.setAmount(shoppingItem.getAmount()+1);
+                amount = shoppingItem.getAmount() + 1;
+                shoppingCart.removeItem(shoppingItem);
+                shoppingCart.addItem(shoppingItem);
+                shoppingItem.setAmount(amount);
                 founditem = true;
             }
         }
