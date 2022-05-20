@@ -216,13 +216,122 @@
                   </FlowPane>
                </content>
             </ScrollPane>
+            <ScrollPane fx:id="categoriesPage" fitToWidth="true" hbarPolicy="NEVER" prefHeight="733.0" prefWidth="1440.0">
+               <content>
+                  <FlowPane fx:id="categoryFlowPane" alignment="TOP_CENTER" hgap="20.0" prefHeight="758.0" prefWidth="1424.0" prefWrapLength="1.0E27" vgap="20.0">
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </FlowPane>
+               </content>
+            </ScrollPane>
             <AnchorPane fx:id="profileAnchorPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" stylesheets="@profile.css">
                <children>
-                  <StackPane layoutY="347.0" prefHeight="412.0" prefWidth="1440.0">
+                  <StackPane layoutY="116.0" prefHeight="643.0" prefWidth="1440.0">
                      <children>
+                        <AnchorPane fx:id="profileInformationPane" prefHeight="646.0" prefWidth="1440.0" style="-fx-background-color: #FFFFFF;">
+                           <children>
+                              <AnchorPane layoutX="14.0" layoutY="15.0" prefHeight="455.0" prefWidth="699.0" styleClass="information-box">
+                                 <children>
+                                    <TextField fx:id="profileDeliveryFirstname" layoutX="40.0" layoutY="112.0" prefHeight="30.0" prefWidth="286.0" styleClass="input-field" />
+                                    <Label layoutX="41.0" layoutY="77.0" styleClass="secondary-text" text="Förnamn:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="210.0" layoutY="21.0" styleClass="primary-text" text="Faktureringsaddress">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="profileDeliveryLastname" layoutX="375.0" layoutY="112.0" prefHeight="30.0" prefWidth="286.0" styleClass="input-field" />
+                                    <Label layoutX="376.0" layoutY="77.0" styleClass="secondary-text" text="Efternamn:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="profileDeliveryAddress" layoutX="39.0" layoutY="200.0" prefHeight="30.0" prefWidth="621.0" styleClass="input-field" />
+                                    <Label layoutX="40.0" layoutY="165.0" styleClass="secondary-text" text="Adress:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="profileDeliveryPostalcode" layoutX="39.0" layoutY="299.0" prefHeight="30.0" prefWidth="286.0" styleClass="input-field" />
+                                    <Label layoutX="40.0" layoutY="264.0" styleClass="secondary-text" text="Postnummer:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="profileDeliveryCity" layoutX="374.0" layoutY="299.0" prefHeight="30.0" prefWidth="286.0" styleClass="input-field" />
+                                    <Label layoutX="375.0" layoutY="264.0" styleClass="secondary-text" text="Stad:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="profileDeliverySaveButton" layoutX="193.0" layoutY="373.0" mnemonicParsing="false" onMouseClicked="#saveProfileAddressDetails" prefHeight="61.0" prefWidth="314.0" stylesheets="@button.css" text="Spara faktureringsadress">
+                                       <styleClass>
+                                          <String fx:value="background" />
+                                          <String fx:value="clickable" />
+                                          <String fx:value="amount" />
+                                       </styleClass>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="727.0" layoutY="15.0" prefHeight="455.0" prefWidth="699.0" styleClass="information-box">
+                                 <children>
+                                    <TextField fx:id="profilePaymentName" layoutX="40.0" layoutY="112.0" prefHeight="30.0" prefWidth="286.0" styleClass="input-field" />
+                                    <Label layoutX="40.0" layoutY="80.0" styleClass="secondary-text" text="Kortnamn:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="254.0" layoutY="22.0" styleClass="primary-text" text="Kortuppgifter">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="profilePaymentBank" layoutX="375.0" layoutY="112.0" prefHeight="30.0" prefWidth="286.0" styleClass="input-field" />
+                                    <Label layoutX="375.0" layoutY="80.0" styleClass="secondary-text" text="Bank:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="profilePaymentCardNumber" layoutX="39.0" layoutY="200.0" prefHeight="30.0" prefWidth="621.0" styleClass="input-field" />
+                                    <Label layoutX="39.0" layoutY="168.0" styleClass="secondary-text" text="Kortnummer:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="profilePaymentDate" layoutX="39.0" layoutY="299.0" prefHeight="30.0" prefWidth="286.0" styleClass="input-field" />
+                                    <Label layoutX="39.0" layoutY="267.0" styleClass="secondary-text" text="Datum:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="profilePaymentCVC" layoutX="374.0" layoutY="299.0" prefHeight="30.0" prefWidth="286.0" styleClass="input-field" />
+                                    <Label layoutX="374.0" layoutY="267.0" styleClass="secondary-text" text="CVC:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="profilePaymentSaveButton" layoutX="202.0" layoutY="374.0" mnemonicParsing="false" onMouseClicked="#saveProfilePaymentDetails" prefHeight="61.0" prefWidth="295.0" stylesheets="@button.css" text="Spara kortuppgifter">
+                                       <styleClass>
+                                          <String fx:value="background" />
+                                          <String fx:value="clickable" />
+                                          <String fx:value="amount" />
+                                       </styleClass>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
                         <ScrollPane fx:id="profileHistoryPane" prefHeight="412.0" prefWidth="1394.0" style="-fx-background-color: #FFFFFF;">
                            <content>
-                              <FlowPane prefHeight="408.0" prefWidth="1438.0" />
+                              <FlowPane fx:id="profileHistoryFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" prefHeight="634.0" prefWidth="1438.0" vgap="20.0">
+                                 <padding>
+                                    <Insets top="20.0" />
+                                 </padding>
+                              </FlowPane>
                            </content>
                         </ScrollPane>
                      </children>
@@ -250,102 +359,6 @@
                               <String fx:value="primary-text-black" />
                            </styleClass>
                         </Label>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane fx:id="profileInformationPane" layoutX="1.0" layoutY="117.0" prefHeight="495.0" prefWidth="1440.0" style="-fx-background-color: #FFFFFF;">
-                     <children>
-                        <AnchorPane layoutX="14.0" layoutY="15.0" prefHeight="455.0" prefWidth="699.0" styleClass="information-box">
-                           <children>
-                              <TextField fx:id="profileDeliveryFirstname" layoutX="40.0" layoutY="112.0" prefHeight="30.0" prefWidth="286.0" styleClass="input-field" />
-                              <Label layoutX="41.0" layoutY="77.0" styleClass="secondary-text" text="Förnamn:">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="210.0" layoutY="21.0" styleClass="primary-text" text="Faktureringsaddress">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="profileDeliveryLastname" layoutX="375.0" layoutY="112.0" prefHeight="30.0" prefWidth="286.0" styleClass="input-field" />
-                              <Label layoutX="376.0" layoutY="77.0" styleClass="secondary-text" text="Efternamn:">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="profileDeliveryAddress" layoutX="39.0" layoutY="200.0" prefHeight="30.0" prefWidth="621.0" styleClass="input-field" />
-                              <Label layoutX="40.0" layoutY="165.0" styleClass="secondary-text" text="Adress:">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="profileDeliveryPostalcode" layoutX="39.0" layoutY="299.0" prefHeight="30.0" prefWidth="286.0" styleClass="input-field" />
-                              <Label layoutX="40.0" layoutY="264.0" styleClass="secondary-text" text="Postnummer:">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="profileDeliveryCity" layoutX="374.0" layoutY="299.0" prefHeight="30.0" prefWidth="286.0" styleClass="input-field" />
-                              <Label layoutX="375.0" layoutY="264.0" styleClass="secondary-text" text="Stad:">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <Button fx:id="profileDeliverySaveButton" layoutX="193.0" layoutY="373.0" mnemonicParsing="false" onMouseClicked="#saveProfileAddressDetails" prefHeight="61.0" prefWidth="314.0" stylesheets="@button.css" text="Spara faktureringsadress">
-                                 <styleClass>
-                                    <String fx:value="background" />
-                                    <String fx:value="clickable" />
-                                    <String fx:value="amount" />
-                                 </styleClass>
-                              </Button>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="727.0" layoutY="15.0" prefHeight="455.0" prefWidth="699.0" styleClass="information-box">
-                           <children>
-                              <TextField fx:id="profilePaymentName" layoutX="40.0" layoutY="112.0" prefHeight="30.0" prefWidth="286.0" styleClass="input-field" />
-                              <Label layoutX="40.0" layoutY="80.0" styleClass="secondary-text" text="Kortnamn:">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="254.0" layoutY="22.0" styleClass="primary-text" text="Kortuppgifter">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="profilePaymentBank" layoutX="375.0" layoutY="112.0" prefHeight="30.0" prefWidth="286.0" styleClass="input-field" />
-                              <Label layoutX="375.0" layoutY="80.0" styleClass="secondary-text" text="Bank:">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="profilePaymentCardNumber" layoutX="39.0" layoutY="200.0" prefHeight="30.0" prefWidth="621.0" styleClass="input-field" />
-                              <Label layoutX="39.0" layoutY="168.0" styleClass="secondary-text" text="Kortnummer:">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="profilePaymentDate" layoutX="39.0" layoutY="299.0" prefHeight="30.0" prefWidth="286.0" styleClass="input-field" />
-                              <Label layoutX="39.0" layoutY="267.0" styleClass="secondary-text" text="Datum:">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="profilePaymentCVC" layoutX="374.0" layoutY="299.0" prefHeight="30.0" prefWidth="286.0" styleClass="input-field" />
-                              <Label layoutX="374.0" layoutY="267.0" styleClass="secondary-text" text="CVC:">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <Button fx:id="profilePaymentSaveButton" layoutX="202.0" layoutY="374.0" mnemonicParsing="false" onMouseClicked="#saveProfilePaymentDetails" prefHeight="61.0" prefWidth="295.0" stylesheets="@button.css" text="Spara kortuppgifter">
-                                 <styleClass>
-                                    <String fx:value="background" />
-                                    <String fx:value="clickable" />
-                                    <String fx:value="amount" />
-                                 </styleClass>
-                              </Button>
-                           </children>
-                        </AnchorPane>
                      </children>
                   </AnchorPane>
                </children>
