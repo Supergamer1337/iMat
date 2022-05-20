@@ -113,6 +113,19 @@ public class IMatController implements ShoppingCartListener {
     @FXML private FlowPane searchPane;
     @FXML private ScrollPane searchBase;
 
+    @FXML private TextField profileDeliveryFirstname;
+    @FXML private TextField profileDeliveryLastname;
+    @FXML private TextField profileDeliveryAddress;
+    @FXML private TextField profileDeliveryPostalcode;
+    @FXML private TextField profileDeliveryCity;
+
+    @FXML private TextField profilePaymentName;
+    @FXML private TextField profilePaymentBank;
+    @FXML private TextField profilePaymentCardNumber;
+    @FXML private TextField profilePaymentDate;
+    @FXML private TextField profilePaymentCVC;
+    @FXML private Button profilePaymentSaveButton;
+  
     @FXML private AnchorPane confirmationPane;
     @FXML private Label confirmDateLabel;
 
@@ -282,7 +295,9 @@ public class IMatController implements ShoppingCartListener {
         paymentCardName.setText(creditCard.getHoldersName());
         paymentCardBank.setText(creditCard.getCardType());
         paymentCardNumber.setText(creditCard.getCardNumber());
-        paymentCardDate.setText(creditCard.getValidMonth() + "/" + creditCard.getValidYear());
+        int month = creditCard.getValidMonth();
+        int year = creditCard.getValidYear();
+        paymentCardDate.setText((month > 9 ? month : "0" + month) + "/" + (year > 9 ? year : "0" + year));
         paymentCardCVC.setText(String.valueOf(creditCard.getVerificationCode()));
     }
 
@@ -505,6 +520,7 @@ public class IMatController implements ShoppingCartListener {
         resetWizard();
 
         profileAnchorPane.toFront();
+        showProfileInformation();
     }
 
     @FXML public void showProfileHistory(){
@@ -512,7 +528,50 @@ public class IMatController implements ShoppingCartListener {
     }
 
     @FXML public void showProfileInformation(){
+        fillProfileInformation();
+
         profileInformationPane.toFront();
+    }
+
+    private void fillProfileInformation() {
+        Customer savedCustomerData = dataHandler.getCustomer();
+
+        profileDeliveryFirstname.setText(savedCustomerData.getFirstName());
+        profileDeliveryLastname.setText(savedCustomerData.getLastName());
+        profileDeliveryAddress.setText(savedCustomerData.getAddress());
+        profileDeliveryPostalcode.setText(savedCustomerData.getPostCode());
+        profileDeliveryCity.setText(savedCustomerData.getPostAddress());
+
+        CreditCard savedCreditCardData = dataHandler.getCreditCard();
+
+        profilePaymentName.setText(savedCreditCardData.getHoldersName());
+        profilePaymentBank.setText(savedCreditCardData.getCardType());
+        profilePaymentCardNumber.setText(savedCreditCardData.getCardNumber());
+        int month = savedCreditCardData.getValidMonth();
+        int year = savedCreditCardData.getValidYear();
+        profilePaymentDate.setText((month > 9 ? month : "0" + month) + "/" + (year > 9 ? year : "0" + year));
+        profilePaymentCVC.setText(String.valueOf(savedCreditCardData.getVerificationCode()));
+    }
+
+    @FXML public void saveProfileAddressDetails() {
+        Customer savedCustomerData = dataHandler.getCustomer();
+
+        savedCustomerData.setFirstName(profileDeliveryFirstname.getText());
+        savedCustomerData.setLastName(profileDeliveryLastname.getText());
+        savedCustomerData.setAddress(profileDeliveryAddress.getText());
+        savedCustomerData.setPostCode(profileDeliveryPostalcode.getText());
+        savedCustomerData.setPostAddress(profileDeliveryCity.getText());
+    }
+
+    @FXML public void saveProfilePaymentDetails() {
+        CreditCard savedCreditCardData = dataHandler.getCreditCard();
+
+        savedCreditCardData.setHoldersName(profilePaymentName.getText());
+        savedCreditCardData.setCardType(profilePaymentBank.getText());
+        savedCreditCardData.setCardNumber(profilePaymentCardNumber.getText());
+        savedCreditCardData.setValidMonth(Integer.parseInt(profilePaymentDate.getText().split("/")[0]));
+        savedCreditCardData.setValidYear(Integer.parseInt(profilePaymentDate.getText().split("/")[1]));
+        savedCreditCardData.setVerificationCode(Integer.parseInt(profilePaymentCVC.getText()));
     }
 
     @FXML
@@ -597,11 +656,6 @@ public class IMatController implements ShoppingCartListener {
         int total = (int)dataHandler.getShoppingCart().getTotal();
         shoppingCartCounterLabel.setText(String.valueOf(total));
     }
-
-
-
-
-
 
     private void addToLocationHistory(LocationInfo currentLocation, boolean addToHistory) {
         removeLocationHighlight();
