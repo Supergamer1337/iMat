@@ -44,11 +44,16 @@ public class ShoppingCartHandler {
     }
 
     public void removeProductFromCart(Product product, Boolean cartIsOpen){
+        double amount;
+
         for (ShoppingItem shoppingItem :
                 dataHandler.getShoppingCart().getItems()) {
             if(shoppingItem.getProduct() == product){
-                shoppingItem.setAmount(shoppingItem.getAmount()-1);
-                if(shoppingItem.getAmount() <= 0){
+                amount = shoppingItem.getAmount()-1;
+                shoppingCart.removeItem(shoppingItem);
+                shoppingCart.addItem(shoppingItem);
+                shoppingItem.setAmount(amount);
+                if(amount <= 0){
                     if(cartIsOpen)
                         shoppingItem.setAmount(0);
                     else
