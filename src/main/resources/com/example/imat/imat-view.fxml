@@ -68,6 +68,7 @@
                      <styleClass>
                         <String fx:value="main-nav-button" />
                         <String fx:value="clickable" />
+                        <String fx:value="main-nav-button-left" />
                      </styleClass>
                   </Button>
                   <Button fx:id="offersButton" mnemonicParsing="false" prefHeight="76.0" prefWidth="360.0" text="Erbjudanden" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="720.0" AnchorPane.topAnchor="0.0">
@@ -93,6 +94,7 @@
                      <styleClass>
                         <String fx:value="main-nav-button" />
                         <String fx:value="clickable" />
+                        <String fx:value="main-nav-button-right" />
                      </styleClass>
                      <graphic>
                         <ImageView fitHeight="49.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" translateX="-80.0">
