@@ -42,7 +42,7 @@
     -fx-font-family: "Roboto";
     -fx-font-weight: bold;
     -fx-text-fill: -fx-primary-text-color;
-    -fx-background-color: transparent;
+    -fx-background-color: #fff;
     -fx-border-color: -fx-primary-border-color;
     -fx-border-width: 1px;
 }
@@ -56,10 +56,21 @@
     -fx-background-color: -fx-accent2;
 }
 
+.main-nav-button-left {
+    -fx-border-radius: 0 0 0 15px;
+    -fx-background-radius: 0 0 15px 0;
+}
+
+.main-nav-button-right {
+    -fx-border-radius: 0 0 15px 0;
+}
+
 .back-bar {
     -fx-background-color: -fx-secondary-text-color;
     -fx-border-color: -fx-primary-border-color;
     -fx-border-width: 1px;
+    -fx-background-radius: 15px;
+    -fx-border-radius: 15px;
 }
 
 .back-bar-text {
