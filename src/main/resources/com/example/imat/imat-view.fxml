@@ -54,7 +54,7 @@
                         <Image url="@icons/shopping-cart.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="shoppingCartCounterLabel" alignment="CENTER" layoutX="1285.0" layoutY="89.0" prefHeight="25.0" prefWidth="68.0" stylesheets="@shopping-cart.css" text="0" AnchorPane.rightAnchor="87.0" AnchorPane.topAnchor="89.0">
+                  <Label fx:id="shoppingCartCounterLabel" alignment="CENTER" layoutX="1285.0" layoutY="89.0" prefHeight="25.0" prefWidth="68.0" stylesheets="@shopping-cart.css" text="0 kr" AnchorPane.rightAnchor="87.0" AnchorPane.topAnchor="89.0">
                      <styleClass>
                         <String fx:value="cart-counter" />
                         <String fx:value="third-text" />
@@ -122,7 +122,7 @@
             <AnchorPane fx:id="detailPage" prefHeight="200.0" prefWidth="200.0">
                <children>
                   <AnchorPane onMouseClicked="#closeDetailPane" prefHeight="643.0" prefWidth="1237.0" styleClass="darkening" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="detail-bg" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="100.0">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="detail-bg" stylesheets="@product-card.css" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="100.0">
                      <children>
                         <ImageView fx:id="detailProductImage" fitHeight="215.0" fitWidth="320.0" layoutX="60.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -133,17 +133,25 @@
                         <Label layoutX="376.0" layoutY="91.0" styleClass="detail-amount-per-item" text="Mängd: 1st" />
                         <Label layoutX="374.0" layoutY="127.0" prefHeight="31.0" prefWidth="514.0" styleClass="detail-origin-category" text="Ursprung: Okänd" />
                         <Label fx:id="detailCategoryLabel" layoutX="374.0" layoutY="158.0" prefHeight="31.0" prefWidth="514.0" styleClass="detail-origin-category" text="Kategori: Persika" />
-                        <AnchorPane layoutX="371.0" layoutY="221.0" prefHeight="40.0" prefWidth="178.0" styleClass="detail-selector" stylesheets="@product-card.css">
+                        <AnchorPane layoutX="371.0" layoutY="221.0" prefHeight="40.0" prefWidth="178.0" styleClass="detail-selector">
                            <children>
-                              <ImageView fx:id="detailAddButton" fitHeight="40.0" fitWidth="40.0" layoutX="8.0" layoutY="-3.0" onMouseClicked="#addItemToCartInteraction" pickOnBounds="true" preserveRatio="true" styleClass="button" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
+                              <ImageView fx:id="detailAddButton" fitHeight="40.0" fitWidth="40.0" layoutX="8.0" layoutY="-3.0" onMouseClicked="#addItemToCartInteraction" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
                                  <image>
                                     <Image url="@icons/plus-button.png" />
                                  </image>
+                                 <styleClass>
+                                    <String fx:value="button" />
+                                    <String fx:value="clickable" />
+                                 </styleClass>
                               </ImageView>
-                              <ImageView fx:id="detailRemoveButton" fitHeight="40.0" fitWidth="40.0" layoutX="1.0" layoutY="-3.0" onMouseClicked="#removeItemFromCartInteraction" pickOnBounds="true" preserveRatio="true" styleClass="button" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.topAnchor="1.0">
+                              <ImageView fx:id="detailRemoveButton" fitHeight="40.0" fitWidth="40.0" layoutX="1.0" layoutY="-3.0" onMouseClicked="#removeItemFromCartInteraction" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.topAnchor="1.0">
                                  <image>
                                     <Image url="@icons/minus-button.png" />
                                  </image>
+                                 <styleClass>
+                                    <String fx:value="button" />
+                                    <String fx:value="clickable" />
+                                 </styleClass>
                               </ImageView>
                               <Label fx:id="detailAmountLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="75.0" layoutY="11.0" styleClass="detail-amount-text" text="Label" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="5.0" />
                            </children>
@@ -154,6 +162,10 @@
                            <image>
                               <Image url="@icons/cross.png" />
                            </image>
+                           <styleClass>
+                              <String fx:value="clickable" />
+                              <String fx:value="button" />
+                           </styleClass>
                         </ImageView>
                      </children>
                   </AnchorPane>
