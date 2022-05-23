@@ -1,9 +1,9 @@
 /* Globally declare colors */
 * {
     /* Background colors, accents etc. */
-    -fx-accent1: #125B50;
-    -fx-accent2: #F8B400;
-    -fx-accent2-faded: rgba(248, 180, 0, 0.25);
+    -fx-accent1: #005537;
+    -fx-accent2: #00C953;
+    -fx-accent2-faded: #00C95340;
     -fx-accent3: #FAF5E4;
     -fx-accent4: #EC2020;
 
@@ -66,6 +66,7 @@
     -fx-font-size: 16pt;
     -fx-font-family: Roboto;
     -fx-font-weight: bold;
+    -fx-text-fill: -fx-primary-text-color;
 }
 
 .clickable {
