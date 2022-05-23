@@ -614,6 +614,7 @@ public class IMatController implements ShoppingCartListener {
 
     public void productItemPressed(Product product) {
         currentProduct = product;
+        currentLocationLabel.setText(currentLocation.getBreadcrumb() + "/" + product.getName());
         detailProductLabel.setText(product.getName());
         detailProductPriceLabel.setText(product.getPrice() + " kr/st");
         detailProductImage.setImage(new Image(getClass().getResourceAsStream("images/" + product.getImageName())));
@@ -624,6 +625,7 @@ public class IMatController implements ShoppingCartListener {
 
     @FXML
     public void closeDetailPane(){
+        updateLocationLabels(this.currentLocation);
         detailPage.toBack();
     }
 
