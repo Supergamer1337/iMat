@@ -173,15 +173,6 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <ScrollPane fx:id="productsPage" fitToWidth="true">
-               <content>
-                  <FlowPane fx:id="productsFlowPane" hgap="20.0" prefHeight="200.0" prefWidth="200.0" vgap="20.0">
-                     <padding>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                     </padding>
-                  </FlowPane>
-               </content>
-            </ScrollPane>
             <SplitPane fx:id="shoppingCartSplitPane" dividerPositions="0.7023643949930459" prefHeight="589.0" prefWidth="1440.0">
                <items>
                   <ScrollPane prefHeight="757.0" prefWidth="642.0">
@@ -660,6 +651,25 @@
                         </TextArea>
                      </children>
                   </AnchorPane>
+            <AnchorPane fx:id="productsPage" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="759.0" prefWidth="1442.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <content>
+                        <FlowPane fx:id="productsFlowPane" hgap="20.0" prefHeight="200.0" prefWidth="200.0" vgap="20.0">
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </FlowPane>
+                     </content>
+                  </ScrollPane>
+                  <Button mnemonicParsing="false" onMouseClicked="#goToShoppingCart" stylesheets="@button.css" text="Gå Till Varukorg" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="25.0">
+                     <styleClass>
+                        <String fx:value="amount" />
+                        <String fx:value="background" />
+                        <String fx:value="larger-button-text" />
+                        <String fx:value="clickable" />
+                     </styleClass>
+                  </Button>
                </children>
             </AnchorPane>
             <ScrollPane fx:id="categoriesPage" fitToWidth="true" hbarPolicy="NEVER" prefHeight="733.0" prefWidth="1440.0">

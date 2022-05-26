@@ -33,7 +33,7 @@ public class IMatController implements ShoppingCartListener {
 
     @FXML private FlowPane categoryFlowPane;
     @FXML private AnchorPane helpPage;
-    @FXML private ScrollPane productsPage;
+    @FXML private AnchorPane productsPage;
     @FXML private ScrollPane categoriesPage;
     @FXML private FlowPane productsFlowPane;
     @FXML private SplitPane shoppingCartSplitPane;

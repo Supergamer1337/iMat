@@ -58,11 +58,12 @@
 
 .main-nav-button-left {
     -fx-border-radius: 0 0 0 15px;
-    -fx-background-radius: 0 0 15px 0;
+    -fx-background-radius: 0 0 0 15px;
 }
 
 .main-nav-button-right {
     -fx-border-radius: 0 0 15px 0;
+    -fx-background-radius: 0 0 15px 0;
 }
 
 .back-bar {
