@@ -785,6 +785,8 @@ public class IMatController implements ShoppingCartListener {
                 case "Kategorier":
                     goToCategories(true);
                     break;
+                case "Hjälp":
+                    goToHelp(true);
                 default:
                     showCategory(ProductCategory.valueOf(previousLocation.getLocation()), false);
             }

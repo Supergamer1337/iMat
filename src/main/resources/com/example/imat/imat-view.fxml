@@ -90,7 +90,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="helpButton" mnemonicParsing="false" prefHeight="76.0" prefWidth="360.0" text="Hjälp" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1080.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Button fx:id="helpButton" mnemonicParsing="false" onMouseClicked="#goToHelp" prefHeight="76.0" prefWidth="360.0" text="Hjälp" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1080.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <styleClass>
                         <String fx:value="main-nav-button" />
                         <String fx:value="clickable" />
@@ -644,16 +644,7 @@
                   </StackPane>
                </children>
             </AnchorPane>
-            <ScrollPane fx:id="categoriesPage" fitToWidth="true" hbarPolicy="NEVER" prefHeight="733.0" prefWidth="1440.0">
-               <content>
-                  <FlowPane fx:id="categoryFlowPane" alignment="TOP_CENTER" hgap="20.0" prefHeight="758.0" prefWidth="1424.0" prefWrapLength="1.0E27" vgap="20.0">
-                     <padding>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                     </padding>
-                  </FlowPane>
-               </content>
-            </ScrollPane>
-            <AnchorPane fx:id="helpPage" prefHeight="200.0" prefWidth="200.0">
+            <AnchorPane fx:id="helpPage" prefHeight="200.0" prefWidth="200.0" styleClass="page-background">
                <children>
                   <AnchorPane layoutX="527.0" layoutY="172.0" prefHeight="415.0" prefWidth="386.0" styleClass="form-background">
                      <children>
@@ -671,6 +662,15 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
+            <ScrollPane fx:id="categoriesPage" fitToWidth="true" hbarPolicy="NEVER" prefHeight="733.0" prefWidth="1440.0">
+               <content>
+                  <FlowPane fx:id="categoryFlowPane" alignment="TOP_CENTER" hgap="20.0" prefHeight="758.0" prefWidth="1424.0" prefWrapLength="1.0E27" vgap="20.0">
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </FlowPane>
+               </content>
+            </ScrollPane>
          </children>
       </StackPane>
    </children>
