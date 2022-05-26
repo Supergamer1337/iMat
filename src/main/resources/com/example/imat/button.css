@@ -31,3 +31,7 @@
     -fx-font-family: "Roboto Medium";
     -fx-font-weight: bold;
 }
+
+.larger-button-text {
+    -fx-font-size: 24pt;
+}

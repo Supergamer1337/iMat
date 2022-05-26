@@ -32,7 +32,7 @@ public class IMatController implements ShoppingCartListener {
     private boolean profileIsHovered = false;
 
     @FXML private FlowPane categoryFlowPane;
-    @FXML private ScrollPane productsPage;
+    @FXML private AnchorPane productsPage;
     @FXML private ScrollPane categoriesPage;
     @FXML private FlowPane productsFlowPane;
     @FXML private SplitPane shoppingCartSplitPane;
