@@ -90,7 +90,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="helpButton" mnemonicParsing="false" prefHeight="76.0" prefWidth="360.0" text="Hjälp" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1080.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Button fx:id="helpButton" mnemonicParsing="false" onMouseClicked="#goToHelp" prefHeight="76.0" prefWidth="360.0" text="Hjälp" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1080.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <styleClass>
                         <String fx:value="main-nav-button" />
                         <String fx:value="clickable" />
@@ -635,6 +635,22 @@
                   </StackPane>
                </children>
             </AnchorPane>
+            <AnchorPane fx:id="helpPage" prefHeight="200.0" prefWidth="200.0" styleClass="page-background">
+               <children>
+                  <AnchorPane layoutX="527.0" layoutY="172.0" prefHeight="415.0" prefWidth="386.0" styleClass="form-background">
+                     <children>
+                        <Label alignment="CENTER" layoutX="3.0" layoutY="23.0" prefHeight="47.0" prefWidth="380.0" styleClass="form-header" text="Kontaktuppgifter" />
+                        <Label layoutX="24.0" layoutY="97.0" styleClass="form-input-label" text="Telefon: 001 - 012 48 16" />
+                        <Label layoutX="24.0" layoutY="167.0" styleClass="form-input-label" text="Epost: hjalp@imat.se" />
+                        <TextArea editable="false" layoutX="22.0" layoutY="283.0" prefHeight="108.0" prefWidth="246.0" text="Adress:  &#10;Gatgatan 14, &#10; Stadstaden 112 35">
+                           <styleClass>
+                              <String fx:value="text-area-background-green" />
+                              <String fx:value="green-background" />
+                              <String fx:value="form-input-label" />
+                           </styleClass>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
             <AnchorPane fx:id="productsPage" prefHeight="200.0" prefWidth="200.0">
                <children>
                   <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="759.0" prefWidth="1442.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

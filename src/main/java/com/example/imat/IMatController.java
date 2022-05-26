@@ -32,6 +32,7 @@ public class IMatController implements ShoppingCartListener {
     private boolean profileIsHovered = false;
 
     @FXML private FlowPane categoryFlowPane;
+    @FXML private AnchorPane helpPage;
     @FXML private AnchorPane productsPage;
     @FXML private ScrollPane categoriesPage;
     @FXML private FlowPane productsFlowPane;
@@ -347,6 +348,18 @@ public class IMatController implements ShoppingCartListener {
             return;
         }
         confirmPayment();
+    }
+
+    @FXML public void goToHelp() {
+        goToHelp(true);
+    }
+
+    private void goToHelp(boolean addToHistory) {
+        clearLocationHistory();
+        addToLocationHistory(new LocationInfo("Hjälp", "Hjälp", "Hjälp"), addToHistory);
+        resetWizard();
+
+        helpPage.toFront();
     }
 
     private void updateHistory() {
@@ -772,6 +785,8 @@ public class IMatController implements ShoppingCartListener {
                 case "Kategorier":
                     goToCategories(true);
                     break;
+                case "Hjälp":
+                    goToHelp(true);
                 default:
                     showCategory(ProductCategory.valueOf(previousLocation.getLocation()), false);
             }
