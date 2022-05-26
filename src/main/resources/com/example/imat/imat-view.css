@@ -255,3 +255,7 @@
 .opacity-hover:hover {
     -fx-opacity: 0.8;
 }
+
+.text-area-background-green .content {
+    -fx-background-color: -fx-accent1;
+}
