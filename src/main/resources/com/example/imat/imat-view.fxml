@@ -221,15 +221,6 @@
                   </FlowPane>
                </content>
             </ScrollPane>
-            <ScrollPane fx:id="categoriesPage" fitToWidth="true" hbarPolicy="NEVER" prefHeight="733.0" prefWidth="1440.0">
-               <content>
-                  <FlowPane fx:id="categoryFlowPane" alignment="TOP_CENTER" hgap="20.0" prefHeight="758.0" prefWidth="1424.0" prefWrapLength="1.0E27" vgap="20.0">
-                     <padding>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                     </padding>
-                  </FlowPane>
-               </content>
-            </ScrollPane>
             <AnchorPane fx:id="profileAnchorPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" stylesheets="@profile.css">
                <children>
                   <StackPane layoutY="116.0" prefHeight="643.0" prefWidth="1440.0">
@@ -636,7 +627,7 @@
                </children>
             </AnchorPane>
             <AnchorPane fx:id="helpPage" prefHeight="200.0" prefWidth="200.0" styleClass="page-background">
-               <children>
+               <AnchorPane>
                   <AnchorPane layoutX="527.0" layoutY="172.0" prefHeight="415.0" prefWidth="386.0" styleClass="form-background">
                      <children>
                         <Label alignment="CENTER" layoutX="3.0" layoutY="23.0" prefHeight="47.0" prefWidth="380.0" styleClass="form-header" text="Kontaktuppgifter" />
@@ -651,6 +642,8 @@
                         </TextArea>
                      </children>
                   </AnchorPane>
+               </AnchorPane>
+            </AnchorPane>
             <AnchorPane fx:id="productsPage" prefHeight="200.0" prefWidth="200.0">
                <children>
                   <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="759.0" prefWidth="1442.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
