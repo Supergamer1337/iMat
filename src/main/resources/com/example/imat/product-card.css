@@ -70,3 +70,12 @@
 .button:hover {
     -fx-opacity: 0.7;
 }
+
+.strike-through .text {
+    -fx-strikethrough: true;
+}
+
+.lower-price {
+    -fx-text-fill: -fx-accent4;
+    -fx-font-weight: bold;
+}

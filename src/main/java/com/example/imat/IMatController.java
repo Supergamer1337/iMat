@@ -41,6 +41,7 @@ public class IMatController implements ShoppingCartListener {
     @FXML private FlowPane favoriteFlowPane;
     @FXML private ScrollPane favoriteScrollPane;
     @FXML private Label shoppingCartCounterLabel;
+    @FXML private ScrollPane offersPage;
 
     @FXML private AnchorPane profileAnchorPane;
     @FXML private ScrollPane profileHistoryPane;
@@ -138,6 +139,8 @@ public class IMatController implements ShoppingCartListener {
 
     @FXML private FlowPane profileHistoryFlowPane;
 
+    @FXML private FlowPane offersFlowPane;
+
     @FXML
     public void initialize() {
         // Shutdown hooks
@@ -158,6 +161,23 @@ public class IMatController implements ShoppingCartListener {
                 }
             }
         }
+
+        for (Product product : dataHandler.getProducts()) {
+            switch (product.getName()) {
+                case "Apelsin":
+                    offersFlowPane.getChildren().add(new OfferCard(product, 5, this));
+                    break;
+                case "Blomkål":
+                    offersFlowPane.getChildren().add(new OfferCard(product, 30, this));
+                    break;
+                case "Solrosfrön":
+                    offersFlowPane.getChildren().add(new OfferCard(product, 100, this));
+                    break;
+                default:
+                    break;
+            }
+        }
+
         searchBar.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
@@ -181,6 +201,18 @@ public class IMatController implements ShoppingCartListener {
         for (Product product : products) {
             searchPane.getChildren().add(new SearchCard(product,this));
         }
+    }
+
+    @FXML public void goToOffers() {
+        goToOffers(true);
+    }
+
+    private void goToOffers(boolean addToHistory) {
+        clearLocationHistory();
+        addToLocationHistory(new LocationInfo("Erbjudanden", "Erbjudanden", "Erbjudanden"), addToHistory);
+        resetWizard();
+
+        offersPage.toFront();
     }
 
     @FXML public void goToCategories() {
@@ -787,6 +819,9 @@ public class IMatController implements ShoppingCartListener {
                     break;
                 case "Hjälp":
                     goToHelp(true);
+                case "Erbjudanden":
+                    goToOffers(true);
+                    break;
                 default:
                     showCategory(ProductCategory.valueOf(previousLocation.getLocation()), false);
             }
