@@ -333,7 +333,7 @@
                      </children>
                   </StackPane>
                   <Label alignment="CENTER" layoutX="583.0" layoutY="14.0" prefHeight="47.0" prefWidth="275.0" styleClass="detail-header" text="Kundinformation" textAlignment="CENTER" />
-                  <AnchorPane layoutX="1.0" layoutY="61.0" onMouseClicked="#showProfileInformation" prefHeight="56.0" prefWidth="720.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="720.0" AnchorPane.topAnchor="61.0">
+                  <AnchorPane fx:id="profileDetailsButton" layoutX="1.0" layoutY="61.0" onMouseClicked="#showProfileInformation" prefHeight="56.0" prefWidth="720.0" styleClass="choice-bar-button" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="720.0" AnchorPane.topAnchor="61.0">
                      <children>
                         <Label layoutX="293.0" layoutY="8.0" text="Uppgifter">
                            <styleClass>
@@ -342,12 +342,8 @@
                            </styleClass>
                         </Label>
                      </children>
-                     <styleClass>
-                        <String fx:value="choice-bar-button" />
-                        <String fx:value="choice-bar-button-active" />
-                     </styleClass>
                   </AnchorPane>
-                  <AnchorPane layoutX="720.0" layoutY="61.0" onMouseClicked="#showProfileHistory" prefHeight="56.0" prefWidth="720.0" styleClass="choice-bar-button" AnchorPane.leftAnchor="720.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="61.0">
+                  <AnchorPane fx:id="profileHistoryButton" layoutX="720.0" layoutY="61.0" onMouseClicked="#showProfileHistory" prefHeight="56.0" prefWidth="720.0" styleClass="choice-bar-button" AnchorPane.leftAnchor="720.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="61.0">
                      <children>
                         <Label layoutX="305.0" layoutY="7.0" text="Historik">
                            <styleClass>

@@ -146,6 +146,9 @@ public class IMatController implements ShoppingCartListener {
     @FXML private FlowPane offersFlowPane;
 
     @FXML private Label deliveryLabel;
+    
+    @FXML private AnchorPane profileHistoryButton;
+    @FXML private AnchorPane profileDetailsButton;
 
     @FXML
     public void initialize() {
@@ -689,12 +692,15 @@ public class IMatController implements ShoppingCartListener {
 
     @FXML public void showProfileHistory(){
         updateHistory();
+        profileHistoryButton.getStyleClass().add("choice-bar-button-active");
+        profileDetailsButton.getStyleClass().remove("choice-bar-button-active");
         profileHistoryPane.toFront();
     }
 
     @FXML public void showProfileInformation(){
         fillProfileInformation();
-
+        profileHistoryButton.getStyleClass().remove("choice-bar-button-active");
+        profileDetailsButton.getStyleClass().add("choice-bar-button-active");
         profileInformationPane.toFront();
     }
 
