@@ -208,6 +208,11 @@
     -fx-font-weight: bold;
 }
 
+.time-selector-option-background:hover {
+    -fx-cursor: hand;
+    -fx-background-color: -fx-accent2-faded;
+}
+
 .form-background {
     -fx-background-color: -fx-accent1;
     -fx-background-radius: 10px;
@@ -249,6 +254,10 @@
     -fx-font-size: 18pt;
     -fx-font-family: "Roboto";
     -fx-font-weight: bold;
+}
+
+.selectedTime {
+    -fx-background-color: -fx-accent2;
 }
 
 .opacity-hover {}
