@@ -8,6 +8,8 @@ import se.chalmers.cse.dat216.project.Order;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class OrderHistoryCard extends AnchorPane {
 
@@ -28,7 +30,11 @@ public class OrderHistoryCard extends AnchorPane {
         }
 
         this.order = order;
-        this.purchaseDateLabel.setText("Köp " + order.getDate());
+
+        Calendar calendarDate = new GregorianCalendar();
+        calendarDate.setTime(order.getDate());
+
+        this.purchaseDateLabel.setText("Köp " + calendarDate.get(Calendar.YEAR) + "-" + calendarDate.get(Calendar.MONTH) + "-" + calendarDate.get(Calendar.DAY_OF_MONTH));
 
         double orderCostSummary = 0;
         for (ShoppingItem shoppingItem : order.getItems()) {
@@ -36,6 +42,6 @@ public class OrderHistoryCard extends AnchorPane {
             orderCostSummary += shoppingItem.getAmount() * productPrice;
         }
 
-        this.purchasePriceLabel.setText("Summa: " + orderCostSummary);
+        this.purchasePriceLabel.setText("Summa: " + orderCostSummary + "kr");
     }
 }

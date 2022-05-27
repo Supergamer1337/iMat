@@ -73,6 +73,7 @@
 .choice-bar-button:hover {
     -fx-background-color: -fx-accent2-faded;
     -fx-text-fill: -fx-text-primary-color-faded;
+    -fx-cursor: hand;
 }
 
 .choice-bar-button-active {
