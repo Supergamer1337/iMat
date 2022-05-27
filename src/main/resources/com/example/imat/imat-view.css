@@ -251,6 +251,10 @@
     -fx-font-weight: bold;
 }
 
+.selectedTime {
+    -fx-background-color: -fx-accent2;
+}
+
 .opacity-hover {}
 
 .opacity-hover:hover {
