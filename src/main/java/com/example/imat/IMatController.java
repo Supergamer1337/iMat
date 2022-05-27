@@ -145,6 +145,8 @@ public class IMatController implements ShoppingCartListener {
 
     @FXML private FlowPane offersFlowPane;
 
+    @FXML private Label deliveryLabel;
+
     @FXML
     public void initialize() {
         // Shutdown hooks
@@ -206,6 +208,98 @@ public class IMatController implements ShoppingCartListener {
     private void setDeliveryDate(int pickedTime) {
         deliveryList.forEach(pane -> pane.getStyleClass().remove("selectedTime"));
         deliveryList.get(pickedTime).getStyleClass().add("selectedTime");
+
+        String deliveryTime = "";
+        String deliveryDate = "";
+        switch (pickedTime) {
+            case 0:
+                deliveryTime = "10:00 - 10:45";
+                deliveryDate = "30/5";
+                break;
+            case 1:
+                deliveryTime = "13:00 - 13:45";
+                deliveryDate = "30/5";
+                break;
+            case 2:
+                deliveryTime = "15:00 - 15:45";
+                deliveryDate = "30/5";
+                break;
+            case 3:
+                deliveryTime = "10:00 - 10:45";
+                deliveryDate = "31/5";
+                break;
+            case 4:
+                deliveryTime = "13:00 - 13:45";
+                deliveryDate = "31/5";
+                break;
+            case 5:
+                deliveryTime = "15:00 - 15:45";
+                deliveryDate = "31/5";
+                break;
+            case 6:
+                deliveryTime = "10:00 - 10:45";
+                deliveryDate = "1/6";
+                break;
+            case 7:
+                deliveryTime = "13:00 - 13:45";
+                deliveryDate = "1/6";
+                break;
+            case 8:
+                deliveryTime = "15:00 - 15:45";
+                deliveryDate = "1/6";
+                break;
+            case 9:
+                deliveryTime = "10:00 - 10:45";
+                deliveryDate = "2/6";
+                break;
+            case 10:
+                deliveryTime = "13:00 - 13:45";
+                deliveryDate = "2/6";
+                break;
+            case 11:
+                deliveryTime = "15:00 - 15:45";
+                deliveryDate = "2/6";
+                break;
+            case 12:
+                deliveryTime = "10:00 - 10:45";
+                deliveryDate = "3/6";
+                break;
+            case 13:
+                deliveryTime = "13:00 - 13:45";
+                deliveryDate = "3/6";
+                break;
+            case 14:
+                deliveryTime = "15:00 - 15:45";
+                deliveryDate = "3/6";
+                break;
+            case 15:
+                deliveryTime = "10:00 - 10:45";
+                deliveryDate = "4/6";
+                break;
+            case 16:
+                deliveryTime = "13:00 - 13:45";
+                deliveryDate = "4/6";
+                break;
+            case 17:
+                deliveryTime = "15:00 - 15:45";
+                deliveryDate = "4/6";
+                break;
+            case 18:
+                deliveryTime = "10:00 - 10:45";
+                deliveryDate = "5/6";
+                break;
+            case 19:
+                deliveryTime = "13:00 - 13:45";
+                deliveryDate = "5/6";
+                break;
+            case 20:
+                deliveryTime = "15:00 - 15:45";
+                deliveryDate = "5/6";
+                break;
+        }
+
+        deliveryLabel.setText("Leveransen sker mellan " + deliveryTime + " den " + deliveryDate);
+        confirmDateLabel.setText("Mellan " + deliveryTime + " den " + deliveryDate);
     }
 
     private void showSeachProducts(List<Product> products){
@@ -446,7 +540,6 @@ public class IMatController implements ShoppingCartListener {
         }
 
         dataHandler.placeOrder(true);
-        confirmDateLabel.setText("12/7 kl: 22:30"); //TODO: fix date
         confirmationPane.toFront();
     }
 
