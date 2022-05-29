@@ -20,6 +20,8 @@ public class IMat extends Application {
 
         Scene scene = new Scene(fxmlLoader.load(), 1440, 1024);
         stage.setScene(scene);
+        stage.setMinWidth(1440);
+        stage.setMinHeight(1024);
         stage.setTitle("iMat");
         stage.show();
     }
