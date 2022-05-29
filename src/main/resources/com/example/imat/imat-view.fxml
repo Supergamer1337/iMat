@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1440.0" stylesheets="@imat-view.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.imat.IMatController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1440.0" stylesheets="@imat-view.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.imat.IMatController">
    <children>
       <ScrollPane fx:id="searchBase" hbarPolicy="NEVER" layoutX="495.0" layoutY="98.0" prefHeight="265.0" prefWidth="445.0" style="-fx-opacity: 0%;" AnchorPane.topAnchor="98.0">
          <content>
@@ -70,12 +70,26 @@
                         <String fx:value="clickable" />
                         <String fx:value="main-nav-button-left" />
                      </styleClass>
+                     <graphic>
+                        <ImageView fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/home-category.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
                   <Button fx:id="offersButton" mnemonicParsing="false" onMouseClicked="#goToOffers" prefHeight="76.0" prefWidth="360.0" text="Erbjudanden" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="360.0" AnchorPane.topAnchor="0.0">
                      <styleClass>
                         <String fx:value="main-nav-button" />
                         <String fx:value="clickable" />
                      </styleClass>
+                     <graphic>
+                        <ImageView fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/offer-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
                   <Button fx:id="favoritesButton" mnemonicParsing="false" onMouseClicked="#showFavorites" prefHeight="71.0" prefWidth="360.0" text="Favoriter" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="720.0" AnchorPane.topAnchor="0.0">
                      <styleClass>
@@ -83,7 +97,7 @@
                         <String fx:value="clickable" />
                      </styleClass>
                      <graphic>
-                        <ImageView fitHeight="52.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true" translateX="-60.0">
+                        <ImageView fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@icons/star.png" />
                            </image>
@@ -97,9 +111,9 @@
                         <String fx:value="main-nav-button-right" />
                      </styleClass>
                      <graphic>
-                        <ImageView fitHeight="49.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" translateX="-80.0">
+                        <ImageView fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icons/question-mark.png" />
+                              <Image url="@icons/help-icon.png" />
                            </image>
                         </ImageView>
                      </graphic>
