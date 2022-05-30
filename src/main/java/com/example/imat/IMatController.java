@@ -13,10 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import se.chalmers.cse.dat216.project.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Timer;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class IMatController implements ShoppingCartListener {
@@ -149,6 +146,32 @@ public class IMatController implements ShoppingCartListener {
     
     @FXML private AnchorPane profileHistoryButton;
     @FXML private AnchorPane profileDetailsButton;
+
+    @FXML private AnchorPane historyPane;
+    @FXML private FlowPane historyFlow;
+    @FXML private ScrollPane historyScroll;
+    @FXML private Label historySumLabel, historyTitelLabel;
+
+    public void populateHistorypPane(Order order){
+        historyPane.toFront();
+        historyFlow.getChildren().clear();
+        float sum = 0;
+        List<ShoppingItem> items = order.getItems();
+        for (ShoppingItem item : items) {
+            historyFlow.getChildren().add(new WizardProductCard(item));
+            sum += item.getTotal();
+        }
+        Calendar calendarDate = new GregorianCalendar();
+        calendarDate.setTime(order.getDate());
+
+        historyTitelLabel.setText("Produkter från köp den " + calendarDate.get(Calendar.YEAR) + "-" + calendarDate.get(Calendar.MONTH) + "-" + calendarDate.get(Calendar.DAY_OF_MONTH));
+        historySumLabel.setText("Summa: " + sum + " kr");
+
+    }
+
+    @FXML public void closeHistoryPane(){
+        historyPane.toBack();
+    }
 
     @FXML
     public void initialize() {
@@ -465,10 +488,12 @@ public class IMatController implements ShoppingCartListener {
         Pattern datePat = Pattern.compile(dateRegex);
 
         if(paymentCardName.getText().equals("")){
+            somethingIsWrong = true;
             setBorderColor(paymentCardName);
         }
 
         if(paymentCardBank.getText().equals("")){
+            somethingIsWrong = true;
             setBorderColor(paymentCardBank);
         }
 
@@ -505,7 +530,7 @@ public class IMatController implements ShoppingCartListener {
     private void updateHistory() {
         profileHistoryFlowPane.getChildren().clear();
         for (Order order : dataHandler.getOrders()) {
-            profileHistoryFlowPane.getChildren().add(new OrderHistoryCard(order));
+            profileHistoryFlowPane.getChildren().add(new OrderHistoryCard(order, this));
         }
     }
 
@@ -605,6 +630,12 @@ public class IMatController implements ShoppingCartListener {
         } else {
             wizardForwardArrow.setVisible(false);
         }
+    }
+
+    @FXML
+    public void donePayment(){
+        confirmationPane.toBack();
+        goToCategories(true);
     }
 
     private void resetWizard() {
