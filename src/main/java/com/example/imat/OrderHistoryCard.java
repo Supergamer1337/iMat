@@ -14,11 +14,12 @@ import java.util.GregorianCalendar;
 public class OrderHistoryCard extends AnchorPane {
 
     Order order;
+    IMatController parentController;
 
     @FXML private Label purchaseDateLabel;
     @FXML private Label purchasePriceLabel;
 
-    public OrderHistoryCard(Order order) {
+    public OrderHistoryCard(Order order, IMatController parentController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("order-history-card.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -30,7 +31,7 @@ public class OrderHistoryCard extends AnchorPane {
         }
 
         this.order = order;
-
+        this.parentController = parentController;
         Calendar calendarDate = new GregorianCalendar();
         calendarDate.setTime(order.getDate());
 
@@ -43,5 +44,9 @@ public class OrderHistoryCard extends AnchorPane {
         }
 
         this.purchasePriceLabel.setText("Summa: " + orderCostSummary + "kr");
+    }
+
+    @FXML public void pressedCard(){
+        parentController.populateHistorypPane(order);
     }
 }
