@@ -1,5 +1,5 @@
 # iMat
-Course project for dat216.
+Course project for dat216. This project should be considered archived as of 2022-06-16, as the course has ended and no further development will continue. This is simply here for archival reference.
 
 ## Getting Started
 First clone the repository to whatever place you want it.
